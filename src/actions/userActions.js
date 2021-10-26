@@ -26,8 +26,6 @@ export const getUsers = () => {
 
 export const getUserByID = (userid) => {
   return (dispatch => {
-    //dispatch({type: FETCH_START});
-    
     dispatch(fetchStart());
     axiosWithAuth().get(`/users/${userid}`)
     .then(res=> {
