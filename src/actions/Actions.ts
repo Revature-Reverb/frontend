@@ -12,6 +12,6 @@ export const fetchStart = () =>  {
     return ({type:FETCH_START})
 }
 
-export const FETCH_SUCCESS = () =>  {
+export const fetchSuccess = () =>  {
     return ({type:FETCH_SUCCESS})
 }

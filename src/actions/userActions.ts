@@ -1,5 +1,5 @@
 import axiosWithAuth from '../utils/axiosWithAuth';
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 
 import { FETCH_FAIL, FETCH_START } from './Actions';
 
@@ -12,7 +12,7 @@ export const GET_USERS = "GET USERS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 
 export const getUsers = () => {
-  return (dispatch => {
+  return ((dispatch: (arg0: { type: string; payload?: any; }) => void) => {
     dispatch(fetchStart());
     axiosWithAuth().get('/users')
     .then(res=> {
@@ -24,8 +24,8 @@ export const getUsers = () => {
   });
 }
 
-export const getUserByID = (userid) => {
-  return (dispatch => {
+export const getUserByID = (userid: any) => {
+  return ((dispatch: (arg0: { type: string; payload?: any; }) => void) => {
     dispatch(fetchStart());
     axiosWithAuth().get(`/users/${userid}`)
     .then(res=> {
@@ -38,8 +38,8 @@ export const getUserByID = (userid) => {
   });
 }
 
-export const createUser = (item) => {
-    return (dispatch => {
+export const createUser = (item: any) => {
+    return ((dispatch: (arg0: { type: string; payload?: any; }) => void) => {
       dispatch(fetchStart());
       axios
       .post('https://dungeon-site-api/api/users/', item)
@@ -57,8 +57,8 @@ export const createUser = (item) => {
     return({type: FETCH_START});
   }
 
-  export const editUser = (editedUser) => {
-    return (dispatch => {
+  export const editUser = (editedUser: { userid: any; }) => {
+    return ((dispatch: (arg0: { type: string; payload?: any; }) => void) => {
       dispatch(fetchStart());
 
       axios
@@ -73,12 +73,12 @@ export const createUser = (item) => {
       });
     })
   };
-  export const addUser = (user) => {
+  export const addUser = (user: any) => {
     return ({type: ADD_SINGLE_USER, payload: user})
   };
   
-  export const deleteUser = (userid) => {
-    return (dispatch => {
+  export const deleteUser = (userid: AxiosRequestConfig<any> | undefined) => {
+    return ((dispatch: (arg0: { type: string; payload?: any; }) => void) => {
       dispatch(fetchStart());
 
       axios
