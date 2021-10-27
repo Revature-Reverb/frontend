@@ -21,10 +21,18 @@ const userSlice = createSlice({
         },
         deleteUser: (state) => {
             state = initialState;
+        },
+        updateUser: (state, action: PayloadAction<User>) => {
+            let tempUser = state.pop();
+            tempUser = {
+                ...tempUser,
+                ...action.payload
+            }
+            state.push(tempUser);
         }
     }
 });
 
-export const { setUser, deleteUser } = userSlice.actions;
+export const { setUser, deleteUser, updateUser } = userSlice.actions;
 
 export default userSlice.reducer;
