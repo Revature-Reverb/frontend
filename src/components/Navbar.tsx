@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Nav,NavDropdown} from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
-import Logo from './reverb_logo2.png'
+// import Logo from './reverb_logo2.png'
 
 function navbar()
 {
@@ -18,13 +18,13 @@ function navbar()
 
 <Nav defaultActiveKey="/home" className="flex-column">
 
-        <img
+        {/* <img
           alt=""
           src={Logo}
           width="120"
           height="70"
           className="d-inline-block align-top"
-        />
+        /> */}
   <Nav.Link href="/home">Home</Nav.Link>
   <Nav.Link eventKey="link-1">Link</Nav.Link>
   <Nav.Link eventKey="link-2">Link</Nav.Link>
