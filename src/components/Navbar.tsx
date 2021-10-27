@@ -33,11 +33,27 @@ const NavigationBar:React.FC = (props:any) =>
                 className="justify-content-center">
         <Nav className="mr-auto"></Nav>
 
+<<<<<<< HEAD
         {/* The  100vh is used to make it the entire screen height.
             the top:0px is used to keep the content attached to the top of the screen.*/}
         <Nav defaultActiveKey="home" 
         className="flex-column justify-content-center text-center" 
         style={{position:"absolute", top:"0px", height:"100vh"}}>
+=======
+        {/* <img
+          alt=""
+          src={Logo}
+          width="120"
+          height="70"
+          className="d-inline-block align-top"
+        /> */}
+  <Nav.Link href="/home">Home</Nav.Link>
+  <Nav.Link eventKey="link-1">Link</Nav.Link>
+  <Nav.Link eventKey="link-2">Link</Nav.Link>
+  <Nav.Link eventKey="link-3">Link</Nav.Link>
+</Nav>
+</Navbar>
+>>>>>>> bb931f0643d6d049c1f9b9033c2e5e8311300323
 
             {/* The Home button that is the logo.*/}
             <Nav.Link className="justify-content-center" eventKey="home">
@@ -96,7 +112,7 @@ const NavigationBar:React.FC = (props:any) =>
             <Nav.Link eventKey="settings-link">
                 Settings
             </Nav.Link>
-            
+
             {/* The link to logout. */}
             <NavLink 
                 eventKey="logout-link" 
