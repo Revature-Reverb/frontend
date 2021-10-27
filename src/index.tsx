@@ -5,12 +5,17 @@ import App from './App';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import SubmitPost from './components/SubmitPost';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      {/* Changing this for development purposes:
+      change back to <App /> for default react-redux */}
+      <SubmitPost />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
