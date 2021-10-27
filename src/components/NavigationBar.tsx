@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { join } from 'path'
 import React, { useState } from 'react'
-import App from './App'
+import App from '../App'
 
 
 const NavigationBar = () => {

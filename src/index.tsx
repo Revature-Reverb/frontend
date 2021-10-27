@@ -6,11 +6,21 @@ import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import MainRouter from './router/MainRouter';
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import Navbar from './components/Navbar'
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <MainRouter/>
+    <Router>
+                <Switch>
+                    <Route path="/">
+                        <main>
+                        <Navbar/>
+                        </main>
+                    </Route>
+                </Switch>
+            </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
