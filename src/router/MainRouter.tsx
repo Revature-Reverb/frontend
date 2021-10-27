@@ -1,11 +1,8 @@
 import React from "react";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import App from "../App";
-import NavigationBar from "../components/NavigationBar";
 import Navbar from "../components/Navbar";
-
+import App from "../App";
 export default function MainRouter() {
-
 
     return (
         <>
@@ -13,9 +10,8 @@ export default function MainRouter() {
                 <Switch>
                     <Route path="/">
                         <main>
-                        <Navbar/>
-                        
-                        
+                            <Navbar/>
+                            <App/>
                         </main>
                     </Route>
                 </Switch>
