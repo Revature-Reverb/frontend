@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
@@ -9,6 +8,9 @@ import SubmitPost from './components/SubmitPost';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
+import MainRouter from './router/MainRouter';
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import Navbar from './components/Navbar'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,6 +18,15 @@ ReactDOM.render(
       {/* Changing this for development purposes:
       change back to <App /> for default react-redux */}
       <SubmitPost />
+    <Router>
+                <Switch>
+                    <Route path="/">
+                        <main>
+                        <Navbar/>
+                        </main>
+                    </Route>
+                </Switch>
+            </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
