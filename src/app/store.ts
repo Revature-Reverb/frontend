@@ -1,11 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
-import primeReducer from '../reducers/primeReducer'
+import counterReducer from '../features/counter/counterSlice';
+import { userSlice } from '../slices/userSlice'
 
-const composeEnhancers = compose;
-
-export const store = createStore(primeReducer, composeEnhancers(applyMiddleware(thunk)));
+export const store = configureStore({
+  counter: counterReducer,
+  user: userSlice
+});
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
