@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Card, Form} from "react-bootstrap";
+import {Button, Card, Col, Form, Row} from "react-bootstrap";
 
 const SubmitPost : React.FC = () => {
     return(
@@ -8,19 +8,47 @@ const SubmitPost : React.FC = () => {
                 <h1>New Post</h1>
             </Card.Header>
             <Card.Body>
-                <Card.Title>
-                    What is on your mind?
-            </Card.Title>
-                <Form.Select>
-                    <option value="Text">Text</option>
-                    <option value="Photo">Photo</option>
-                    <option value="Link">Link</option>
-                </Form.Select>
-                <Form.Control
-                    as="textarea"
-                    placeholder="What is on your mind today?"
-                />
-                <Button type="submit">Post</Button>
+
+            <Form>
+                {/* Picture Input */}
+                <Form.Group as={Row} className="mb-3" controlId="">
+                    <Form.Label column sm={1}>
+                        Photo
+                    </Form.Label>
+                    <Col sm={11}>
+                        <Form.Control type="file" />
+                    </Col>
+                </Form.Group>
+
+                {/* Link Input */}
+                <Form.Group as={Row} className="mb-3" controlId="">
+                    <Form.Label column sm={1}>Link</Form.Label>
+                    <Col sm={11}>
+                        <Form.Control
+                            as="textarea"
+                            placeholder=""
+                            style={{height: "25px"}}
+                            id="link"
+                        />
+                    </Col>
+                </Form.Group>
+
+                {/* Text Input */}
+                <Form.Group as={Row} className="mb-3" controlId="">
+                    <Form.Label column sm={2}>What is on your mind?</Form.Label>
+                    <Col sm={12}>
+                        <Form.Control
+                            as="textarea"
+                            placeholder=""
+                            id="text"   
+                            style={{height: "100px"}} 
+                        />
+                    </Col>
+                </Form.Group>
+
+                {/* Submit Button */}
+                <Button type="submit">Post to ReverB</Button>
+            </Form>
             </Card.Body>
         </Card>
     );
