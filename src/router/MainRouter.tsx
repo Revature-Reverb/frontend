@@ -13,9 +13,8 @@ export default function MainRouter() {
                 <Switch>
                     <Route path="/">
                         <main>
-                        <Navbar/>
-                        
-                        
+                            <Navbar/>
+
                         </main>
                     </Route>
                 </Switch>

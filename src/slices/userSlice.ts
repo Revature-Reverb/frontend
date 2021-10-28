@@ -1,14 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { store } from "../app/store";
 import { User } from '../models/userModel';
 
 export type UserState = User[];
 
+// filled for testing purposes, remember to clear initialState
 const initialState: UserState = [{
     userID: 0,
-    username: "",
-    password: "",
-    firstName: "",
-    lastName: ""
+    username: "user",
+    password: "password",
+    firstName: "first",
+    lastName: "last"
 }];
 
 const userSlice = createSlice({
@@ -32,6 +34,12 @@ const userSlice = createSlice({
         }
     }
 });
+
+type Rootstate = ReturnType<typeof store.getState>;
+
+export const selectUsers = (state:Rootstate) => {
+   return state.user;
+}
 
 export const { setUser, deleteUser, updateUser } = userSlice.actions;
 
