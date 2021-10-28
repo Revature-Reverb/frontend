@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import MainRouter from './router/MainRouter';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Navbar from './components/Navbar'
+import UserNameWidget from './components/UserNameWidget'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,7 +16,8 @@ ReactDOM.render(
                 <Switch>
                     <Route path="/">
                         <main>
-                        <Navbar/>
+                          <Navbar/>
+                          <UserNameWidget />
                         </main>
                     </Route>
                 </Switch>
