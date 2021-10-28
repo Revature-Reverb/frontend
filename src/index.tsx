@@ -17,7 +17,7 @@ ReactDOM.render(
                     <Route path="/">
                         <main>
                           <Navbar/>
-                          <UserNameWidget />
+                          {/* <UserNameWidget /> */}
                         </main>
                     </Route>
                 </Switch>

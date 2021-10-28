@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 import { store } from "../app/store";
 import { User } from '../models/userModel';
 import { getUser } from '../remote/reverb-api/user.api'
