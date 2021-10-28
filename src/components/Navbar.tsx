@@ -5,6 +5,7 @@ import Logo from '../reverb_logo2.png'
 //import RevLogo from '../rev-logo.png'
 import ProfileImage from '../logo.svg'
 import { Link, useHistory } from 'react-router-dom'
+import MainRouter from '../router/MainRouter'
 
 // The props that are allowed to be passed to this.
 interface Props {
@@ -120,7 +121,7 @@ const NavigationBar:React.FC<Props> = ({children}:{children:JSX.Element}) =>
         <div>
             {sideNavBar}
             <div>
-                {children}
+                <MainRouter/>
             </div>
         </div>
         )
