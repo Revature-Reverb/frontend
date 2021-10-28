@@ -1,8 +1,6 @@
 import React from "react";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Navbar from "../components/Navbar";
-import App from "../App";
-export default function MainRouter() {
+export default function MainRouter(props:any) {
 
     return (
         <>
@@ -10,8 +8,7 @@ export default function MainRouter() {
                 <Switch>
                     <Route path="/">
                         <main>
-                            <Navbar/>
-                            <App/>
+                            {props.children}
                         </main>
                     </Route>
                 </Switch>

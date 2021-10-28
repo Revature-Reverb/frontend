@@ -4,8 +4,14 @@ import Navbar from 'react-bootstrap/Navbar'
 import Logo from '../reverb_logo2.png'
 //import RevLogo from '../rev-logo.png'
 import ProfileImage from '../logo.svg'
-import App from '../App'
-const NavigationBar:React.FC = (props:any) =>
+
+// The props that are allowed to be passed to this.
+interface Props {
+    children:JSX.Element
+}
+// The function component typed as well as its props defined and typed
+// through destructuring.
+const NavigationBar:React.FC<Props> = ({children}:{children:JSX.Element}) =>
 {
     // The state of the input typed in the search field.
     // Used later when calling the searchHandler.
@@ -29,7 +35,7 @@ const NavigationBar:React.FC = (props:any) =>
     // below it.
     const sideNavBar = <div style={{float:"left"}}>
     <Navbar style={{backgroundColor:"#B9B9BA",
-    width: 150, height:"100vh",fontSize:"24px",lineHeight:"30px"}}
+    width: 150, height:"100vh", minHeight:"450px", fontSize:"24px",lineHeight:"30px"}}
                 className="justify-content-center">
         <Nav className="mr-auto"></Nav>
         {/* The  100vh is used to make it the entire screen height.
@@ -70,7 +76,6 @@ const NavigationBar:React.FC = (props:any) =>
                     onSubmit={(e)=>formHandler(e)}
                     style={{paddingLeft:"4px", paddingRight:"4px"}}
                 >
-                    
                     <input type="search"
                     className="form-control" 
                     placeholder="Search..." 
@@ -106,33 +111,32 @@ const NavigationBar:React.FC = (props:any) =>
         </Nav>
     </Navbar>
 </div>
-const otherNavbar = 
-{/* <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={{ width: 200, height:"100vh"}}>
-<Navbar.Toggle aria-controls="responsive-navbar-nav" />
-<Navbar.Collapse id="responsive-navbar-nav">
 
-
-    <Nav className="mr-auto">
-    <Nav.Link href="#features">Features</Nav.Link>
-
-        <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-        </NavDropdown>
-    </Nav>
-    <Nav>
-    </Nav>
-</Navbar.Collapse>
-</Navbar> */}
+// A different navbar that can be used as reference for different parts.
+// const otherNavbar = 
+// {/* <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={{ width: 200, height:"100vh"}}>
+// <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+// <Navbar.Collapse id="responsive-navbar-nav">
+//     <Nav className="mr-auto">
+//     <Nav.Link href="#features">Features</Nav.Link>
+//         <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+//             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+//             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+//             <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+//             <NavDropdown.Divider />
+//             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+//         </NavDropdown>
+//     </Nav>
+//     <Nav>
+//     </Nav>
+// </Navbar.Collapse>
+// </Navbar> */}
 
     return(
         <div>
             {sideNavBar}
             <div>
-                <App/>
+                {children}
             </div>
         </div>
         )
