@@ -13,7 +13,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <Router>
-        <Navbar><MainRouter/></Navbar> 
+        <Navbar/>
       </Router>
     </Provider>
   </React.StrictMode>,
