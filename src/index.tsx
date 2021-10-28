@@ -11,14 +11,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MainRouter from './router/MainRouter';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Navbar from './components/Navbar'
+import SubmitComment from './components/SubmitComment';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       {/* Changing this for development purposes:
       change back to <App /> for default react-redux */}
-      <SubmitPost />
-    <Router>
+      <SubmitComment />
+    {/* <Router>
                 <Switch>
                     <Route path="/">
                         <main>
@@ -26,7 +27,7 @@ ReactDOM.render(
                         </main>
                     </Route>
                 </Switch>
-            </Router>
+            </Router> */}
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
