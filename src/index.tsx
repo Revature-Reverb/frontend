@@ -1,26 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import Navbar from './components/Navbar'
+import App from './App';
 import MainRouter from './router/MainRouter';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Navbar from './components/Navbar'
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <Router>
-                <Switch>
-                    <Route path="/">
-                        <main>
-                        <Navbar/>
-                        </main>
-                    </Route>
-                </Switch>
-            </Router>
+      <MainRouter>
+        <Navbar>
+          <App/>
+        </Navbar>
+      </MainRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
