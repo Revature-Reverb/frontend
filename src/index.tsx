@@ -4,18 +4,16 @@ import './index.css';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import Navbar from './components/Navbar'
-import App from './App';
 import MainRouter from './router/MainRouter';
+import Navbar from './components/Navbar'
+import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <MainRouter>
-        <Navbar>
-          <App/>
-        </Navbar>
-      </MainRouter>
+      <Router>
+        <Navbar><MainRouter/></Navbar> 
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

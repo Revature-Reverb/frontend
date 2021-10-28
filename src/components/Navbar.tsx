@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Logo from '../reverb_logo2.png'
 //import RevLogo from '../rev-logo.png'
 import ProfileImage from '../logo.svg'
+import { Link, useHistory } from 'react-router-dom'
 
 // The props that are allowed to be passed to this.
 interface Props {
@@ -16,6 +17,7 @@ const NavigationBar:React.FC<Props> = ({children}:{children:JSX.Element}) =>
     // The state of the input typed in the search field.
     // Used later when calling the searchHandler.
     const [search, setSearch] = useState("")
+    const history = useHistory();
 
     // The method that will be used to do the 'search'.
     const searchHandler = (props:string) => {    
@@ -46,7 +48,7 @@ const NavigationBar:React.FC<Props> = ({children}:{children:JSX.Element}) =>
 
 
             {/* The Home button that is the logo.*/}
-            <Nav.Link className="justify-content-center" eventKey="home">
+            <Nav.Link as={Link} to={"/"} className="justify-content-center" eventKey="home">
                 <img
                     alt=""
                     src={Logo}
@@ -59,7 +61,8 @@ const NavigationBar:React.FC<Props> = ({children}:{children:JSX.Element}) =>
 
                 {/* The Profile Image above the word Profile.
                     Clicking Either will change to the profile page. */}
-                <Nav.Link className="justify-content-center" eventKey="profile-link">
+                <Nav.Link as={Link} to={"/profile"}  onClick={()=>history.push("/profile")}
+                className="justify-content-center" eventKey="profile-link">
                     <img
                         alt=""
                         src={ProfileImage}
@@ -86,24 +89,24 @@ const NavigationBar:React.FC<Props> = ({children}:{children:JSX.Element}) =>
                 </Form>
 
                 {/* The link to the friends page. */}
-                <Nav.Link eventKey="friends-link">
+                <Nav.Link as={Link} to={"/friends"} onClick={()=>history.push("/friends")} eventKey="friends-link">
                     Friends
                 </Nav.Link>
                 
                 {/* The link to the chat page. */}
-                <Nav.Link eventKey="chat-link">
+                <Nav.Link as={Link} to={"/chat"} onClick={()=>history.push("/chat")} eventKey="chat-link">
                     Chat
                 </Nav.Link>
             </ul>
             
             {/* These elements are instead attached to the bottom. */}
             {/* The link to the settings page. */}
-            <Nav.Link eventKey="settings-link">
+            <Nav.Link as={Link} to={"/settings"} eventKey="settings-link">
                 Settings
             </Nav.Link>
 
             {/* The link to logout. */}
-            <NavLink 
+            <NavLink as={Link} to={"/logout"}
                 eventKey="logout-link" 
                 style={{bottom:"0px"}}>
                 Logout
@@ -111,26 +114,6 @@ const NavigationBar:React.FC<Props> = ({children}:{children:JSX.Element}) =>
         </Nav>
     </Navbar>
 </div>
-
-// A different navbar that can be used as reference for different parts.
-// const otherNavbar = 
-// {/* <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={{ width: 200, height:"100vh"}}>
-// <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-// <Navbar.Collapse id="responsive-navbar-nav">
-//     <Nav className="mr-auto">
-//     <Nav.Link href="#features">Features</Nav.Link>
-//         <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-//             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-//             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-//             <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-//             <NavDropdown.Divider />
-//             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-//         </NavDropdown>
-//     </Nav>
-//     <Nav>
-//     </Nav>
-// </Navbar.Collapse>
-// </Navbar> */}
 
     return(
         <div>
