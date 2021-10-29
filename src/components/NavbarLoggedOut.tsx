@@ -7,15 +7,12 @@ import ProfileImage from '../logo.svg'
 import { Link, useHistory } from 'react-router-dom'
 import MainRouter from '../router/MainRouter'
 
-// The props that are allowed to be passed to this.
 interface Props {
-    children?:JSX.Element
+    children:JSX.Element
 }
 // The function component typed as well as its props defined and typed
 // through destructuring.
-
-// {children}:{children:JSX.Element}
-const NavigationBar:React.FC<Props> = () =>
+const NavigationBar:React.FC<Props> = ({children}:{children:JSX.Element}) =>
 {
     // The state of the input typed in the search field.
     // Used later when calling the searchHandler.
@@ -59,27 +56,19 @@ const NavigationBar:React.FC<Props> = () =>
                     height="70"
                     className="d-inline-block align-top"
                 />
-                Home
             </Nav.Link>
             <ul className="nav flex-column mb-auto text-center">
 
                 {/* The Profile Image above the word Profile.
                     Clicking Either will change to the profile page. */}
-                <Nav.Link as={Link} to={"/profile"}  onClick={()=>history.push("/profile")}
-                className="justify-content-center" eventKey="profile-link">
-                    <img
-                        alt=""
-                        src={ProfileImage}
-                        width="120"
-                        height="70"
-                        className="d-inline-block align-top"
-                    />
-                    Profile
+                <Nav.Link as={Link} to={"/login"}  onClick={()=>history.push("/login")}
+                className="justify-content-center" eventKey="login-link">
+                    Login
                 </Nav.Link>
 
                 {/* The form takes in the on submit to make sure the page
                     does not refresh on submit. It also calls the search function. */}
-                <Form className="text-center" 
+                {/* <Form className="text-center" 
                     onSubmit={(e)=>formHandler(e)}
                     style={{paddingLeft:"4px", paddingRight:"4px"}}
                 >
@@ -90,31 +79,17 @@ const NavigationBar:React.FC<Props> = () =>
                     onChange={(e)=>setSearch(e.target.value)}
                     aria-label="Search"
                     />
-                </Form>
+                </Form> */}
 
                 {/* The link to the friends page. */}
-                <Nav.Link as={Link} to={"/friends"} onClick={()=>history.push("/friends")} eventKey="friends-link">
-                    Friends
+                <Nav.Link as={Link} to={"/register"} onClick={()=>history.push("/register")} eventKey="register-link">
+                    Register
                 </Nav.Link>
                 
-                {/* The link to the chat page. */}
-                <Nav.Link as={Link} to={"/chat"} onClick={()=>history.push("/chat")} eventKey="chat-link">
-                    Chat
-                </Nav.Link>
             </ul>
             
             {/* These elements are instead attached to the bottom. */}
             {/* The link to the settings page. */}
-            <Nav.Link as={Link} to={"/settings"} eventKey="settings-link">
-                Settings
-            </Nav.Link>
-
-            {/* The link to logout. */}
-            <NavLink as={Link} to={"/logout"}
-                eventKey="logout-link" 
-                style={{bottom:"0px"}}>
-                Logout
-            </NavLink>
         </Nav>
     </Navbar>
 </div>

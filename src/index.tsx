@@ -13,29 +13,16 @@ import PrivateRoute from './components/PrivateRoute';
 import ProfilePage from './pages/ProfilePage';
 import TestPage from './pages/testPage';
 import EditProfilePage from './pages/EditProfilePage';
-
+import MainRouter from './router/MainRouter';
+import UserNameWidget from './components/UserNameWidget'
+import NavbarLoggedOut from './components/NavbarLoggedOut';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Stack direction={"horizontal"} gap={5}>
+      <Router>
         <Navbar/>
-        <Grid container direction="column" alignItems="center">
-          <Router>
-            <Switch>
-              <PrivateRoute path="/ProfilePage" component={ProfilePage}>
-                <ProfilePage/>
-              </PrivateRoute>
-              <PrivateRoute path="/editProfile" component={EditProfilePage}>
-                <EditProfilePage/>
-              </PrivateRoute>
-              <PrivateRoute path="/" component={TestPage}>
-                <TestPage/>
-              </PrivateRoute>
-            </Switch>
-          </Router>
-        </Grid>
-      </Stack>
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
