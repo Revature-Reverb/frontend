@@ -9,11 +9,13 @@ import MainRouter from '../router/MainRouter'
 
 // The props that are allowed to be passed to this.
 interface Props {
-    children:JSX.Element
+    children?:JSX.Element
 }
 // The function component typed as well as its props defined and typed
 // through destructuring.
-const NavigationBar:React.FC<Props> = ({children}:{children:JSX.Element}) =>
+
+// {children}:{children:JSX.Element}
+const NavigationBar:React.FC<Props> = () =>
 {
     // The state of the input typed in the search field.
     // Used later when calling the searchHandler.
