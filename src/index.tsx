@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import MainRouter from './router/MainRouter';
 import Navbar from './components/Navbar'
+import UserNameWidget from './components/UserNameWidget'
 import { BrowserRouter as Router } from 'react-router-dom';
 import NavbarLoggedOut from './components/NavbarLoggedOut';
 
