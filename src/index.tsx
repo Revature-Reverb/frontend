@@ -1,25 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import MainRouter from './router/MainRouter';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Navbar from './components/Navbar'
+import App from './App';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Stack from 'react-bootstrap/Stack';
+import { Grid } from '@material-ui/core';
+import PrivateRoute from './components/PrivateRoute';
+import ProfilePage from './pages/ProfilePage';
+import TestPage from './pages/testPage';
+import EditProfilePage from './pages/EditProfilePage';
+
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <Router>
-                <Switch>
-                    <Route path="/">
-                        <main>
-                        <Navbar/>
-                        </main>
-                    </Route>
-                </Switch>
-            </Router>
+      <Stack direction={"horizontal"} gap={5}>
+        <Navbar/>
+        <Grid container direction="column" alignItems="center">
+          <Router>
+            <Switch>
+              <PrivateRoute path="/ProfilePage" component={undefined}>
+                <ProfilePage/>
+              </PrivateRoute>
+              <PrivateRoute path="/editProfile" component={undefined}>
+                <EditProfilePage/>
+              </PrivateRoute>
+              <PrivateRoute path="/" component={undefined}>
+                <TestPage/>
+              </PrivateRoute>
+            </Switch>
+          </Router>
+        </Grid>
+      </Stack>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

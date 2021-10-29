@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import App from "../App";
 import NavigationBar from "../components/NavigationBar";
 import Navbar from "../components/Navbar";
+import ProfileInformation from "../components/ProfileInformation";
 
 export default function MainRouter() {
 
@@ -11,12 +12,9 @@ export default function MainRouter() {
         <>
             <Router>
                 <Switch>
-                    <Route path="/">
-                        <main>
                         <Navbar/>
-                        
-                        
-                        </main>
+                    <Route path="/">
+                        <ProfileInformation />
                     </Route>
                 </Switch>
             </Router>
