@@ -13,51 +13,57 @@ import Chat from "../pages/chat";
 import Settings from "../pages/settings";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { logout } from '../slices/authSlice'
+import ProfilePage from "../pages/ProfilePage";
+import EditProfilePage from "../pages/EditProfilePage";
+import TestPage from "../pages/testPage";
 export default function MainRouter(props: any) {
 
   const history = useHistory();
-
-  // const [loggedIn, setLoggedIn] = useState(true);
-
-  const loggedIn = useAppSelector(state => state.auth.authorized);
-  
   const dispatch = useAppDispatch();
+  
+  // Logged in state being tracked in Redux store, referenced with useAppSelector
+  const loggedIn = useAppSelector(state => state.auth.authorized);
 
+  // Logout now dispatching to store to update state
   const doLogout = () => {
     dispatch(logout());
-    history.push("/")
   }
 
+  // Login is now handled in the Login page component.
+
   let toReturn = <></>;
-  console.log("LoggedIn variable: ", loggedIn);
   if (loggedIn) {
     toReturn =
       <div>
         <Switch>
-          <Route path="/profile">
-            <Profile />
-          </Route>
-          <Route path="/create_post">
+          <Route exact path="/create_post">
             <CreatePost />
           </Route>
-          <Route path="/search">
+          <Route exact path="/search">
             <Search />
           </Route>
-          <Route path="/event">
+          <Route exact path="/event">
             <Event />
           </Route>
-          <Route path="/chat">
+          <Route exact path="/chat">
             <Chat />
           </Route>
-          <Route path="/settings">
+          <Route exact path="/settings">
             <Settings />
           </Route>
-          <Route path="/friends">
+          <Route exact path="/friends">
             <Friends />
           </Route>
-          <Route path="/logout">
+          <Route exact path="/profile" component={ProfilePage}>
+          </Route>
+          <Route exact path="/editProfile" component={EditProfilePage}>
+          </Route>
+          <Route exact path="/logout">
             {doLogout}
           </Route>
+          {/* <Route path="/" component={TestPage}>
+                        <TestPage />
+                    </Route> */}
           <Route path="/">
             <Feed />
           </Route>
