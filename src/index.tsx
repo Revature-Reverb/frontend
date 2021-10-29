@@ -5,9 +5,10 @@ import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import MainRouter from './router/MainRouter';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Navbar from './components/Navbar'
 import UserNameWidget from './components/UserNameWidget'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import NavbarLoggedOut from './components/NavbarLoggedOut';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,8 +17,10 @@ ReactDOM.render(
                 <Switch>
                     <Route path="/">
                         <main>
-                          <Navbar/>
-                          {/* <UserNameWidget /> */}
+                          <Navbar>
+                                <p>Fake Child Props</p>
+                            </Navbar>
+                          <UserNameWidget />
                         </main>
                     </Route>
                 </Switch>
