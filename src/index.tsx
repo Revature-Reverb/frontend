@@ -23,13 +23,13 @@ ReactDOM.render(
         <Grid container direction="column" alignItems="center">
           <Router>
             <Switch>
-              <PrivateRoute path="/ProfilePage" component={undefined}>
+              <PrivateRoute path="/ProfilePage" component={ProfilePage}>
                 <ProfilePage/>
               </PrivateRoute>
-              <PrivateRoute path="/editProfile" component={undefined}>
+              <PrivateRoute path="/editProfile" component={EditProfilePage}>
                 <EditProfilePage/>
               </PrivateRoute>
-              <PrivateRoute path="/" component={undefined}>
+              <PrivateRoute path="/" component={TestPage}>
                 <TestPage/>
               </PrivateRoute>
             </Switch>
