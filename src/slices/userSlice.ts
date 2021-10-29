@@ -95,6 +95,7 @@ const userSlice = createSlice({
                 // do nothing
             })
             .addCase(deleteUserAsync.fulfilled, (state, action) => {
+                console.log (action.payload.username);
                 return initialState;
             })
             .addCase(getUserAsync.fulfilled, (state, action) => {

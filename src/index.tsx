@@ -17,9 +17,9 @@ ReactDOM.render(
                 <Switch>
                     <Route path="/">
                         <main>
-                          <Navbar>
+                          {/* <Navbar>
                                 <p>Fake Child Props</p>
-                            </Navbar>
+                            </Navbar> */}
                           <UserNameWidget />
                         </main>
                     </Route>
