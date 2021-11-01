@@ -15,6 +15,7 @@ import TestPage from './pages/testPage';
 import EditProfilePage from './pages/EditProfilePage';
 import MainRouter from './router/MainRouter';
 import UserNameWidget from './components/UserNameWidget'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavbarLoggedOut from './components/NavbarLoggedOut';
 
 ReactDOM.render(
