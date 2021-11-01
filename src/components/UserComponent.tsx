@@ -6,11 +6,11 @@ function UserComponent() {
     const users = useSelector(selectUser);
     const dispatch = useDispatch();
 
-    console.log("the username: "+users.username);
+    console.log("the username: "+users.profile.firstname);
 
     return (
         <div>
-            <h1>This is the username: {users.username}</h1>
+            <h1>This is the username: {users.profile.firstname}</h1>
         </div>
     )
 }
