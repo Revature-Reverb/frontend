@@ -8,7 +8,7 @@ export const createUser = async (neoUser: User): Promise<User> => {
 }
 
 export const removeUser = async (neoUser: User): Promise<User> => {
-  const {data: user} = await reverbClient.delete<User>(`/api/user/${neoUser.userID}`);
+  const {data: user} = await reverbClient.delete<User>(`/api/user/${neoUser.userid}`);
 
   return user;
 }
@@ -20,7 +20,7 @@ export const getUser = async (): Promise<User> => {
 }
 
 export const changeUser = async (neoUser: User): Promise<User> => {
-  const {data: user} = await reverbClient.put<User>(`/api/user/${neoUser.userID}`, neoUser);
+  const {data: user} = await reverbClient.put<User>(`/api/user/${neoUser.userid}`, neoUser);
 
   return user;
 }
