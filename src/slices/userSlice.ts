@@ -10,6 +10,7 @@ const initialState: UserState = {
     userid: "",
     email: "",
     profile: {
+        id: 0,
         firstname: "",
         lastname: "",
         about_me: ""
@@ -98,19 +99,19 @@ const userSlice = createSlice({
                 // do nothing
             })
             .addCase(deleteUserAsync.fulfilled, (state, action) => {
-                console.log (action.payload.username);
+                console.log (action.payload.profile.firstname);
                 return initialState;
             })
             .addCase(getUserAsync.fulfilled, (state, action) => {
-                console.log (action.payload.username);
+                console.log (action.payload.profile.firstname);
                 return action.payload;
             })
             .addCase(postUserAsync.fulfilled, (state, action) => {
-                console.log (action.payload.username);
+                console.log (action.payload.profile.firstname);
                 return action.payload;
             })
             .addCase(putUserAsync.fulfilled, (state, action) => {
-                console.log (action.payload.username);
+                console.log (action.payload.profile.firstname);
                 return action.payload;
             })
             .addCase(deleteUserAsync.rejected, (state, action) => {
