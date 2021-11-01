@@ -7,10 +7,27 @@ import { store } from '../app/store'
 import { useAppDispatch } from '../app/hooks'
 import { login } from '../slices/authSlice'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 export default function Login() {
-  
+
   const dispatch = useAppDispatch();
+
+  const loginToBackEnd = (token: string) => {
+    console.log("Token from logintobackend: ", token);
+    const url = 'http://localhost:8080/api/user/test';
+
+    const header = {
+      Authorization: token,
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'https://localhost:3000',
+      'Access-Control-Allow-Credentials': 'true',
+      withCredentials: true
+    };
+    axios.get(url, header)
+      .then(response => {console.log("RESPONSE", response);})
+      .catch(err => console.log(err));
+  }
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -26,8 +43,15 @@ export default function Login() {
           const user = userCredential.user;
           dispatch(login());
 
+          user.getIdTokenResult(true).then(data => loginToBackEnd(data.token));
+
+          // console.log("Get ID Token Result: ", user.getIdTokenResult(true)
+          // .then(data => loginToBackEnd(data.token)));
+
+
           console.log("Login user credentials: ", user);
           console.log("Access Token: ", user.getIdToken());
+
           // ...
         })
         .catch((error) => {
@@ -37,7 +61,7 @@ export default function Login() {
           console.log("Login user error msg: ", errorMessage);
         });
     }
-    
+
   }
 
   return (
