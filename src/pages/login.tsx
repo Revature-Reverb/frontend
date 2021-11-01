@@ -7,9 +7,24 @@ import { store } from '../app/store'
 import { useAppDispatch } from '../app/hooks'
 import { login } from '../slices/authSlice'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 export default function Login() {
+
+  const loginToBackEnd = (token: string) =>{
+    console.log("Token from logintobackend: ", token);
+    const url = 'https://localhost:8080/api/user'
   
+    const header = {
+      Authorization: token,
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'https://localhost:3000/',
+      'Access-Control-Allow-Credentials': 'true',
+  };
+    axios.get(url, { 'headers': header, withCredentials: true} )
+    .then(response => console.log("*", response));
+}
+
   const dispatch = useAppDispatch();
 
   const emailRef = useRef<HTMLInputElement>(null);
@@ -25,9 +40,13 @@ export default function Login() {
           // Signed in 
           const user = userCredential.user;
           dispatch(login());
-
           console.log("Login user credentials: ", user);
-          console.log("Access Token: ", user.getIdToken());
+          // console.log("Get ID Token: ", user.getIdToken(true));
+          console.log("Get ID Token Result: ", user.getIdTokenResult(true)
+          .then(data => loginToBackEnd(data.token)));
+          // const token = user.getIdToken
+
+          // loginToBackEnd(user.getIdToken(true));
           // ...
         })
         .catch((error) => {
@@ -37,7 +56,7 @@ export default function Login() {
           console.log("Login user error msg: ", errorMessage);
         });
     }
-    
+
   }
 
   return (
