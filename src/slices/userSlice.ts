@@ -33,8 +33,7 @@ export const getUserAsync = createAsyncThunk<User, object>(
     'user/get/async',
     async ({}, thunkAPI) => {
         try {
-            const response = await getUser();
-            return response;
+            return await getUser();
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
         }

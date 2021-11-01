@@ -1,8 +1,6 @@
-import { userInfo } from 'os';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser }  from '../slices/userSlice';
-import { deleteUserAsync, getUserAsync, postUserAsync, putUserAsync } from '../slices/userSlice';
+import { deleteUserAsync, getUserAsync, postUserAsync, putUserAsync, selectUser } from '../slices/userSlice';
 import { User } from '../models/userModel'
 
 export default function UserNameWidget() {
