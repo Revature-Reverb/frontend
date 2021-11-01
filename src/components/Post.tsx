@@ -2,7 +2,7 @@ import React from "react";
 import {Button, Card, Col, Form, ListGroup, ListGroupItem, Row} from "react-bootstrap";
 
 const Post : React.FC = () => {
-    
+
     return(
         <Card bg='light' style={{width: "500px"}}>
             <Card.Header>
@@ -49,7 +49,7 @@ const Post : React.FC = () => {
                     <Button variant="warning">ReverB</Button>
                     <Button>Comment</Button>
                 </Card.Body>
-        </Card>S
+        </Card>
     );
 }
 
