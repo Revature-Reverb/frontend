@@ -7,10 +7,13 @@ import { createUser, removeUser, getUser, changeUser } from '../remote/reverb-ap
 export type UserState = User;
 
 const initialState: UserState = {
-    userID: 0,
-    username: "",
-    firstName: "",
-    lastName: ""
+    userid: "",
+    email: "",
+    profile: {
+        firstname: "",
+        lastname: "",
+        about_me: ""
+    }
 };
 
 export const deleteUserAsync = createAsyncThunk<User, User>(
