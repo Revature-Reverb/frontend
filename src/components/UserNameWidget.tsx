@@ -14,6 +14,7 @@ export default function UserNameWidget() {
             userid: "",
             email: "",
             profile: {
+                id: 0,
                 firstname: "Testor",
                 lastname: "",
                 about_me: ""
