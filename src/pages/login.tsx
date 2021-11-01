@@ -15,16 +15,13 @@ export default function Login() {
 
   const loginToBackEnd = (token: string) => {
     console.log("Token from logintobackend: ", token);
-    const url = 'http://localhost:8080/api/user/test';
+    const url = 'http://localhost:8080/api/user/testWithAuth';
 
     const header = {
-      Authorization: token,
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'https://localhost:3000',
-      'Access-Control-Allow-Credentials': 'true',
-      withCredentials: true
+      'Authorization': token,
+      'Content-Type': 'application/json'
     };
-    axios.get(url, header)
+    axios.get(url, {headers: header, withCredentials: true})
       .then(response => {console.log("RESPONSE", response);})
       .catch(err => console.log(err));
   }
