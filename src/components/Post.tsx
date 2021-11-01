@@ -8,6 +8,7 @@ const Post : React.FC = () => {
             <Card.Header>
                 <Card.Title>Amazing Post Title</Card.Title>
                 <Card.Subtitle>Joe Smith - 11/01/2021</Card.Subtitle>
+                <Button variant="warning" style={{float: 'right', marginTop: "-2.5rem"}}>ReverB!</Button>
             </Card.Header>
             <Card.Body>
                 <Card.Img variant='top' src="https://placeholder.pics/svg/300"/>
@@ -46,7 +47,6 @@ const Post : React.FC = () => {
                     </ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                    <Button variant="warning">ReverB</Button>
                     <Button>Comment</Button>
                 </Card.Body>
         </Card>
