@@ -15,13 +15,18 @@ import TestPage from './pages/testPage';
 import EditProfilePage from './pages/EditProfilePage';
 import MainRouter from './router/MainRouter';
 import UserNameWidget from './components/UserNameWidget'
-import NavbarLoggedOut from './components/NavbarLoggedOut';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <Router>
+        
+        <Stack direction="horizontal" gap={5}>
         <Navbar/>
+        <div className="justify-content-center" style={{width:"100%", overflowY:"scroll"}} >
+            <MainRouter/>
+        </div>
+        </Stack>
       </Router>
     </Provider>
   </React.StrictMode>,
