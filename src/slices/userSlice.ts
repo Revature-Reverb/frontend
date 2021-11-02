@@ -119,6 +119,4 @@ export const selectUser = (state: Rootstate) => {
     return state.user
 }
 
-export const { setUser, deleteUser, updateUser } = userSlice.actions;
-
 export default userSlice.reducer;
