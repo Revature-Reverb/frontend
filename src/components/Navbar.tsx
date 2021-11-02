@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import {Nav, NavLink, Form, Stack} from 'react-bootstrap'
+import {Nav, NavLink, Form} from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
 import Logo from '../reverb_logo2.png'
 //import RevLogo from '../rev-logo.png'
 import ProfileImage from '../logo.svg'
 import { Link, useHistory } from 'react-router-dom'
-import MainRouter from '../router/MainRouter'
 import { useAppSelector } from '../app/hooks'
 
 // The props that are allowed to be passed to this.
