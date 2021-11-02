@@ -1,5 +1,8 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Post } from '../models/postModel';
+import { createPost, getPost } from "../remote/reverb-api/post.api";
+import { store } from "../app/store";
+
 
 export type PostState = Post[];
 
@@ -7,14 +10,62 @@ const initialState: PostState = [{
     text: "",
 }];
 
+export const getPostAsync = createAsyncThunk<Post, object>(
+    'post/get/async',
+    async ({}, thunkAPI) => {
+        try {
+            return await getPost();
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error);
+        }
+    }
+);
+
+export const postPostsAsync = createAsyncThunk<Post, Post>(
+    'post/post/async',
+    async (neoPost: Post, thunkAPI) => {
+        try {
+            const response = await createPost(neoPost);
+            return response;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error);
+        }
+    }
+);
+
 const postSlice = createSlice({
     name: 'post',
     initialState: initialState,
     reducers: {
     },
     extraReducers: (builder) => {
+        builder
+        // .addCase(getPostAsync.pending, (state) => {
+        //     // do nothing
+        // })
+        // .addCase(postPostsAsync.pending, (state) => {
+        //     // do nothing
+        // })
+        // .addCase(getPostAsync.fulfilled, (state, action) => {
+        //     console.log (action.payload);
+        //     return action.payload;
+        // })
+        // .addCase(postPostsAsync.fulfilled, (state, action) => {
+        //     console.log (action.payload);
+        //     return action.payload;
+        // })
+        // .addCase(getPostAsync.rejected, (state, action) => {
+        //     console.log(action.error);
+        // })
+        // .addCase(postPostsAsync.rejected, (state, action) => {
+        //     console.log(action.error);
+        // })
     }
 });
 
+type Rootstate = ReturnType<typeof store.getState>;
+export const selectPost = (state: Rootstate) => {
+    return state.post
+}
 
 export default postSlice.reducer;
