@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import SubmitPost from './components/SubmitPost';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Post from './components/Post';
 
 import MainRouter from './router/MainRouter';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
@@ -18,7 +18,7 @@ ReactDOM.render(
     <Provider store={store}>
       {/* Changing this for development purposes:
       change back to <App /> for default react-redux */}
-      <SubmitComment />
+      <Post />
     {/* <Router>
                 <Switch>
                     <Route path="/">
