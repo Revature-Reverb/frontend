@@ -11,6 +11,7 @@ import Register from "../pages/register";
 import Friends from "../pages/friends";
 import Chat from "../pages/chat";
 import Settings from "../pages/settings";
+import Landing from "../pages/landing";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { logout } from '../slices/authSlice'
 import ProfilePage from "../pages/ProfilePage";
@@ -45,18 +46,17 @@ export default function MainRouter(props: any) {
           <Route exact path="/event">
             <Event />
           </Route>
-          <Route exact path="/chat">
-            <Chat />
-          </Route>
           <Route exact path="/settings">
             <Settings />
           </Route>
           <Route exact path="/friends">
             <Friends />
           </Route>
-          <Route exact path="/profile" component={ProfilePage}>
+          <Route exact path="/profile">
+            <ProfilePage/>
           </Route>
-          <Route exact path="/editProfile" component={EditProfilePage}>
+          <Route exact path="/editProfile">
+            <EditProfilePage/>
           </Route>
           <Route exact path="/logout">
             {doLogout}
@@ -65,7 +65,7 @@ export default function MainRouter(props: any) {
                         <TestPage />
                     </Route> */}
           <Route path="/">
-            <Feed />
+            <Feed/>
           </Route>
         </Switch>
       </div>
@@ -84,7 +84,7 @@ export default function MainRouter(props: any) {
             <Login />
           </Route>
           <Route path="/">
-            <Login />
+            <Landing />
           </Route>
         </Switch>
       </div>
