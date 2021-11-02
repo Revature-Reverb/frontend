@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import Stack from 'react-bootstrap/Stack';
 import MainRouter from './router/MainRouter';
+import Navbar  from './components/Navbar';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
