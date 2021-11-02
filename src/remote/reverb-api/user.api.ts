@@ -14,7 +14,7 @@ export const removeUser = async (neoUser: User): Promise<User> => {
 }
 
 export const getUser = async (): Promise<User> => {
-  const {data: user} = await reverbClient.get<User>('/api/user');
+  const {data: user} = await reverbClient.get<User>('/api/user/testNoAuth');
 
   return user;
 }

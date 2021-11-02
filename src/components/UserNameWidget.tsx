@@ -9,15 +9,10 @@ export default function UserNameWidget() {
 
     useEffect(() => {
         let dud: User= {
-            userid: "",
-            email: "",
-            profile: {
-                id: 0,
-                firstname: "Testor",
-                lastname: "",
-                about_me: ""
-            }
+            userid: "0",
+            email: "Fake_Email"
         };
+        console.log("Fake: " + dud.email);
         dispatch(getUserAsync(dud) );
         dispatch(postUserAsync(dud) );
         dispatch(putUserAsync(dud) );
@@ -26,7 +21,7 @@ export default function UserNameWidget() {
 
     return (
         <div>
-            <h1>{user.profile.firstname}</h1>
+            <h1>{user.email}</h1>
         </div>
     )
 } 

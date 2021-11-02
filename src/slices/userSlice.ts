@@ -9,12 +9,7 @@ export type UserState = User;
 const initialState: UserState = {
     userid: "",
     email: "",
-    profile: {
-        id: 0,
-        firstname: "",
-        lastname: "",
-        about_me: ""
-    }
+    firstName: ""
 };
 
 export const deleteUserAsync = createAsyncThunk<User, User>(
@@ -84,19 +79,19 @@ const userSlice = createSlice({
                 // do nothing
             })
             .addCase(deleteUserAsync.fulfilled, (state, action) => {
-                console.log (action.payload.profile.firstname);
+                console.log (action.payload.firstName);
                 return initialState;
             })
             .addCase(getUserAsync.fulfilled, (state, action) => {
-                console.log (action.payload.profile.firstname);
+                console.log (action.payload.firstName);
                 return action.payload;
             })
             .addCase(postUserAsync.fulfilled, (state, action) => {
-                console.log (action.payload.profile.firstname);
+                console.log (action.payload.firstName);
                 return action.payload;
             })
             .addCase(putUserAsync.fulfilled, (state, action) => {
-                console.log (action.payload.profile.firstname);
+                console.log (action.payload.firstName);
                 return action.payload;
             })
             .addCase(deleteUserAsync.rejected, (state, action) => {
