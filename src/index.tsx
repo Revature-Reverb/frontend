@@ -5,9 +5,6 @@ import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router} from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Stack from 'react-bootstrap/Stack';
-import MainRouter from './router/MainRouter';
 import App from './App';
 
 ReactDOM.render(
