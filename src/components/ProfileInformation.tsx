@@ -18,10 +18,8 @@ export default function ProfileInformation() {
     const dispatch = useDispatch();
     const history = useHistory();
     let dud: User= {
-        userID: 0,
-        username: "",
-        firstName: "",
-        lastName: ""
+        userid: "0",
+        email: ""
     };
 
     useEffect(() => {
@@ -38,7 +36,7 @@ export default function ProfileInformation() {
                 <Card.Img src={Logo} style={{ border: '2px solid blue', height:'96px'}}/>
             </Stack>
             <Card.Body>
-                <Card.Title style={{ textAlign:'center' }}>{user.username}!</Card.Title>
+                <Card.Title style={{ textAlign:'center' }}>{user.email}!</Card.Title>
                 <Card.Text style={{ backgroundColor: 'skyblue'}}>
                 {profileBody}
                 </Card.Text>
