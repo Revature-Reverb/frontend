@@ -16,7 +16,7 @@ pipeline {
         sh 'yarn install'
       }
     }
-    stage('Test and Build') {
+    stage('Testing') {
       parallel {
         stage('Run Tests') {
           steps {
@@ -28,11 +28,11 @@ pipeline {
             sh 'yarn test:cov'
           }
         }
-        stage('Create Build Artifacts') {
-          steps {
-            sh 'npm run build'
-          }
-        }
+      }
+    }
+    stage('Create Build Artifacts') {
+      steps {
+        sh 'npm run build'
       }
     }
   }
