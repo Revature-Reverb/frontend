@@ -19,11 +19,21 @@ export default function ProfileInformation() {
     const history = useHistory();
     let dud: User= {
         userid: "0",
+<<<<<<< HEAD
         email: ""
+=======
+        email: "fake@email.com",
+        profile: {
+            id: 0,
+            firstname: "my first name",
+            lastname: "my last name",
+            about_me:"about me"
+        }
+>>>>>>> 01c20e5bc925205e08400650919444ddca68bdce
     };
 
     useEffect(() => {
-        dispatch(getUserAsync(dud));
+        // dispatch(getUserAsync(dud));
       });
 
     const goToEditProfile = () => {
@@ -36,7 +46,11 @@ export default function ProfileInformation() {
                 <Card.Img src={Logo} style={{ border: '2px solid blue', height:'96px'}}/>
             </Stack>
             <Card.Body>
+<<<<<<< HEAD
                 <Card.Title style={{ textAlign:'center' }}>{user.email}!</Card.Title>
+=======
+                <Card.Title style={{ textAlign:'center' }}>{dud.profile.firstname}!</Card.Title>
+>>>>>>> 01c20e5bc925205e08400650919444ddca68bdce
                 <Card.Text style={{ backgroundColor: 'skyblue'}}>
                 {profileBody}
                 </Card.Text>
