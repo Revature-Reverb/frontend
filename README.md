@@ -1,5 +1,5 @@
 # Project 3 - Reverb
-
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Revature-Reverb_frontend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Revature-Reverb_frontend)
 ## Project Description
 
 Reverb (styled as ReverB) is an upcoming social media app designed for Revature employees that emphasizes personal connectivity by echoing professional growth. Users can create profiles where they can post images and create messages that resonate with their experience and insight. Users can also view and comment on posts from other profiles, and “reverb” (like) on posts that personally reverberate with them.
