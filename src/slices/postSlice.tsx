@@ -7,7 +7,9 @@ import { store } from "../app/store";
 export type PostState = Post;
 
 const initialState: PostState = {
+    title: "",
     text: "",
+    imageURL: ""
 };
 
 export const getPostAsync = createAsyncThunk<Post, object>(
