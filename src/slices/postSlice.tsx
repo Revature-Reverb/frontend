@@ -4,11 +4,13 @@ import { createPost, getPost } from "../remote/reverb-api/post.api";
 import { store } from "../app/store";
 
 
-export type PostState = Post[];
+export type PostState = Post;
 
-const initialState: PostState = [{
+const initialState: PostState = {
+    title: "",
     text: "",
-}];
+    imageURL: ""
+};
 
 export const getPostAsync = createAsyncThunk<Post, object>(
     'post/get/async',
@@ -21,7 +23,7 @@ export const getPostAsync = createAsyncThunk<Post, object>(
     }
 );
 
-export const postPostsAsync = createAsyncThunk<Post, Post>(
+export const postPostAsync = createAsyncThunk<Post, Post>(
     'post/post/async',
     async (neoPost: Post, thunkAPI) => {
         try {
@@ -40,26 +42,26 @@ const postSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-        // .addCase(getPostAsync.pending, (state) => {
-        //     // do nothing
-        // })
-        // .addCase(postPostsAsync.pending, (state) => {
-        //     // do nothing
-        // })
-        // .addCase(getPostAsync.fulfilled, (state, action) => {
-        //     console.log (action.payload);
-        //     return action.payload;
-        // })
-        // .addCase(postPostsAsync.fulfilled, (state, action) => {
-        //     console.log (action.payload);
-        //     return action.payload;
-        // })
-        // .addCase(getPostAsync.rejected, (state, action) => {
-        //     console.log(action.error);
-        // })
-        // .addCase(postPostsAsync.rejected, (state, action) => {
-        //     console.log(action.error);
-        // })
+        .addCase(getPostAsync.pending, (state) => {
+            // do nothing
+        })
+        .addCase(postPostAsync.pending, (state) => {
+            // do nothing
+        })
+        .addCase(getPostAsync.fulfilled, (state, action) => {
+            console.log (action.payload);
+            return action.payload;
+        })
+        .addCase(postPostAsync.fulfilled, (state, action) => {
+            console.log (action.payload);
+            return action.payload;
+        })
+        .addCase(getPostAsync.rejected, (state, action) => {
+            console.log(action.error);
+        })
+        .addCase(postPostAsync.rejected, (state, action) => {
+            console.log(action.error);
+        })
     }
 });
 

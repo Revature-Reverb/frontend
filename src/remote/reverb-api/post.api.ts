@@ -1,8 +1,8 @@
 import { Post } from "../../models/postModel";
 import reverbClient from './reverbClient'
 
-export const createPost = async (neoUser: Post): Promise<Post> => {
-  const {data: post} = await reverbClient.post<Post>('/api/post', neoUser);
+export const createPost = async (neoPost: Post): Promise<Post> => {
+  const {data: post} = await reverbClient.post<Post>('/api/post', neoPost);
 
   return post;
 }

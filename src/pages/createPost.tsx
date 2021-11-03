@@ -1,12 +1,11 @@
 import React from 'react'
+import SubmitPost from '../components/SubmitPost'
 
 const CreatePost = ()=> {
 
-    const toReturn = <>Create Post Page</>
-
     return(
-        <>{toReturn}</>
-    )
+        <SubmitPost></SubmitPost>
+    );
 }
 
 export default CreatePost

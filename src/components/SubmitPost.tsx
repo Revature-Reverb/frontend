@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import {Button, Card, Col, Form, Row} from "react-bootstrap";
+import { postPostAsync } from "../slices/postSlice";
 
 const SubmitPost : React.FC = () => {
+
+    const dispatch = useDispatch();
+
+    let initialPost = {
+        title: "",
+        text: "",
+        imageURL: "https://testimageurl.com"
+    }
+
+    const [post, setPost] = useState(initialPost);
+
+    const dispatchPost = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        // dispatch
+        dispatch(postPostAsync(post));
+    };
+
     return(
         <Card>
             <Card.Header>
@@ -9,18 +29,19 @@ const SubmitPost : React.FC = () => {
             </Card.Header>
             <Card.Body>
 
-            <Form>
+            <Form onSubmit={dispatchPost}>
                 {/* Picture Input */}
                 <Form.Group as={Row} className="mb-3" controlId="">
                     <Form.Label column sm={1}>
                         Photo
                     </Form.Label>
                     <Col sm={11}>
-                        <Form.Control type="file" />
+                        <Form.Control type="file"
+                         onChange={(event)=> setPost({...post, imageURL: "https://testimageurl.com/"})} />
                     </Col>
                 </Form.Group>
 
-                {/* Link Input */}
+                {/* Title Input */}
                 <Form.Group as={Row} className="mb-3" controlId="">
                     <Form.Label column sm={1}>Link</Form.Label>
                     <Col sm={11}>
@@ -29,6 +50,7 @@ const SubmitPost : React.FC = () => {
                             placeholder=""
                             style={{height: "25px"}}
                             id="link"
+                            onChange={(event)=> setPost({...post, title: event.target.value})}
                         />
                     </Col>
                 </Form.Group>
@@ -41,7 +63,8 @@ const SubmitPost : React.FC = () => {
                             as="textarea"
                             placeholder=""
                             id="text"   
-                            style={{height: "100px"}} 
+                            style={{height: "100px"}}
+                            onChange={(event)=> setPost({...post, text: event.target.value})}
                         />
                     </Col>
                 </Form.Group>

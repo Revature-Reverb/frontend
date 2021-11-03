@@ -1,3 +1,8 @@
 export interface Post {
-    text: String
+    title: String,
+    text: String,
+    imageURL: String
 };
+
+// potential additions to model:
+// name : ?
