@@ -46,17 +46,16 @@ pipeline {
       }
     }
     
-    stage('SonarQube Analysis') {
-
-      steps {
-        script {
-          def scannerHome = tool 'ReverbScanner'
-          withSonarQubeEnv(installationName: 'SonarCloud', credentialsId: 'CD_sonarcloud') {
-            sh "${scannerHome}/sonar-scanner-4.6.2.2472/bin/sonar-scanner"      
-          }
-        }
-      }
-    }
+    // stage('SonarQube Analysis') {
+    //   steps {
+    //     script {
+    //       def scannerHome = tool 'ReverbScanner'
+    //       withSonarQubeEnv(installationName: 'SonarCloud', credentialsId: 'CD_sonarcloud') {
+    //         sh "${scannerHome}/sonar-scanner-4.6.2.2472/bin/sonar-scanner"      
+    //       }
+    //     }
+    //   }
+    // }
     stage('Create Build Artifacts') {
       steps {
         echo 'Building...'
