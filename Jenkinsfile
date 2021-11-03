@@ -30,6 +30,18 @@ pipeline {
         }
       }
     }
+    
+    stage('SonarQube Analysis') {
+
+      steps {
+        script {
+          def scannerHome = tool 'ReverbScanner'
+          withSonarQubeEnv(installationName: 'sonarcloud', credentialsId: 'CD_sonarcloud') {
+            sh "${scannerHome}/bin/sonar-scanner"
+          }
+        }
+      }
+    }
     stage('Create Build Artifacts') {
       steps {
         sh 'yarn build'
