@@ -6,12 +6,15 @@ import Logo from '../reverb_logo2.png'
 import ProfileImage from '../logo.svg'
 import { Link, useHistory } from 'react-router-dom'
 import MainRouter from '../router/MainRouter'
-import { useAppSelector } from '../app/hooks'
+import { useAppSelector, useAppDispatch } from '../app/hooks'
+import { logout } from '../slices/authSlice'
 
 // The props that are allowed to be passed to this.
 interface Props {
     children?:JSX.Element
 }
+
+
 // The function component typed as well as its props defined and typed
 // through destructuring.
 
@@ -23,7 +26,7 @@ const NavigationBar:React.FC<Props> = () =>
     const [search, setSearch] = useState("")
     const history = useHistory();
 
-    const loggedIn = useAppSelector(state => state.auth.authorized);
+    const loggedIn = useAppSelector(state => state.auth[0].token);
 
     // The method that will be used to do the 'search'.
     const searchHandler = (props:string) => {    
