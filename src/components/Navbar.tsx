@@ -5,24 +5,22 @@ import Logo from '../assets/images/reverb_logo2.png'
 //import RevLogo from '../rev-logo.png'
 import ProfileImage from '../assets/images/blankUserIcon.png'
 import { Link, useHistory } from 'react-router-dom'
-import { useAppSelector } from '../app/hooks'
 
 // The props that are allowed to be passed to this.
-interface Props {
-    children?:JSX.Element
+interface NavigationBarProps {
+    loggedIn:boolean
 }
 // The function component typed as well as its props defined and typed
 // through destructuring.
 
 // {children}:{children:JSX.Element}
-const NavigationBar:React.FC<Props> = () =>
+const NavigationBar:React.FC<NavigationBarProps> = ({loggedIn}:{loggedIn:boolean}) =>
 {
     // The state of the input typed in the search field.
     // Used later when calling the searchHandler.
     const [search, setSearch] = useState("")
     const history = useHistory();
 
-    const loggedIn = useAppSelector(state => state.auth.authorized);
 
     // The method that will be used to do the 'search'.
     const searchHandler = (props:string) => {    
@@ -60,12 +58,13 @@ const NavigationBar:React.FC<Props> = () =>
             </Nav.Link>
             <ul className="nav flex-column mb-auto text-center">
 
+                {/* The link to the Login page. */}
                 <Nav.Link as={Link} to={"/login"}  onClick={()=>history.push("/login")}
                 className="justify-content-center" eventKey="login-link">
                     Login
                 </Nav.Link>
 
-                {/* The link to the friends page. */}
+                {/* The link to the Register page. */}
                 <Nav.Link as={Link} to={"/register"} onClick={()=>history.push("/register")} eventKey="register-link">
                     Register
                 </Nav.Link>

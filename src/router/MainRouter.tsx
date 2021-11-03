@@ -9,16 +9,16 @@ import Register from "../pages/register";
 import Friends from "../pages/friends";
 import Settings from "../pages/settings";
 import Landing from "../pages/landing";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { logout } from '../slices/authSlice'
+import { useAppDispatch } from "../app/hooks";
+import { logout } from '../slices/authSlice';
 import ProfilePage from "../pages/ProfilePage";
 import EditProfilePage from "../pages/EditProfilePage";
-export default function MainRouter(props: any) {
+interface MainRouterProps{
+  loggedIn:boolean
+}
 
+const MainRouter:React.FC<MainRouterProps> = ({loggedIn}:{loggedIn:boolean}) => {
   const dispatch = useAppDispatch();
-  
-  // Logged in state being tracked in Redux store, referenced with useAppSelector
-  const loggedIn = useAppSelector(state => state.auth.authorized);
 
   // Logout now dispatching to store to update state
   const doLogout = () => {
@@ -72,9 +72,6 @@ export default function MainRouter(props: any) {
           <Route path="/register">
             <Register />
           </Route>
-          <Route path="/create_post">
-            <CreatePost />
-          </Route>
           <Route path="/login">
             <Login />
           </Route>
@@ -90,3 +87,5 @@ export default function MainRouter(props: any) {
     </>
   )
 }
+
+export default MainRouter
