@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-     image 'node:16-alpine'
+     image 'node:16'
      args '-p 3000:3000'
     }
   }
@@ -11,8 +11,9 @@ pipeline {
     npm_config_cache = 'npm-cache'
   }
   stages {
-    stage('Install Packages') {
+    stage('Install Dependencies') {
       steps {
+        echo 'Installing dependencies...'
         sh 'yarn install'
         sh 'npm install -g sonarqube-scanner'
         sh 'apk update'
@@ -23,18 +24,23 @@ pipeline {
         sh 'apk add --update openjdk11 tzdata curl unzip bash'
         sh 'apk add --no-cache nss'
         sh 'rm -rf /var/cache/apk/*'
+        echo 'Successfully installed dependencies'
       }
     }
     stage('Testing') {
       parallel {
         stage('Run Tests') {
           steps {
+            echo 'Testing...'
             sh 'yarn test'
+            echo 'Successfully ran tests'
           }
         }
         stage('Run Coverage Test') {
           steps {
+            echo 'Test coverage...'
             sh 'yarn test:cov'
+            echo 'Successfully ran test coverage'
           }
         }
       }
@@ -45,15 +51,18 @@ pipeline {
       steps {
         script {
           def scannerHome = tool 'ReverbScanner'
-          withSonarQubeEnv(installationName: 'SonarCloud', credentialsId: 'CD_sonarcloud') {
-            sh 'sonar-scanner'
+          withSonarQubeEnv(installationName: 'sonarcloud', credentialsId: 'CD_sonarcloud') {
+            sh "${scannerHome}/bin/sonar-scanner"
           }
         }
       }
     }
     stage('Create Build Artifacts') {
       steps {
+        echo 'Building...'
         sh 'yarn build'
+        sh 'docker build -t ikenoxamos/project0-express:latest .'
+        echo 'Successfully built image'
       }
     }
   }
