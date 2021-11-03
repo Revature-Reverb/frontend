@@ -14,6 +14,7 @@ pipeline {
     stage('Install Packages') {
       steps {
         sh 'yarn install'
+        sh 'npm install -g sonarqube-scanner'
       }
     }
     stage('Testing') {
