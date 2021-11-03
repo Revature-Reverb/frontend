@@ -7,8 +7,14 @@ import { createUser, removeUser, getUser, changeUser } from '../remote/reverb-ap
 export type UserState = User;
 
 const initialState: UserState = {
-    userid: "",
-    email: ""
+    userid: "0",
+    email: "fake@email.com",
+    profile: {
+        id: 0,
+        firstname: "my first name",
+        lastname: "my last name",
+        about_me:"about me"
+    }
 };
 
 export const deleteUserAsync = createAsyncThunk<User, User>(
@@ -113,9 +119,4 @@ export const selectUser = (state: Rootstate) => {
     return state.user
 }
 
-<<<<<<< HEAD
-=======
-// export const { setUser, deleteUser, updateUser } = userSlice.actions;
-
->>>>>>> 01c20e5bc925205e08400650919444ddca68bdce
 export default userSlice.reducer;
