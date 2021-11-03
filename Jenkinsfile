@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-     image 'node:16'
+     image 'node:16-alpine'
      args '-p 3000:3000'
     }
   }
@@ -61,8 +61,6 @@ pipeline {
       steps {
         echo 'Building...'
         sh 'yarn build'
-        sh 'docker build -t ikenoxamos/project0-express:latest .'
-        echo 'Successfully built image'
       }
     }
   }
