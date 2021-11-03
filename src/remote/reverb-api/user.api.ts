@@ -1,5 +1,5 @@
 import { User } from "../../models/userModel";
-import reverbClient from './reverbClient'
+import {reverbClient, reverbClientWithAuth} from './reverbClient'
 
 export const createUser = async (neoUser: User): Promise<User> => {
   const {data: user} = await reverbClient.post<User>('/api/user', neoUser);
@@ -14,7 +14,7 @@ export const removeUser = async (neoUser: User): Promise<User> => {
 }
 
 export const getUser = async (): Promise<User> => {
-  const {data: user} = await reverbClient.get<User>('/api/user');
+  const {data: user} = await reverbClientWithAuth.get<User>('/api/user/testWithAuth');
 
   return user;
 }
