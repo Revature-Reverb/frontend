@@ -8,19 +8,20 @@ import { Link, useHistory } from 'react-router-dom'
 
 // The props that are allowed to be passed to this.
 interface NavigationBarProps {
-    loggedIn:boolean
+    loggedIn:string
 }
+
+
 // The function component typed as well as its props defined and typed
 // through destructuring.
 
 // {children}:{children:JSX.Element}
-const NavigationBar:React.FC<NavigationBarProps> = ({loggedIn}:{loggedIn:boolean}) =>
+const NavigationBar:React.FC<NavigationBarProps> = ({loggedIn}:{loggedIn:string}) =>
 {
     // The state of the input typed in the search field.
     // Used later when calling the searchHandler.
     const [search, setSearch] = useState("")
     const history = useHistory();
-
 
     // The method that will be used to do the 'search'.
     const searchHandler = (props:string) => {    

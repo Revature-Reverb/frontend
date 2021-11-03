@@ -7,7 +7,7 @@ import { useAppSelector } from './app/hooks';
 
 const App = () => {
 
-  const loggedIn = useAppSelector(state => state.auth.authorized);
+  const loggedIn = useAppSelector(state => state.auth[0].token);
   return (
     <div className="App">
       <Stack direction="horizontal" gap={5}>

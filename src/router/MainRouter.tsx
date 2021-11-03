@@ -14,12 +14,12 @@ import { logout } from '../slices/authSlice';
 import ProfilePage from "../pages/ProfilePage";
 import EditProfilePage from "../pages/EditProfilePage";
 interface MainRouterProps{
-  loggedIn:boolean
+  loggedIn:string
 }
 
-const MainRouter:React.FC<MainRouterProps> = ({loggedIn}:{loggedIn:boolean}) => {
+const MainRouter:React.FC<MainRouterProps> = ({loggedIn}:{loggedIn:string}) => {
   const dispatch = useAppDispatch();
-
+  
   // Logout now dispatching to store to update state
   const doLogout = () => {
     dispatch(logout());
