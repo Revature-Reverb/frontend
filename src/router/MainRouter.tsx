@@ -23,7 +23,7 @@ export default function MainRouter(props: any) {
   const dispatch = useAppDispatch();
   
   // Logged in state being tracked in Redux store, referenced with useAppSelector
-  const loggedIn = useAppSelector(state => state.auth.authorized);
+  const loggedIn = useAppSelector(state => state.auth[0].token);
 
   // Logout now dispatching to store to update state
   const doLogout = () => {

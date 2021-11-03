@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { getConfigFileParsingDiagnostics } from 'typescript';
+import {store} from '../../app/store'
 
 //console.log(process.env.REACT_APP_ENVIRONMENT);
-let token = localStorage.getItem("token") || "";
 
 const reverbClient = axios.create({
   baseURL: 'http://localhost:8080',
@@ -11,13 +12,20 @@ const reverbClient = axios.create({
   withCredentials: true,
 });
 
-export const reverbClientWithAuth = axios.create({
+const reverbClientWithAuth = axios.create({
   baseURL: 'http://localhost:8080',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': token
+    'Authorization': ""
   },
   withCredentials: true,
 });
 
-export default reverbClient;
+reverbClientWithAuth.interceptors.request.use(function(config: any) {
+  const token = "" + store.getState().auth[0].token;
+  console.log("tried setting token = " + token);
+  config.headers["Authorization"] = token;
+  return config;
+});
+
+export {reverbClient, reverbClientWithAuth};

@@ -5,26 +5,13 @@ import { signInWithEmailAndPassword } from "firebase/auth"
 import { Container } from 'react-bootstrap'
 import { store } from '../app/store'
 import { useAppDispatch } from '../app/hooks'
-import { login } from '../slices/authSlice'
 import { Link } from 'react-router-dom'
+import { setTokenAsync } from '../slices/authSlice'
 import axios from 'axios'
 
 export default function Login() {
 
   const dispatch = useAppDispatch();
-
-  const loginToBackEnd = (token: string) => {
-    console.log("Token from logintobackend: ", token);
-    const url = 'http://localhost:8080/api/user/testWithAuth';
-
-    const header = {
-      'Authorization': token,
-      'Content-Type': 'application/json'
-    };
-    axios.get(url, {headers: header, withCredentials: true})
-      .then(response => {console.log("RESPONSE", response);})
-      .catch(err => console.log(err));
-  }
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -34,31 +21,12 @@ export default function Login() {
     event.preventDefault();
 
     if (emailRef.current !== null && passwordRef.current !== null) {
-      signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
-        .then((userCredential) => {
-          // Signed in 
-          const user = userCredential.user;
-          dispatch(login());
 
-          user.getIdTokenResult(true).then(data => loginToBackEnd(data.token));
+      let email: string = emailRef.current.value;
+      let password: string = passwordRef.current.value;
 
-          // console.log("Get ID Token Result: ", user.getIdTokenResult(true)
-          // .then(data => loginToBackEnd(data.token)));
-
-
-          console.log("Login user credentials: ", user);
-          console.log("Access Token: ", user.getIdToken());
-
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          alert(errorMessage);
-          console.log("Login user error msg: ", errorMessage);
-        });
+      dispatch(setTokenAsync({email, password}))
     }
-
   }
 
   return (
