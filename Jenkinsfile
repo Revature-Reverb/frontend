@@ -52,7 +52,7 @@ pipeline {
         script {
           def scannerHome = tool 'ReverbScanner'
           withSonarQubeEnv(installationName: 'SonarCloud', credentialsId: 'CD_sonarcloud') {
-            sh "${scannerHome}/bin/sonar-scanner"
+            sh "${scannerHome}/sonar-scanner-4.6.2.2472/bin/sonar-scanner"      
           }
         }
       }
