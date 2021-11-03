@@ -15,14 +15,14 @@ pipeline {
       steps {
         sh 'yarn install'
         sh 'npm install -g sonarqube-scanner'
-        sh 'apk update \
-  && apk upgrade \
-  && apk add ca-certificates \
-  && update-ca-certificates \
-  && apk add --update coreutils && rm -rf /var/cache/apk/*   \ 
-  && apk add --update openjdk11 tzdata curl unzip bash \
-  && apk add --no-cache nss \
-  && rm -rf /var/cache/apk/*'
+        sh 'apk update'
+        sh 'apk upgrade'
+        sh 'apk add ca-certificates'
+        sh 'update-ca-certificates'
+        sh 'apk add --update coreutils && rm -rf /var/cache/apk/*'
+        sh 'apk add --update openjdk11 tzdata curl unzip bash'
+        sh 'apk add --no-cache nss'
+        sh 'rm -rf /var/cache/apk/*'
       }
     }
     stage('Testing') {
