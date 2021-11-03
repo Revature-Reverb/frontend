@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Button, Card, Stack } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import defaultImage from '../blankUserIcon.png';
-import Logo from '../reverb_logo2.png';
+import defaultImage from '../assets/images/blankUserIcon.png';
+import Logo from '../assets/images/reverb_logo2.png';
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../slices/userSlice";
 import { getUserAsync } from '../slices/userSlice';
