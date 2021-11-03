@@ -1,6 +1,10 @@
 export interface User {
-    userID: number,
-    username: string,
-    firstName: string,
-    lastName: string
+    userid: string,
+    email: string,
+    profile: {
+        id: 0,
+        firstname: string,
+        lastname: string,
+        about_me: string
+    }
 }

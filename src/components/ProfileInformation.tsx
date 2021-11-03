@@ -1,24 +1,39 @@
 import React, { useEffect } from "react";
 import { Button, Card, Stack } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import defaultImage from '../blankUserIcon.png';
+import Logo from '../reverb_logo2.png';
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../slices/userSlice";
+import { getUserAsync } from '../slices/userSlice';
 import axios from 'axios';
 import { Grid } from "@material-ui/core";
 
 let userName = 'Craig';
 let profileBody = 'This is just a placeholder for whatever is to come from the profile body'
+let imageSource = false;
 
 export default function ProfileInformation() {
+    const user = useSelector(selectUser);
+    const dispatch = useDispatch();
     const history = useHistory();
+    let dud: User= {
+        userid: "0",
+        email: "fake@email.com",
+        profile: {
+            id: 0,
+            firstname: "my first name",
+            lastname: "my last name",
+            about_me:"about me"
+        }
+    };
 
     useEffect(() => {
-        getProfileInformation();
+        // dispatch(getUserAsync(dud));
       });
 
     const goToEditProfile = () => {
         history.push("/editProfile");
-    }
-    function getProfileInformation() {
-        console.log('axios call needed here');
     }
     return(
         <Grid container direction="column" alignItems="center" justify="center">
@@ -28,7 +43,7 @@ export default function ProfileInformation() {
                 <Card.Img style={{ border: '2px solid blue', height:'96px', backgroundColor: 'purple'}}/>
             </Stack>
             <Card.Body>
-                <Card.Title style={{ textAlign:'center' }}>Hello {userName}!</Card.Title>
+                <Card.Title style={{ textAlign:'center' }}>{dud.profile.firstname}!</Card.Title>
                 <Card.Text style={{ backgroundColor: 'skyblue'}}>
                 {profileBody}
                 </Card.Text>

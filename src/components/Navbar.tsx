@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
-import {Nav, NavLink, Form} from 'react-bootstrap'
+import {Nav, NavLink, Form, Stack} from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
 import Logo from '../reverb_logo2.png'
 //import RevLogo from '../rev-logo.png'
 import ProfileImage from '../logo.svg'
 import { Link, useHistory } from 'react-router-dom'
 import MainRouter from '../router/MainRouter'
+import { useAppSelector, useAppDispatch } from '../app/hooks'
+import { logout } from '../slices/authSlice'
 
 // The props that are allowed to be passed to this.
 interface Props {
     children?:JSX.Element
 }
+
+
 // The function component typed as well as its props defined and typed
 // through destructuring.
 
@@ -21,6 +25,8 @@ const NavigationBar:React.FC<Props> = () =>
     // Used later when calling the searchHandler.
     const [search, setSearch] = useState("")
     const history = useHistory();
+
+    const loggedIn = useAppSelector(state => state.auth[0].token);
 
     // The method that will be used to do the 'search'.
     const searchHandler = (props:string) => {    
@@ -34,11 +40,50 @@ const NavigationBar:React.FC<Props> = () =>
         searchHandler(search);
         event.preventDefault();
     }
+    let sideNavBar = <></>;
+    if(!loggedIn){
+        sideNavBar = <div style={{float:"left"}}>
+    <Navbar style={{backgroundColor:"#B9B9BA",
+    width: 150, height:"100vh", minHeight:"450px", fontSize:"24px",lineHeight:"30px"}}
+                className="justify-content-center">
+        <Nav className="mr-auto"></Nav>
+        <Nav defaultActiveKey="home" 
+        className="flex-column justify-content-center text-center" 
+        style={{position:"absolute", top:"0px", height:"100vh"}}>
 
+
+            {/* The Home button that is the logo.*/}
+            <Nav.Link as={Link} to={"/"} className="justify-content-center" eventKey="home">
+                <img
+                    alt=""
+                    src={Logo}
+                    width="120"
+                    height="70"
+                    className="d-inline-block align-top"
+                />
+            </Nav.Link>
+            <ul className="nav flex-column mb-auto text-center">
+
+                <Nav.Link as={Link} to={"/login"}  onClick={()=>history.push("/login")}
+                className="justify-content-center" eventKey="login-link">
+                    Login
+                </Nav.Link>
+
+                {/* The link to the friends page. */}
+                <Nav.Link as={Link} to={"/register"} onClick={()=>history.push("/register")} eventKey="register-link">
+                    Register
+                </Nav.Link>
+                
+            </ul>
+        </Nav>
+    </Navbar>
+</div>
+    }
+    else{
     // Assigning the navbar to a variable to make it easier to use with the return later.
     // Float left is needed to keep the other content right of the navbar instead of 
     // below it.
-    const sideNavBar = <div style={{float:"left"}}>
+    sideNavBar = <div style={{float:"left"}} >
     <Navbar style={{backgroundColor:"#B9B9BA",
     width: 150, height:"100vh", minHeight:"450px", fontSize:"24px",lineHeight:"30px"}}
                 className="justify-content-center">
@@ -96,11 +141,6 @@ const NavigationBar:React.FC<Props> = () =>
                 <Nav.Link as={Link} to={"/friends"} onClick={()=>history.push("/friends")} eventKey="friends-link">
                     Friends
                 </Nav.Link>
-                
-                {/* The link to the chat page. */}
-                <Nav.Link as={Link} to={"/chat"} onClick={()=>history.push("/chat")} eventKey="chat-link">
-                    Chat
-                </Nav.Link>
             </ul>
             
             {/* These elements are instead attached to the bottom. */}
@@ -118,13 +158,11 @@ const NavigationBar:React.FC<Props> = () =>
         </Nav>
     </Navbar>
 </div>
+    }
 
     return(
         <div>
             {sideNavBar}
-            <div>
-                <MainRouter/>
-            </div>
         </div>
         )
 }
