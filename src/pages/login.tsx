@@ -13,19 +13,6 @@ export default function Login() {
 
   const dispatch = useAppDispatch();
 
-  const loginToBackEnd = (token: string) => {
-    console.log("Token from logintobackend: ", token);
-    const url = 'http://localhost:8080/api/user/testWithAuth';
-
-    const header = {
-      'Authorization': token,
-      'Content-Type': 'application/json'
-    };
-    axios.get(url, {headers: header, withCredentials: true})
-      .then(response => {console.log("RESPONSE", response);})
-      .catch(err => console.log(err));
-  }
-
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
@@ -39,34 +26,7 @@ export default function Login() {
       let password: string = passwordRef.current.value;
 
       dispatch(setTokenAsync({email, password}))
-
-      // signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
-      //   .then((userCredential) => {
-      //     // Signed in 
-      //     const user = userCredential.user;
-          // dispatch(login());
-
-
-
-      //     user.getIdTokenResult(true).then(data => loginToBackEnd(data.token));
-
-      //     // console.log("Get ID Token Result: ", user.getIdTokenResult(true)
-      //     // .then(data => loginToBackEnd(data.token)));
-
-
-      //     console.log("Login user credentials: ", user);
-      //     console.log("Access Token: ", user.getIdToken());
-
-      //     // ...
-      //   })
-      //   .catch((error) => {
-      //     const errorCode = error.code;
-      //     const errorMessage = error.message;
-      //     alert(errorMessage);
-      //     console.log("Login user error msg: ", errorMessage);
-      //   });
     }
-
   }
 
   return (
