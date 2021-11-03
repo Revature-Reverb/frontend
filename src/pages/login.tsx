@@ -3,7 +3,6 @@ import { Form, Button, Card } from 'react-bootstrap'
 import { auth } from '../firebase'
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { Container } from 'react-bootstrap'
-import { store } from '../app/store'
 import { useAppDispatch } from '../app/hooks'
 import { login } from '../slices/authSlice'
 import { Link } from 'react-router-dom'
@@ -52,7 +51,7 @@ export default function Login() {
           // ...
         })
         .catch((error) => {
-          const errorCode = error.code;
+          //const errorCode = error.code;
           const errorMessage = error.message;
           alert(errorMessage);
           console.log("Login user error msg: ", errorMessage);

@@ -1,8 +1,10 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+/* eslint-disable no-empty-pattern */
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { store } from "../app/store";
 import { User } from '../models/userModel';
 import { createUser, removeUser, getUser, changeUser } from '../remote/reverb-api/user.api'
+
 
 export type UserState = User;
 
@@ -15,107 +17,134 @@ const initialState: UserState = {
         lastname: "",
         about_me: ""
     }
+
 };
 
 export const deleteUserAsync = createAsyncThunk<User, User>(
     'user/delete/async',
-    async (neoUser: User, thunkAPI) => {
-        try {
-            const response = await removeUser(neoUser);
+    async ( neoUser: User, thunkAPI ) =>
+    {
+        try
+        {
+            const response = await removeUser( neoUser );
             return response;
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error);
+        } catch ( error )
+        {
+            return thunkAPI.rejectWithValue( error );
         }
     }
 );
 
 export const getUserAsync = createAsyncThunk<User, object>(
     'user/get/async',
-    async ({}, thunkAPI) => {
-        try {
+    async ( { }, thunkAPI ) =>
+    {
+        try
+        {
             return await getUser();
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error);
+        } catch ( error )
+        {
+            return thunkAPI.rejectWithValue( error );
         }
     }
 );
 
 export const postUserAsync = createAsyncThunk<User, User>(
     'user/post/async',
-    async (neoUser: User, thunkAPI) => {
-        try {
-            const response = await createUser(neoUser);
+    async ( neoUser: User, thunkAPI ) =>
+    {
+        try
+        {
+            const response = await createUser( neoUser );
             return response;
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error);
+        } catch ( error )
+        {
+            return thunkAPI.rejectWithValue( error );
         }
     }
 );
 
 export const putUserAsync = createAsyncThunk<User, User>(
     'user/put/async',
-    async (neoUser: User, thunkAPI) => {
-        try {
-            const response = await changeUser(neoUser);
+    async ( neoUser: User, thunkAPI ) =>
+    {
+        try
+        {
+            const response = await changeUser( neoUser );
             return response;
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error);
+        } catch ( error )
+        {
+            return thunkAPI.rejectWithValue( error );
         }
     }
 );
 
-const userSlice = createSlice({
+const userSlice = createSlice( {
     name: 'user',
     initialState: initialState,
     reducers: {
     },
-    extraReducers: (builder) => {
+    extraReducers: ( builder ) =>
+    {
         builder
-            .addCase(deleteUserAsync.pending, (state) => {
+            .addCase( deleteUserAsync.pending, ( state ) =>
+            {
                 // do nothing
-            })
-            .addCase(getUserAsync.pending, (state) => {
+            } )
+            .addCase( getUserAsync.pending, ( state ) =>
+            {
                 // do nothing
-            })
-            .addCase(postUserAsync.pending, (state) => {
+            } )
+            .addCase( postUserAsync.pending, ( state ) =>
+            {
                 // do nothing
-            })
-            .addCase(putUserAsync.pending, (state) => {
+            } )
+            .addCase( putUserAsync.pending, ( state ) =>
+            {
                 // do nothing
-            })
-            .addCase(deleteUserAsync.fulfilled, (state, action) => {
-                console.log (action.payload.profile.firstname);
+            } )
+            .addCase( deleteUserAsync.fulfilled, ( state, action ) =>
+            {
+                console.log( action.payload.profile.firstname );
                 return initialState;
-            })
-            .addCase(getUserAsync.fulfilled, (state, action) => {
-                console.log (action.payload.profile.firstname);
+            } )
+            .addCase( getUserAsync.fulfilled, ( state, action ) =>
+            {
+                console.log( action.payload.profile.firstname );
                 return action.payload;
-            })
-            .addCase(postUserAsync.fulfilled, (state, action) => {
-                console.log (action.payload.profile.firstname);
+            } )
+            .addCase( postUserAsync.fulfilled, ( state, action ) =>
+            {
+                console.log( action.payload.profile.firstname );
                 return action.payload;
-            })
-            .addCase(putUserAsync.fulfilled, (state, action) => {
-                console.log (action.payload.profile.firstname);
+            } )
+            .addCase( putUserAsync.fulfilled, ( state, action ) =>
+            {
+                console.log( action.payload.profile.firstname );
                 return action.payload;
-            })
-            .addCase(deleteUserAsync.rejected, (state, action) => {
-                console.log(action.error);
-            })
-            .addCase(getUserAsync.rejected, (state, action) => {
-                console.log(action.error);
-            })
-            .addCase(postUserAsync.rejected, (state, action) => {
-                console.log(action.error);
-            })
-            .addCase(putUserAsync.rejected, (state, action) => {
-                console.log(action.error);
-            })
-}
-});
+            } )
+            .addCase( deleteUserAsync.rejected, ( state, action ) =>
+            {
+                console.log( action.error );
+            } )
+            .addCase( getUserAsync.rejected, ( state, action ) =>
+            {
+                console.log( action.error );
+            } )
+            .addCase( postUserAsync.rejected, ( state, action ) =>
+            {
+                console.log( action.error );
+            } )
+            .addCase( putUserAsync.rejected, ( state, action ) =>
+            {
+                console.log( action.error );
+            } )
+    }
+} );
 
 type Rootstate = ReturnType<typeof store.getState>;
-export const selectUser = (state: Rootstate) => {
+export const selectUser = ( state: Rootstate ) =>
+{
     return state.user
 }
 

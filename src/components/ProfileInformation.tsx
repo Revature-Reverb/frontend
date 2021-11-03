@@ -3,19 +3,12 @@ import { Button, Card, Stack } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import defaultImage from '../assets/images/blankUserIcon.png';
 import Logo from '../assets/images/reverb_logo2.png';
-import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from "../slices/userSlice";
-import { getUserAsync } from '../slices/userSlice';
-import axios from 'axios';
 import {User} from '../models/userModel';
 
-let userName = 'Craig';
 let profileBody = 'This is just a placeholder for whatever is to come from the profile body'
 let imageSource = false;
 
 export default function ProfileInformation() {
-    const user = useSelector(selectUser);
-    const dispatch = useDispatch();
     const history = useHistory();
     let dud: User= {
         userid: "0",
