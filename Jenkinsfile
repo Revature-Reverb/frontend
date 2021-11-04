@@ -15,7 +15,7 @@ pipeline {
       steps {
         echo 'Installing dependencies...'
         sh 'yarn install'
-        sh 'npm install -g sonarqube-scanner'
+        sh 'npm install sonarqube-scanner'
         sh 'apk update'
         sh 'apk upgrade'
         sh 'apk add ca-certificates'
@@ -58,7 +58,9 @@ pipeline {
         withSonarQubeEnv(installationName: 'SonarCloud', credentialsId: 'a') {
           echo 'Starting Sonar...'
           echo 'Echos...'
-          sh '''sonarqube-scanner -X \
+          sh 'ls'
+          sh 'npm install sonarqube-scanner'
+          sh '''sonar-scanner -X \
           -Dsonar.java.binaries=target/classes   \
           -Dsonar.organization=revature-reverb \
           -Dsonar.projectKey=Revature-Reverb_frontend \
