@@ -1,6 +1,5 @@
 import React from "react";
 import { Row } from "react-bootstrap";
-import EditProfile from "../components/EditProfile";
 import ProfileInformation from "../components/ProfileInformation";
 import ProfilePosts from "../components/ProfilePosts";
 

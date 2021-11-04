@@ -1,6 +1,6 @@
 import { Grid } from "@material-ui/core";
-import React, { useEffect } from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import React from "react";
+import {  Card, Col, Row } from "react-bootstrap";
 
 export default function ProfilePosts() {
     return(
