@@ -58,7 +58,7 @@ pipeline {
         withSonarQubeEnv(installationName: 'SonarCloud', credentialsId: 'a') {
           sh '''${scannerHome}/bin/sonar-scanner -X \
           -Dsonar.java.binaries=target/classes   \
-          -Dsonar.organization=Revature-Reverb \
+          -Dsonar.organization=revature-reverb \
           -Dsonar.projectKey=Revature-Reverb_frontend \
           -Dsonar.sources=./src'''
         }
