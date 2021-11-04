@@ -78,37 +78,37 @@ pipeline {
         echo 'Built a docker image.'
       }
     }
-    post {
-      always {
-        script {
-          status = "${currentBuild.currentResult.toLowerCase()}"
+  }
+  post {
+    always {
+      script {
+        status = "${currentBuild.currentResult.toLowerCase()}"
 
-          commit = sh (
-            script: "echo ${env.GIT_COMMIT} | cut -c -6",
-            returnStdout: true
-          ).trim()
+        commit = sh (
+          script: "echo ${env.GIT_COMMIT} | cut -c -6",
+          returnStdout: true
+        ).trim()
 
-          GIT_COMMIT_MESSAGE = sh (
-            script: "git log -1 --pretty=%B",
-            returnStdout: true
-          ).trim()
+        GIT_COMMIT_MESSAGE = sh (
+          script: "git log -1 --pretty=%B",
+          returnStdout: true
+        ).trim()
 
-          title = "${env.JOB_NAME} ${env.BUILD_DISPLAY_NAME}"
-          footer = 'Jenkins Discord Notifier'
-          url = 'https://discord.com/api/webhooks/905935341721092118/Wrz7wszOrsJL5SJkNqomcB4Pq1iR_BEF_Z1mcuaEJRkAtdXsVd2dmEBnyKLRmr6L9mDM'
+        title = "${env.JOB_NAME} ${env.BUILD_DISPLAY_NAME}"
+        footer = 'Jenkins Discord Notifier'
+        url = 'https://discord.com/api/webhooks/905935341721092118/Wrz7wszOrsJL5SJkNqomcB4Pq1iR_BEF_Z1mcuaEJRkAtdXsVd2dmEBnyKLRmr6L9mDM'
 
-          GIT_AUTHOR_EMAIL = sh (
-            script: "git --no-pager show -s --format='%ae'",
-            returnStdout: true
-          ).trim()
+        GIT_AUTHOR_EMAIL = sh (
+          script: "git --no-pager show -s --format='%ae'",
+          returnStdout: true
+        ).trim()
 
-          description = """**Build:** ${env.BUILD_NUMBER}
-          **Status:** ${status}
-          **Changes:**
-          - `${commit}` *${GIT_COMMIT_MESSAGE}* - ${GIT_AUTHOR_EMAIL}"""
+        description = """**Build:** ${env.BUILD_NUMBER}
+        **Status:** ${status}
+        **Changes:**
+        - `${commit}` *${GIT_COMMIT_MESSAGE}* - ${GIT_AUTHOR_EMAIL}"""
 
-          discordSend description: "${description}", footer: "${footer}", link: env.BUILD_URL, result: currentBuild.currentResult, title: "${title}", webhookURL: "${url}"
-        }
+        discordSend description: "${description}", footer: "${footer}", link: env.BUILD_URL, result: currentBuild.currentResult, title: "${title}", webhookURL: "${url}"
       }
     }
   }
