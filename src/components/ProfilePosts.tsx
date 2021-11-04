@@ -1,9 +1,11 @@
+import { Grid } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 
 export default function ProfilePosts() {
     return(
-        <Card style={{ width: '25rem', height: '15rem', border: '2px solid slategray' }}>
+        <Grid container direction="column" alignItems="center" justify="center">
+        <Card style={{ width: '35rem', height: '15rem', border: '2px solid slategray' }}>
             <Card.Body>
                 <Row>
                     <Col>
@@ -18,5 +20,6 @@ export default function ProfilePosts() {
                 </Row>
             </Card.Body>
         </Card>
+        </Grid>
     )
 }
