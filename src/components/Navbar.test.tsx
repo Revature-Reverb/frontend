@@ -35,7 +35,7 @@ describe('logged in navbar', () => {
     const { getByText } = render(
     <Provider store={store}>
         <BrowserRouter>
-            <Navbar loggedIn={""} />
+            <Navbar loggedIn={"a"} />
         </BrowserRouter>
     </Provider>
   );
@@ -45,7 +45,7 @@ describe('logged in navbar', () => {
     const { getByText } = render(
     <Provider store={store}>
         <BrowserRouter>
-            <Navbar loggedIn={""} />
+            <Navbar loggedIn={"a"} />
         </BrowserRouter>
     </Provider>
   );
@@ -55,7 +55,7 @@ describe('logged in navbar', () => {
     const { getByText } = render(
     <Provider store={store}>
         <BrowserRouter>
-            <Navbar loggedIn={""} />
+            <Navbar loggedIn={"a"} />
         </BrowserRouter>
     </Provider>
   );
@@ -65,7 +65,7 @@ describe('logged in navbar', () => {
     const { getByText } = render(
     <Provider store={store}>
         <BrowserRouter>
-            <Navbar loggedIn={""} />
+            <Navbar loggedIn={"a"} />
         </BrowserRouter>
     </Provider>
   );
@@ -75,7 +75,7 @@ describe('logged in navbar', () => {
     const { getByText } = render(
     <Provider store={store}>
         <BrowserRouter>
-            <Navbar loggedIn={""} />
+            <Navbar loggedIn={"a"} />
         </BrowserRouter>
     </Provider>
   );
