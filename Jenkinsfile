@@ -73,6 +73,7 @@ pipeline {
         sh 'npm install'
         echo 'Building...'
         sh 'npm run build'
+        echo 'Built a docker image.'
       }
     }
   }

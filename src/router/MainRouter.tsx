@@ -3,6 +3,15 @@ import { Switch, Route } from "react-router-dom";
 import Search from "../pages/Search";
 import { useAppDispatch } from "../app/hooks";
 import { logout } from '../slices/authSlice';
+import CreatePost from "../pages/CreatePost";
+import Settings from "../pages/Settings";
+import Friends from "../pages/Friends";
+import ProfilePage from "../pages/ProfilePage";
+import EditProfilePage from "../pages/EditProfilePage";
+import Feed from "../pages/Feed";
+import Register from "../pages/Register";
+import Login from "../pages/Login";
+import Landing from "../pages/Landing";
 
 interface MainRouterProps{
   loggedIn:string
