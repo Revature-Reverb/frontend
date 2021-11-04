@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    docker {
-     image 'node:16-alpine'
-     args '-p 3000:3000'
-    }
-  }      
+  agent any 
   tools {
     nodejs "node"
     jdk "openjdk11"
@@ -16,6 +11,12 @@ pipeline {
   }
   stages {
     stage('Install Dependencies') {
+      agent {
+        docker {
+          image 'node:16-alpine'
+          args '-p 3000:3000'
+        }
+      }
       steps {
         echo 'Installing dependencies...'
         sh 'yarn install'
@@ -52,6 +53,8 @@ pipeline {
           echo 'Starting Sonar...'
           echo 'Echos...'
           sh 'ls'
+          echo "${scannerHome}"
+          echo 'Running...'
           //sh 'npm install sonarqube-scanner'
           sh "${scannerHome}/bin/sonar-scanner"
           echo 'Successfully ran Sonar'
@@ -69,6 +72,12 @@ pipeline {
     //   }
     // }
     stage('Create Build Artifacts') {
+      agent {
+        docker {
+          image 'node:16-alpine'
+          args '-p 3000:3000'
+        }
+      }
       steps {
         echo 'Building...'
         sh 'yarn build'
