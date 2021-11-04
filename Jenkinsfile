@@ -60,9 +60,7 @@ pipeline {
           echo 'Echos...'
           sh 'ls'
           sh 'npm install sonarqube-scanner'
-          sh '''sonar-scanner -X \
-          -Dsonar.java.binaries=target/classes   \
-          -Dsonar.organization=revature-reverb \
+          sh '''sonar-scanner -Dsonar.organization=revature-reverb \
           -Dsonar.projectKey=Revature-Reverb_frontend \
           -Dsonar.sources=./src'''
           echo 'Successfully ran Sonar'
