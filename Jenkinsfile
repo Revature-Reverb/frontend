@@ -56,11 +56,17 @@ pipeline {
 			}
       steps {
         withSonarQubeEnv(installationName: 'SonarCloud', credentialsId: 'a') {
+          echo 'Starting Sonar...'
+          sh "ls ${scannerHome}"
+          echo 'Echos...'
+          echo "${scannerHome}"
+          sh "echo ${scannerHome}"
           sh '''${scannerHome}/bin/sonar-scanner -X \
           -Dsonar.java.binaries=target/classes   \
           -Dsonar.organization=revature-reverb \
           -Dsonar.projectKey=Revature-Reverb_frontend \
           -Dsonar.sources=./src'''
+          echo 'Successfully ran Sonar'
         }
       }
 		}
