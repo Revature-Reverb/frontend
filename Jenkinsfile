@@ -44,9 +44,7 @@ pipeline {
     }
     stage('SonarQube Analysis') {
 			environment {
-        scannerHome = tool 'sonar-scanner' // the name you have given the Sonar Scanner (in Global Tool Configuration)
-        //ORGANIZATION = tool 'Revature-Reverb_frontend' // the name you have given the Sonar Scanner (in Global Tool Configuration)
-        //PROJECT_NAME = tool 'ReverbScanner' // the name you have given the Sonar Scanner (in Global Tool Configuration)
+        scannerHome = tool 'sonar-scanner'
 			}
       steps {
         withSonarQubeEnv(installationName: 'SonarCloud', credentialsId: 'a') {
@@ -61,24 +59,15 @@ pipeline {
         }
       }
 		}
-    // stage('SonarQube Analysis') {
-    //   steps {
-    //     script {
-    //       def scannerHome = tool 'ReverbScanner'
-    //       withSonarQubeEnv(installationName: 'SonarCloud', credentialsId: 'a') {
-    //         sh "${scannerHome}/bin/sonar-scanner"
-    //       }
-    //     }
-    //   }
-    // }
     stage('Create Build Artifacts') {
-      // agent {
-      //   docker {
-      //     image 'node:16-alpine'
-      //     args '-p 3000:3000'
-      //   }
-      // }
+      agent {
+        docker {
+          image 'node:16-alpine'
+          args '-p 3000:3000'
+        }
+      }
       steps {
+        sh 'npm install'
         echo 'Building...'
         sh 'npm run build'
       }
