@@ -6,20 +6,20 @@ pipeline {
   }
   environment {
     CI = 'true'
-    HOME = '.'
-    npm_config_cache = 'npm-cache'
+    // HOME = '.'
+    // npm_config_cache = 'npm-cache'
   }
   stages {
     stage('Install Dependencies') {
-      agent {
-        docker {
-          image 'node:16-alpine'
-          args '-p 3000:3000'
-        }
-      }
+      // agent {
+      //   docker {
+      //     image 'node:16-alpine'
+      //     args '-p 3000:3000'
+      //   }
+      // }
       steps {
         echo 'Installing dependencies...'
-        sh 'yarn install'
+        sh 'npm install'
         sh 'npm install -g sonarqube-scanner'
         echo 'Successfully installed dependencies'
       }
@@ -29,14 +29,14 @@ pipeline {
         stage('Run Tests') {
           steps {
             echo 'Testing...'
-            sh 'yarn test'
+            sh 'npm run test'
             echo 'Successfully ran tests'
           }
         }
         stage('Run Coverage Test') {
           steps {
             echo 'Test coverage...'
-            sh 'yarn test:cov'
+            sh 'npm run test:cov'
             echo 'Successfully ran test coverage'
           }
         }
@@ -72,15 +72,15 @@ pipeline {
     //   }
     // }
     stage('Create Build Artifacts') {
-      agent {
-        docker {
-          image 'node:16-alpine'
-          args '-p 3000:3000'
-        }
-      }
+      // agent {
+      //   docker {
+      //     image 'node:16-alpine'
+      //     args '-p 3000:3000'
+      //   }
+      // }
       steps {
         echo 'Building...'
-        sh 'yarn build'
+        sh 'npm run build'
       }
     }
   }
