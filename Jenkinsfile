@@ -6,17 +6,10 @@ pipeline {
   }
   environment {
     CI = 'true'
-    // HOME = '.'
-    // npm_config_cache = 'npm-cache'
   }
   stages {
     stage('Install Dependencies') {
-      // agent {
-      //   docker {
-      //     image 'node:16-alpine'
-      //     args '-p 3000:3000'
-      //   }
-      // }
+
       steps {
         echo 'Installing dependencies...'
         sh 'npm install'
