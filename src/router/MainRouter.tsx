@@ -1,17 +1,8 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Search from "../pages/Search";
-import Settings from "../pages/Settings";
 import { useAppDispatch } from "../app/hooks";
-import { logout } from '../slices/authSlice'
-import ProfilePage from "../pages/ProfilePage";
-import EditProfilePage from "../pages/EditProfilePage";
-import CreatePost from "../pages/CreatePost";
-import Friends from "../pages/Friends";
-import Feed from "../pages/Feed";
-import Register from "../pages/Register";
-import Login from "../pages/Login";
-import Landing from "../pages/Landing";
+import { logout } from '../slices/authSlice';
 
 interface MainRouterProps{
   loggedIn:string
