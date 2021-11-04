@@ -9,7 +9,7 @@ const SubmitPost : React.FC = () => {
 
     let initialPost = {
         title: "",
-        text: "",
+        postText: "",
         imageURL: "https://testimageurl.com"
     }
 
@@ -17,7 +17,7 @@ const SubmitPost : React.FC = () => {
 
     const dispatchPost = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-
+        alert('completed post: '+post.postText)
         // dispatch
         dispatch(postPostAsync(post));
     };
@@ -36,14 +36,17 @@ const SubmitPost : React.FC = () => {
                         Photo
                     </Form.Label>
                     <Col sm={11}>
-                        <Form.Control type="file"
-                         onChange={(event)=> setPost({...post, imageURL: "https://testimageurl.com/"})} />
+                        <Form.Control 
+                            as="textarea"
+                            placeholder="URL"
+                            id="image"
+                            onChange={(event)=> setPost({...post, imageURL: "https://testimageurl.com/"})} />
                     </Col>
                 </Form.Group>
 
                 {/* Title Input */}
                 <Form.Group as={Row} className="mb-3" controlId="">
-                    <Form.Label column sm={1}>Link</Form.Label>
+                    <Form.Label column sm={1}>Title</Form.Label>
                     <Col sm={11}>
                         <Form.Control
                             as="textarea"
@@ -64,7 +67,7 @@ const SubmitPost : React.FC = () => {
                             placeholder=""
                             id="text"   
                             style={{height: "100px"}}
-                            onChange={(event)=> setPost({...post, text: event.target.value})}
+                            onChange={(event)=> setPost({...post, postText: event.target.value})}
                         />
                     </Col>
                 </Form.Group>

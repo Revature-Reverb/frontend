@@ -1,6 +1,6 @@
 export interface Post {
     title: String,
-    text: String,
+    postText: String,
     imageURL: String
 };
 

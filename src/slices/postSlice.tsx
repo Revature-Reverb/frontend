@@ -8,7 +8,7 @@ export type PostState = Post;
 
 const initialState: PostState = {
     title: "",
-    text: "",
+    postText: "",
     imageURL: ""
 };
 
@@ -39,9 +39,6 @@ const postSlice = createSlice({
     name: 'post',
     initialState: initialState,
     reducers: {
-        createPost: (state, action: PayloadAction<Post>) => {
-            return action.payload
-        }
     },
     extraReducers: (builder) => {
         builder
@@ -56,7 +53,7 @@ const postSlice = createSlice({
             return action.payload;
         })
         .addCase(postPostAsync.fulfilled, (state, action) => {
-            console.log (action.payload);
+            console.log ("fulfilled: "+action.payload);
             return action.payload;
         })
         .addCase(getPostAsync.rejected, (state, action) => {
