@@ -8,6 +8,7 @@ import { useAppDispatch } from '../app/hooks'
 import { Link } from 'react-router-dom'
 import { setTokenAsync } from '../slices/authSlice'
 import axios from 'axios'
+import { reverbClientWithAuth } from '../remote/reverb-api/reverbClient'
 
 export default function Login() {
 
@@ -17,15 +18,20 @@ export default function Login() {
   const passwordRef = useRef<HTMLInputElement>(null);
 
   // Verifying login credentials through firebase, alerting with error message coming from Firebase
-  function loginAccount(event: any) {
+  async function loginAccount(event: any) {
     event.preventDefault();
 
     if (emailRef.current !== null && passwordRef.current !== null) {
 
       let email: string = emailRef.current.value;
       let password: string = passwordRef.current.value;
+      
+      // Token is set to store on login
+      await dispatch(setTokenAsync({email, password}));
+      
+      // Call to backend on successful log in that ensures user is already stored in our database, if it is not then the user is added to the database.
+      reverbClientWithAuth.post("/api/user/login");
 
-      dispatch(setTokenAsync({email, password}))
     }
   }
 
