@@ -3,6 +3,7 @@ import counterReducer from '../features/counter/counterSlice';
 import userReducer from '../slices/userSlice';
 import authReducer from '../slices/authSlice';
 import postReducer from '../slices/postSlice';
+import profileReducer from '../slices/profileSlice';
 
 
 
@@ -11,7 +12,8 @@ export const store = configureStore({
     counter: counterReducer,
     user: userReducer,
     auth: authReducer,
-    post: postReducer
+    post: postReducer,
+    profile: profileReducer
   }
 });
 
