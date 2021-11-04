@@ -45,17 +45,35 @@ pipeline {
         }
       }
     }
-    
     stage('SonarQube Analysis') {
+      tools {
+				jdk "openjdk11" // the name you have given the JDK installation in Global Tool Configuration
+			}
+			environment {
+        scannerHome = tool 'ReverbScanner' // the name you have given the Sonar Scanner (in Global Tool Configuration)
+        //ORGANIZATION = tool 'Revature-Reverb_frontend' // the name you have given the Sonar Scanner (in Global Tool Configuration)
+        //PROJECT_NAME = tool 'ReverbScanner' // the name you have given the Sonar Scanner (in Global Tool Configuration)
+			}
       steps {
-        script {
-          def scannerHome = tool 'ReverbScanner'
-          withSonarQubeEnv(installationName: 'SonarCloud', credentialsId: 'a') {
-            sh "${scannerHome}/sonar-scanner-4.6.2.2472/bin/sonar-scanner"      
-          }
+        withSonarQubeEnv(installationName: 'SonarCloud', credentialsId: 'a') {
+          sh '''${scannerHome}/bin/sonar-scanner -X \
+          -Dsonar.java.binaries=target/classes   \
+          -Dsonar.organization=Revature-Reverb \
+          -Dsonar.projectKey=Revature-Reverb_frontend \
+          -Dsonar.sources=./src'''
         }
       }
-    }
+		}
+    // stage('SonarQube Analysis') {
+    //   steps {
+    //     script {
+    //       def scannerHome = tool 'ReverbScanner'
+    //       withSonarQubeEnv(installationName: 'SonarCloud', credentialsId: 'a') {
+    //         sh "${scannerHome}/bin/sonar-scanner"
+    //       }
+    //     }
+    //   }
+    // }
     stage('Create Build Artifacts') {
       steps {
         echo 'Building...'
