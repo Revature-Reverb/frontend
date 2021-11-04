@@ -8,6 +8,3 @@ export interface Post {
     profile: Profile,
     comments: Comment[]
 };
-
-// potential additions to model:
-// name : ?
