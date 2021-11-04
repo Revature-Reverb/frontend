@@ -10,14 +10,13 @@ export default function UserNameWidget() {
     useEffect(() => {
         let dud: User= {
             userid: "0",
-            email: "fake@email.com",
+            email: "",
             profile: {
                 id: 0,
-                firstname: "my first name",
-                lastname: "my last name",
-                about_me:"about me"
-            }
-        };
+                firstname: "",
+                lastname: "",
+                about_me: ""
+            }        };
         console.log("Fake: " + dud.email);
         dispatch(getUserAsync(dud) );
         dispatch(postUserAsync(dud) );
