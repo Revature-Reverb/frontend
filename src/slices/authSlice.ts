@@ -3,7 +3,6 @@ import { auth } from "../firebase";
 import { Token } from "../models/tokenModel";
 import { getToken } from '../remote/reverb-api/token.api'
 import { Credentials } from "../models/credModel";
-import userSlice from "./userSlice";
 
 export type TokenState = Token[];
 
