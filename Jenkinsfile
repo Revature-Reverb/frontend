@@ -46,6 +46,11 @@ pipeline {
       }
     }
     stage('SonarQube Analysis') {
+      agent{
+        docker{
+          image: 'noenv/node-sonar-scanner'
+        }
+      }
       tools {
 				jdk "openjdk11" // the name you have given the JDK installation in Global Tool Configuration
 			}
