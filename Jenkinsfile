@@ -74,8 +74,8 @@ pipeline {
         echo 'WILL NEED TO ADJUST THIS TO DOCKER.'
         echo 'serve -s build'
         echo 'Building...'
-        sh 'npm run build'
-        echo 'Built a docker image.'
+        // sh 'npm run build'
+        echo 'Fake build complete'
       }
     }
   }
