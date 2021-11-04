@@ -4,11 +4,8 @@ import { useHistory } from "react-router-dom";
 import defaultImage from '../blankUserIcon.png';
 import Logo from '../reverb_logo2.png';
 import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from "../slices/userSlice";
-import { getUserAsync } from '../slices/userSlice';
 import axios from 'axios';
 import { Grid } from "@material-ui/core";
-import {User} from '../models/userModel';
 import { getProfileAsync, selectProfile } from "../slices/profileSlice";
 import { Profile } from "../models/profileModel";
 
