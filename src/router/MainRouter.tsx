@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Search from "../pages/search";
-import Settings from "../pages/settings";
+import Search from "../pages/Search";
+import Settings from "../pages/Settings";
 import { useAppDispatch } from "../app/hooks";
 import { logout } from '../slices/authSlice'
 import ProfilePage from "../pages/ProfilePage";
