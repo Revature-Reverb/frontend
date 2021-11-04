@@ -23,7 +23,7 @@ const reverbClientWithAuth = axios.create({
 
 reverbClientWithAuth.interceptors.request.use(function(config: any) {
   const token = "" + store.getState().auth[0].token;
-  console.log("tried setting token = " + token);
+  // console.log("tried setting token = " + token);
   config.headers["Authorization"] = token;
   return config;
 });

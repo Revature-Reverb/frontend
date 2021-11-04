@@ -37,7 +37,7 @@ export const authSlice = createSlice({
                 // do nothing
             })
             .addCase(setTokenAsync.fulfilled, (state, action) => {
-                console.log (action.payload.token);
+                console.log ("From setTokenAsync extraReducer: ", action.payload.token);
                 return [action.payload];
 			})
             .addCase(setTokenAsync.rejected, (state, action) => {
