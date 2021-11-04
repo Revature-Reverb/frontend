@@ -1,31 +1,18 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Post } from '../models/postModel';
-import { createPost, getPost } from "../remote/reverb-api/post.api";
+import { createPost, getAllPosts } from "../remote/reverb-api/post.api";
 import { store } from "../app/store";
 
 
-export type PostState = Post;
+export type PostState = Post[];
 
-const initialState: PostState = {
-    title: "",
-    postText: "",
-    imageURL: "",
-    profile: {
-        id: 0,
-        first_name: "",
-        last_name: "",
-        profile_img: "",
-        header_img: "",
-        about_me: ""
-    },
-    comments: []
-};
+const initialState: PostState = [];
 
-export const getPostAsync = createAsyncThunk<Post, object>(
+export const getPostsAsync = createAsyncThunk<Post[], object>(
     'post/get/async',
     async ({}, thunkAPI) => {
         try {
-            return await getPost();
+            return await getAllPosts();
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
         }
@@ -45,27 +32,25 @@ export const postPostAsync = createAsyncThunk<Post, Post>(
 );
 
 const postSlice = createSlice({
-    name: 'post',
+    name: 'posts',
     initialState: initialState,
     reducers: {
     },
     extraReducers: (builder) => {
         builder
-        .addCase(getPostAsync.pending, (state) => {
+        .addCase(getPostsAsync.pending, (state) => {
             // do nothing
         })
         .addCase(postPostAsync.pending, (state) => {
             // do nothing
         })
-        .addCase(getPostAsync.fulfilled, (state, action) => {
-            console.log (action.payload);
+        .addCase(getPostsAsync.fulfilled, (state, action) => {
             return action.payload;
         })
         .addCase(postPostAsync.fulfilled, (state, action) => {
-            console.log ("fulfilled: "+action.payload);
-            return action.payload;
+            state.push(action.payload);
         })
-        .addCase(getPostAsync.rejected, (state, action) => {
+        .addCase(getPostsAsync.rejected, (state, action) => {
             console.log(action.error);
         })
         .addCase(postPostAsync.rejected, (state, action) => {
@@ -75,8 +60,8 @@ const postSlice = createSlice({
 });
 
 type Rootstate = ReturnType<typeof store.getState>;
-export const selectPost = (state: Rootstate) => {
-    return state.post
+export const selectPosts = (state: Rootstate) => {
+    return state.posts
 }
 
 export default postSlice.reducer;

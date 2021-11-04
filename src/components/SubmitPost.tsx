@@ -50,16 +50,12 @@ function SubmitPost(props:any){
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h1>New Post</h1>
                 <Form>
                     {/* Picture Input */}
                     <Form.Group as={Row} className="mb-3" controlId="">
-                        <Form.Label column sm={1}>
-                            Photo
-                        </Form.Label>
                         <Col sm={11}>
                             <Form.Control 
-                                placeholder="URL"
+                                placeholder="image URL"
                                 id="image"
                                 onChange={(event)=> setPost({...post, imageURL: "https://testimageurl.com/"})} />
                         </Col>
@@ -67,10 +63,9 @@ function SubmitPost(props:any){
 
                     {/* Title Input */}
                     <Form.Group as={Row} className="mb-3" controlId="">
-                        <Form.Label column sm={1}>Title</Form.Label>
                         <Col sm={11}>
                             <Form.Control
-                                placeholder=""
+                                placeholder="Post Title"
                                 style={{height: "25px"}}
                                 id="link"
                                 onChange={(event)=> setPost({...post, title: event.target.value})}
@@ -80,11 +75,10 @@ function SubmitPost(props:any){
 
                     {/* Text Input */}
                     <Form.Group as={Row} className="mb-3" controlId="">
-                        <Form.Label column sm={2}>What is on your mind?</Form.Label>
                         <Col sm={12}>
                             <Form.Control
                                 as="textarea"
-                                placeholder=""
+                                placeholder="Post"
                                 id="text"   
                                 style={{height: "100px"}}
                                 onChange={(event)=> setPost({...post, postText: event.target.value})}

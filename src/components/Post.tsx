@@ -1,23 +1,21 @@
 import React from "react";
 import {Button, Card, Col, Form, ListGroup, ListGroupItem, Row} from "react-bootstrap";
+import { propTypes } from "react-bootstrap/esm/Image";
+import { Profile } from '../models/profileModel';
 
-const Post : React.FC = () => {
+function Post({title, text, profile}:{title: String, text: String, profile: Profile}) {
 
     return(
         <Card bg='light' style={{width: "500px"}}>
             <Card.Header>
-                <Card.Title>Amazing Post Title</Card.Title>
-                <Card.Subtitle>Joe Smith - 11/01/2021</Card.Subtitle>
+                <Card.Title>{title}</Card.Title>
+                <Card.Subtitle>`{profile.first_name} {profile.last_name}` </Card.Subtitle>
                 <Button variant="warning" style={{float: 'right', marginTop: "-2.5rem"}}>ReverB!</Button>
             </Card.Header>
             <Card.Body>
                 <Card.Img variant='top' src="https://placeholder.pics/svg/300"/>
                 <Card.Text>
-                    This is some junk text. This is some junk text. This is some junk text.
-                    This is some junk text. This is some junk text. This is some junk text.
-                    This is some junk text. This is some junk text. This is some junk text.
-                    This is some junk text. This is some junk text. This is some junk text.
-                    This is some junk text. This is some junk text. This is some junk text.
+                    {text}
                 </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
