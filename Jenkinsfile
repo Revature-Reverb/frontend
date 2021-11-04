@@ -4,6 +4,10 @@ pipeline {
      image 'node:16-alpine'
      args '-p 3000:3000'
     }
+  }      
+  tools {
+    nodejs "node"
+    jdk "openjdk11"
   }
   environment {
     CI = 'true'
@@ -15,15 +19,7 @@ pipeline {
       steps {
         echo 'Installing dependencies...'
         sh 'yarn install'
-        sh 'npm install sonarqube-scanner'
-        sh 'apk update'
-        sh 'apk upgrade'
-        sh 'apk add ca-certificates'
-        sh 'update-ca-certificates'
-        sh 'apk add --update coreutils && rm -rf /var/cache/apk/*'
-        sh 'apk add --update openjdk11 tzdata curl unzip bash'
-        sh 'apk add --no-cache nss'
-        sh 'rm -rf /var/cache/apk/*'
+        sh 'npm install -g sonarqube-scanner'
         echo 'Successfully installed dependencies'
       }
     }
@@ -46,16 +42,8 @@ pipeline {
       }
     }
     stage('SonarQube Analysis') {
-      agent{
-        docker{
-          image 'noenv/node-sonar-scanner'
-        }
-      }
-      tools {
-				jdk "openjdk11" // the name you have given the JDK installation in Global Tool Configuration
-			}
 			environment {
-        scannerHome = tool 'ReverbScanner' // the name you have given the Sonar Scanner (in Global Tool Configuration)
+        scannerHome = tool 'sonar-scanner' // the name you have given the Sonar Scanner (in Global Tool Configuration)
         //ORGANIZATION = tool 'Revature-Reverb_frontend' // the name you have given the Sonar Scanner (in Global Tool Configuration)
         //PROJECT_NAME = tool 'ReverbScanner' // the name you have given the Sonar Scanner (in Global Tool Configuration)
 			}
@@ -64,8 +52,8 @@ pipeline {
           echo 'Starting Sonar...'
           echo 'Echos...'
           sh 'ls'
-          sh 'npm install sonarqube-scanner'
-          sh 'sonar-scanner'
+          //sh 'npm install sonarqube-scanner'
+          sh "${scannerHome}/bin/sonar-scanner"
           echo 'Successfully ran Sonar'
         }
       }
