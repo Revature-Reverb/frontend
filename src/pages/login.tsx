@@ -4,24 +4,24 @@ import { Container } from 'react-bootstrap'
 import { useAppDispatch } from '../app/hooks'
 import { Link } from 'react-router-dom'
 import { setTokenAsync } from '../slices/authSlice'
-import axios from 'axios'
+//import axios from 'axios'
 
 export default function Login() {
 
   const dispatch = useAppDispatch();
 
-  const loginToBackEnd = (token: string) => {
-    console.log("Token from logintobackend: ", token);
-    const url = 'http://localhost:8080/api/user/testWithAuth';
+  // const loginToBackEnd = (token: string) => {
+  //   console.log("Token from logintobackend: ", token);
+  //   const url = 'http://localhost:8080/api/user/testWithAuth';
 
-    const header = {
-      'Authorization': token,
-      'Content-Type': 'application/json'
-    };
-    axios.get(url, {headers: header, withCredentials: true})
-      .then(response => {console.log("RESPONSE", response);})
-      .catch(err => console.log(err));
-  }
+  //   const header = {
+  //     'Authorization': token,
+  //     'Content-Type': 'application/json'
+  //   };
+  //   axios.get(url, {headers: header, withCredentials: true})
+  //     .then(response => {console.log("RESPONSE", response);})
+  //     .catch(err => console.log(err));
+  // }
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
