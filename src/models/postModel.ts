@@ -1,7 +1,12 @@
+import { Profile } from "./profileModel";
+import { Comment } from "./commentModel";
+
 export interface Post {
     title: String,
-    text: String,
-    imageURL: String
+    postText: String,
+    imageURL: String,
+    profile: Profile,
+    comments: Comment[]
 };
 
 // potential additions to model:
