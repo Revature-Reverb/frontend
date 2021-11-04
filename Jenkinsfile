@@ -48,7 +48,7 @@ pipeline {
     stage('SonarQube Analysis') {
       agent{
         docker{
-          image: 'noenv/node-sonar-scanner'
+          image 'noenv/node-sonar-scanner'
         }
       }
       tools {
