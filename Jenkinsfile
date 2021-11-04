@@ -63,12 +63,6 @@ pipeline {
 	  // }
 
     stage('Create Build Artifacts') {
-      // agent {
-      //   docker {
-      //     image 'node:16-alpine'
-      //     args '-p 3000:3000'
-      //   }
-      // }
       steps {
         // sh 'npm install'
         echo 'WILL NEED TO ADJUST THIS TO DOCKER.'
