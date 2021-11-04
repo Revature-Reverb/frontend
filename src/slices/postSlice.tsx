@@ -39,6 +39,9 @@ const postSlice = createSlice({
     name: 'post',
     initialState: initialState,
     reducers: {
+        createPost: (state, action: PayloadAction<Post>) => {
+            return action.payload
+        }
     },
     extraReducers: (builder) => {
         builder
