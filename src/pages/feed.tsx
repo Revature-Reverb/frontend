@@ -1,16 +1,23 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { Button } from 'react-bootstrap';
 import SubmitPost from '../components/SubmitPost'
 
 const Feed = ()=> {
 
-    const toReturn = <>Feed Page</>
+    const [modalShow, setModalShow] = useState(false);
 
-    return(
-        <>
-        <SubmitPost></SubmitPost>
-        <>{toReturn}</>
-        </>
-    )
+  return (
+    <>
+      <Button variant="primary" onClick={() => setModalShow(true)}>
+        Create Post
+      </Button>
+
+      <SubmitPost
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
+    </>
+  );
 }
 
 export default Feed

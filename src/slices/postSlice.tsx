@@ -9,7 +9,16 @@ export type PostState = Post;
 const initialState: PostState = {
     title: "",
     postText: "",
-    imageURL: ""
+    imageURL: "",
+    profile: {
+        id: 0,
+        first_name: "",
+        last_name: "",
+        profile_img: "",
+        header_img: "",
+        about_me: ""
+    },
+    comments: []
 };
 
 export const getPostAsync = createAsyncThunk<Post, object>(
