@@ -60,6 +60,24 @@ function EditProfile() {
                 </div>
 
                 <div className="form_input-group">
+                    <label htmlFor="last_name">Birthday</label>
+                    <input className="form_input" type="textbox" name="birthday" placeholder="Birthday"  value={input.birthday} 
+                    onChange={handleChange} required />
+                </div>
+
+                <div className="form_input-group">
+                    <label htmlFor="last_name">Hobby</label>
+                    <input className="form_input" type="textbox" name="hobby" placeholder="Hobby"  value={input.hobby} 
+                    onChange={handleChange} required />
+                </div>
+
+                <div className="form_input-group">
+                    <label htmlFor="last_name">Location</label>
+                    <input className="form_input" type="textbox" name="location" placeholder="Location"  value={input.location} 
+                    onChange={handleChange} required />
+                </div>
+                
+                <div className="form_input-group">
                     <label htmlFor="profile_img">Select Profile Image</label>
                     <input className="form_input" type="text" name="profile_img" placeholder="Profile Image url"  value={input.profile_img} 
                     onChange={handleChange} required />

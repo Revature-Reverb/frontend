@@ -10,6 +10,9 @@ const initialState: ProfileState = {
     id: 0,
     first_name: "My first name",
     last_name: "My last name",
+    birthday: "April 5",
+    hobby: "Soccer",
+    location: "Indianapolis",
     profile_img: "https://simg.nicepng.com/png/small/128-1280406_view-user-icon-png-user-circle-icon-png.png",
     header_img: "https://static.onecms.io/wp-content/uploads/sites/28/2021/05/06/portand-oregon-PORTLANDTG0521.jpg",
     about_me: "I like to eat food in general."
