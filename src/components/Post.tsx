@@ -4,6 +4,7 @@ import { PostModel } from '../models/postModel'
 import { Likes } from "../models/likesModel";
 import { checkIfPostCanBeLiked, getNumLikes, likePost } from "../remote/reverb-api/likes.api";
 import { selectPosts } from "../slices/postSlice";
+import { Link } from "react-router-dom";
 
 
 const Post = ({ shouldUpdateLikes, post, leaveComment }: 
@@ -46,7 +47,13 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
         <Card bg='light' style={{ width: "500px" }}>
             <Card.Header>
                 <Card.Title>{"" + post.title}</Card.Title>
-                <Card.Subtitle>{"" + post.profile.first_name} {"" + post.profile.last_name}</Card.Subtitle>
+
+               
+
+                <Card.Subtitle><Link to={`profile/${post.profile.id}`}>{"" + post.profile.first_name} {"" + post.profile.last_name}</Link></Card.Subtitle>
+
+
+
                 <Card.Text>{"" + post.date}</Card.Text>
                 <Button onClick={() => likePostFunc()} variant="warning"
                     style={{ float: 'right', marginTop: "-5rem" }} disabled={!canLike}>{canLike ? "ReverB!" : "Oh Yeah"}</Button>

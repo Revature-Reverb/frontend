@@ -50,6 +50,9 @@ const MainRouter:React.FC<MainRouterProps> = ({loggedIn}:{loggedIn:string}) => {
           <Route exact path="/profile">
             <ProfilePage/>
           </Route>
+          <Route exact path="/profile/:id">
+            <ProfilePage/>
+          </Route>
           <Route exact path="/editProfile">
             <EditProfilePage/>
           </Route>
