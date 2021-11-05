@@ -1,47 +1,53 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, ListGroup, ListGroupItem, Row } from "react-bootstrap";
 import { PostModel } from '../models/postModel'
 import { Likes } from "../models/likesModel";
 import { checkIfPostCanBeLiked, getNumLikes, likePost } from "../remote/reverb-api/likes.api";
+import { selectPosts } from "../slices/postSlice";
 
 
-const Post = ({ post, leaveComment }: { post: PostModel, leaveComment: any }) => {
+const Post = ({ shouldUpdateLikes, post, leaveComment }: 
+    { shouldUpdateLikes: boolean[], post: PostModel, leaveComment: any }) => {
 
     const initialLikes: number = 0;
     const [likes, setLikes] = useState(initialLikes);
     const [canLike, setCanLike] = useState(false);
 
     const updateLikes = () => {
+        console.log("Calling backend to update likes.");
         getNumLikes(post.id)
-        .then(
-            (data) => { setLikes(data) }
-        );
+            .then(
+                (data) => { setLikes(data) }
+            );
     }
 
     const likePostFunc = () => {
-        likePost(post.id).then(() => {
-            //post was liked successfully
-            //makes it so user cannot press like button again
-            setCanLike(false);
-            updateLikes();
+        setCanLike(false);
+        likePost(post.id).then(async () => {
+            //instead of making another DB call, it just updates the likes by 1
+            // updateLikes();
+            setLikes(likes+1);
         }).catch((e) => {
             //unsuccessful
+            setCanLike(true);
             console.log(e)
         })
     }
 
     //checks to see if the post can be liked
-    checkIfPostCanBeLiked(post.id).then(canLikeReturn => setCanLike(!canLikeReturn));
-
     //updates the number of likes
-    updateLikes();
+    useEffect(() => {
+        updateLikes();
+        checkIfPostCanBeLiked(post.id).then(canLikeReturn => setCanLike(!canLikeReturn));
+    }, [shouldUpdateLikes]);
+
 
     return (
         <Card bg='light' style={{ width: "500px" }}>
             <Card.Header>
                 <Card.Title>{"" + post.title}</Card.Title>
                 <Card.Subtitle>{"" + post.profile.first_name} {"" + post.profile.last_name}</Card.Subtitle>
-                <Card.Text>{""+post.date}</Card.Text>
+                <Card.Text>{"" + post.date}</Card.Text>
                 <Button onClick={() => likePostFunc()} variant="warning"
                     style={{ float: 'right', marginTop: "-5rem" }} disabled={!canLike}>{canLike ? "ReverB!" : "Oh Yeah"}</Button>
                 <Card.Subtitle style={{ float: 'right', marginTop: "-2.5rem" }}>{likes} ReverBs</Card.Subtitle>
@@ -54,7 +60,7 @@ const Post = ({ post, leaveComment }: { post: PostModel, leaveComment: any }) =>
             </Card.Body>
             <ListGroup className="list-group-flush">
                 {post.comments.map(comment => (
-                    
+
                     <ListGroupItem>
                         {comment.commentText}
                         <footer style={{ float: "right", fontSize: "0.8rem", marginTop: "0.8rem" }}>
