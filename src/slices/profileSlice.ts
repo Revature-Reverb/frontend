@@ -1,3 +1,4 @@
+/* eslint-disable no-empty-pattern */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Profile } from "../models/profileModel";
 import { getProfile } from "../remote/reverb-api/profile.api";
@@ -16,38 +17,46 @@ const initialState: ProfileState = {
 
 export const getProfileAsync = createAsyncThunk<Profile, object>(
     'profile/get/async',
-    async ({}, thunkAPI) => {
-        try {
+    async ( { }, thunkAPI ) =>
+    {
+        try
+        {
             return await getProfile();
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error);
+        } catch ( error )
+        {
+            return thunkAPI.rejectWithValue( error );
         }
     }
 );
 
-const profileSlice = createSlice({
-    name:'profile',
+const profileSlice = createSlice( {
+    name: 'profile',
     initialState: initialState,
     reducers: {
     },
-    extraReducers: (builder) => {
+    extraReducers: ( builder ) =>
+    {
         builder
-            .addCase(getProfileAsync.pending, (state) => {
+            .addCase( getProfileAsync.pending, ( state ) =>
+            {
                 //do nothing
-            })
-            .addCase(getProfileAsync.fulfilled, (state, action) => {
+            } )
+            .addCase( getProfileAsync.fulfilled, ( state, action ) =>
+            {
                 // console.log(action.payload.first_name);
                 return action.payload;
-            })
-            .addCase(getProfileAsync.rejected, (state, action) => {
-                console.log(action.error);
-            })
+            } )
+            .addCase( getProfileAsync.rejected, ( state, action ) =>
+            {
+                console.log( action.error );
+            } )
     }
 
-})
+} )
 
 type Rootstate = ReturnType<typeof store.getState>;
-export const selectProfile = (state: Rootstate) => {
+export const selectProfile = ( state: Rootstate ) =>
+{
     return state.profile
 }
 

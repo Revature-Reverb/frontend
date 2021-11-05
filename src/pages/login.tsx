@@ -1,13 +1,9 @@
 import React, { useRef } from 'react'
 import { Form, Button, Card } from 'react-bootstrap'
-import { auth } from '../firebase'
-import { signInWithEmailAndPassword } from "firebase/auth"
 import { Container } from 'react-bootstrap'
-import { store } from '../app/store'
 import { useAppDispatch } from '../app/hooks'
 import { Link } from 'react-router-dom'
 import { setTokenAsync } from '../slices/authSlice'
-import axios from 'axios'
 import { reverbClientWithAuth } from '../remote/reverb-api/reverbClient'
 
 export default function Login() {
