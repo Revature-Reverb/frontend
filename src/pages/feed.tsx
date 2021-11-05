@@ -8,7 +8,10 @@ import SubmitComment from '../components/SubmitComment';
 
 const Feed = () => {
   const dispatch = useDispatch();
-  useEffect(() => {dispatch(getPostsAsync({}))},[]);
+  useEffect(
+    () => {dispatch(getPostsAsync({})) }
+  ,[]);
+
   console.log("Updated feed");
 
   const posts = useSelector(selectPosts);
@@ -18,8 +21,8 @@ const Feed = () => {
 
   const [postId, setPostId] = useState(0);
 
-  const leaveComment = (postId: number) => {
-    setPostId(postId);
+  const leaveComment = (npostId: number) => {
+    setPostId(npostId);
     setModalShowComment(true);
   }
 
@@ -34,7 +37,7 @@ const Feed = () => {
         onHide={() => setModalShowPost(false)}
       />
 
-      <SubmitComment 
+      <SubmitComment
         show={modalShowComment}
         onHide={() => setModalShowComment(false)}
         postId={postId}

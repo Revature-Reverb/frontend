@@ -6,14 +6,14 @@ import { logout } from '../slices/authSlice';
 
 import ProfilePage from "../pages/ProfilePage";
 import EditProfilePage from "../pages/EditProfilePage";
-import CreatePost from "../pages/CreatePost";
-import Search from "../pages/Search";
-import Settings from "../pages/Settings";
-import Friends from "../pages/Friends";
-import Feed from "../pages/Feed";
-import Register from "../pages/Register";
-import Login from "../pages/Login";
-import Landing from "../pages/Landing";
+import CreatePost from "../pages/createPost";
+import Search from "../pages/search";
+import Settings from "../pages/settings";
+import Friends from "../pages/friends";
+import Feed from "../pages/feed";
+import Register from "../pages/register";
+import Login from "../pages/login";
+import Landing from "../pages/landing";
 
 interface MainRouterProps{
   loggedIn:string

@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import {Button, Card, Col, Form, Modal, ModalProps, Row} from "react-bootstrap";
+import {Button, Col, Form, Modal, Row} from "react-bootstrap";
 import { postPostAsync } from "../slices/postSlice";
-import { Omit, BsPrefixProps } from "react-bootstrap/esm/helpers";
 
 function SubmitPost(props:any){
 
     const dispatch = useDispatch();
 
-    let initialPost = {
+    const initialPost = {
         id: 0,
         title: "",
         postText: "",
@@ -54,7 +53,7 @@ function SubmitPost(props:any){
                     {/* Picture Input */}
                     <Form.Group as={Row} className="mb-3" controlId="">
                         <Col sm={11}>
-                            <Form.Control 
+                            <Form.Control
                                 placeholder="image URL"
                                 id="image"
                                 onChange={(event)=> setPost({...post, imageURL: event.target.value})} />

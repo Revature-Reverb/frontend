@@ -2,6 +2,6 @@ import { Profile } from "./profileModel";
 
 export interface Comment {
     commentId: number,
-    commentText: String,
+    commentText: string,
     profile: Profile
 }

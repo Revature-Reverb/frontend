@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { Button, Card, Col, Form, ListGroup, ListGroupItem, Row } from "react-bootstrap";
-import { propTypes } from "react-bootstrap/esm/Image";
-import { Profile } from '../models/profileModel';
+import { Button, Card, ListGroup, ListGroupItem, Row } from "react-bootstrap";
 import { PostModel } from '../models/postModel'
 import { Likes } from "../models/likesModel";
 import { checkIfPostCanBeLiked, getNumLikes, likePost } from "../remote/reverb-api/likes.api";
@@ -17,7 +15,10 @@ const Post = ({ post, leaveComment }: { post: PostModel, leaveComment: any }) =>
     const [canLike, setCanLike] = useState(true);
 
     const updateLikes = () => {
-        getNumLikes(post.id).then((numLikesReturn) => { setLikes(numLikesReturn) });
+        getNumLikes(post.id)
+            .then(
+                (numLikesReturn) => { setLikes(numLikesReturn) }
+            );
     }
 
     const likePostFunc = () => {
@@ -43,7 +44,7 @@ const Post = ({ post, leaveComment }: { post: PostModel, leaveComment: any }) =>
                 <Card.Title>{"" + post.title}</Card.Title>
                 <Card.Subtitle>{"" + post.profile.first_name} {"" + post.profile.last_name}</Card.Subtitle>
                 <Card.Text>Date</Card.Text>
-                <Button onClick={() => likePostFunc()} variant="warning" 
+                <Button onClick={() => likePostFunc()} variant="warning"
                     style={{ float: 'right', marginTop: "-5rem" }} disabled={!canLike}>{canLike ? "ReverB!" : "Oh Yeah"}</Button>
                 <Card.Subtitle style={{ float: 'right', marginTop: "-2.5rem" }}>{likes.numLikes} ReverBs</Card.Subtitle>
             </Card.Header>
