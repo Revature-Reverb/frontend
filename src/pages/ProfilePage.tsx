@@ -9,9 +9,9 @@ export default function ProfilePage() {
         <Row>
             <ProfileInformation/>
         </Row>
-        <Row style={{marginTop:'2rem'}}>
+        {/* <Row style={{marginTop:'2rem'}}>
             <ProfilePosts />
-        </Row>
+        </Row> */}
         </>
     )
 }

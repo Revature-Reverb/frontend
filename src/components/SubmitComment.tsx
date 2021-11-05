@@ -1,42 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { createComment } from "../remote/reverb-api/comment.api";
-import { getPostsAsync } from "../slices/postSlice";
 
 function SubmitComment(props: any) {
-    const initialComment = {
-        commentId: 0,
-        commentText: "",
-        date: "",
-        profile: {
-            id: 0,
-            first_name: "",
-            last_name: "",
-            profile_img: "",
-            header_img: "",
-            about_me: ""
-        }
-    }
-
-    const [comment, setComment] = useState(initialComment);
-    const dispatch = useDispatch();
-
-    const dispatchComment = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-        console.log("tried to send comment with post id " + props.postId);
-        createComment(props.postId, comment)
-            .then(
-                () => { dispatch(getPostsAsync({})) }
-            );
-    };
 
     function closeSubmit(event: React.MouseEvent<HTMLButtonElement>) {
-        if (comment.commentText !== "") {
-            dispatchComment(event);
-            setComment(initialComment);
+        if (props.comment.commentText !== "") {
+            props.onHide();
+            props.dispatchComment();
+        } else {
+            alert("Your comment cannot be empty!");
         }
-        props.onHide();
     }
 
     return (
@@ -55,14 +28,13 @@ function SubmitComment(props: any) {
             <Modal.Body>
                 <Form>
                     {/* Text Input */}
-                    <Form.Group as={Row} className="mb-3" controlId="">
+                    <Form.Group as={Row} className="mb-3">
                         <Col sm={12}>
                             <Form.Control
                                 as="textarea"
                                 placeholder="Comment"
-                                id="text"
                                 style={{ height: "100px" }}
-                                onChange={(event) => setComment({ ...comment, commentText: event.target.value })}
+                                onChange={(event) => props.setComment({ ...props.comment, commentText: event.target.value })}
                             />
                         </Col>
                     </Form.Group>

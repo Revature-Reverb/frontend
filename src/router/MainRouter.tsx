@@ -1,18 +1,20 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
-
-import { useAppDispatch } from "../app/hooks";
-import { logout } from '../slices/authSlice';
+import React, { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
+import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
 import CreatePost from "../pages/createPost";
-import Settings from "../pages/Settings";
+import Feed from "../pages/feed";
+import Profile from "../pages/Profile";
+import Search from "../pages/Search";
+import Login from "../pages/login";
+import Register from "../pages/register";
 import Friends from "../pages/Friends";
+import Settings from "../pages/Settings";
+import Landing from "../pages/landing";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { logout } from '../slices/authSlice'
 import ProfilePage from "../pages/ProfilePage";
 import EditProfilePage from "../pages/EditProfilePage";
-import Feed from "../pages/feed";
-import Register from "../pages/register";
-import Login from "../pages/login";
-import Landing from "../pages/landing";
-import Search from "../pages/Search";
+
 
 interface MainRouterProps{
   loggedIn:string
