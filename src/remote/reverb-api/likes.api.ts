@@ -1,10 +1,9 @@
 import { Likes } from "../../models/likesModel";
 import { reverbClient, reverbClientWithAuth } from './reverbClient'
 
-export const getNumLikes = async (postId: number): Promise<Likes> => {
-    const { data: numLikes } = await reverbClientWithAuth.get<Likes>('/api/like/get-number-of-likes/' + postId);
-
-    return numLikes;
+export const getNumLikes = async (postId: number): Promise<number> => {
+    const { data } = await reverbClientWithAuth.get<number>('/api/like/get-number-of-likes/' + postId);
+    return data;
 }
 
 export const likePost = async (postId: number) => {

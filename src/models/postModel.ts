@@ -6,6 +6,7 @@ export interface PostModel {
     title: String,
     postText: String,
     imageURL: String,
+    date: String,
     profile: Profile,
     comments: Comment[]
 };
