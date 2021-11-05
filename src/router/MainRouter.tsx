@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
-import CreatePost from "../pages/createPost";
-import Feed from "../pages/feed";
-import Profile from "../pages/profile";
-import Search from "../pages/search";
+import CreatePost from "../pages/CreatePost";
+import Feed from "../pages/Feed";
+import Profile from "../pages/Profile";
+import Search from "../pages/Search";
 import Event from "../pages/event";
 import Login from "../pages/login";
 import Register from "../pages/register";
-import Friends from "../pages/friends";
+import Friends from "../pages/Friends";
 import Chat from "../pages/chat";
-import Settings from "../pages/settings";
+import Settings from "../pages/Settings";
 import Landing from "../pages/landing";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { logout } from '../slices/authSlice'
