@@ -1,8 +1,11 @@
-export interface Post {
-    title: String,
-    text: String,
-    imageURL: String
-};
+import { Profile } from "./profileModel";
+import { Comment } from "./commentModel";
 
-// potential additions to model:
-// name : ?
+export interface PostModel {
+    id: number,
+    title: String,
+    postText: String,
+    imageURL: String,
+    profile: Profile,
+    comments: Comment[]
+};

@@ -1,53 +1,40 @@
 import React from "react";
 import {Button, Card, Col, Form, ListGroup, ListGroupItem, Row} from "react-bootstrap";
+import { propTypes } from "react-bootstrap/esm/Image";
+import { Profile } from '../models/profileModel';
+import { PostModel } from '../models/postModel'
 
-const Post : React.FC = () => {
+
+const Post = ({post, leaveComment}:{post: PostModel, leaveComment: any}) => {
 
     return(
         <Card bg='light' style={{width: "500px"}}>
             <Card.Header>
-                <Card.Title>Amazing Post Title</Card.Title>
-                <Card.Subtitle>Joe Smith - 11/01/2021</Card.Subtitle>
+                <Card.Title>{""+post.title}</Card.Title>
+                <Card.Subtitle>{""+post.profile.first_name} {""+post.profile.last_name}</Card.Subtitle>
                 <Button variant="warning" style={{float: 'right', marginTop: "-2.5rem"}}>ReverB!</Button>
             </Card.Header>
             <Card.Body>
-                <Card.Img variant='top' src="https://placeholder.pics/svg/300"/>
+                <Card.Img variant='top' src={""+post.imageURL}/>
                 <Card.Text>
-                    This is some junk text. This is some junk text. This is some junk text.
-                    This is some junk text. This is some junk text. This is some junk text.
-                    This is some junk text. This is some junk text. This is some junk text.
-                    This is some junk text. This is some junk text. This is some junk text.
-                    This is some junk text. This is some junk text. This is some junk text.
+                    {post.postText}
                 </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
+                    {post.comments.map(comment => (
+
                     <ListGroupItem>
-                        This is a comment.
+                        {comment.commentText}
                         <footer style={{float: "right", fontSize: "0.8rem", marginTop: "0.8rem"}}>
-                            Jane Doe - 11/10/2021 | <Card.Link>Reply</Card.Link>
+                            {comment.profile.first_name} {comment.profile.last_name} | <Card.Link>Reply</Card.Link>
                         </footer>
                     </ListGroupItem>
-                    <ListGroupItem>
-                        This is a longer comment.
-                        This is a longer comment.
-                        This is a longer comment.
-                        This is a longer comment.
-                        This is a longer comment.
-                        This is a longer comment.
-                        This is a longer comment.
-                        <footer style={{float: "right", fontSize: "0.8rem", marginTop: "0.8rem"}}>
-                            Bob Smith - 11/11/2021 | <Card.Link>Reply</Card.Link>
-                        </footer>
-                    </ListGroupItem>
-                    <ListGroupItem>
-                        This is another comment.
-                        <footer style={{float: "right", fontSize: "0.8rem", marginTop: "0.8rem"}}>
-                            Mark Micket - 11/12/2021 | <Card.Link>Reply</Card.Link>
-                        </footer>
-                    </ListGroupItem>
+
+                    ))}
+                    
                 </ListGroup>
                 <Card.Body>
-                    <Button>Comment</Button>
+                    <Button onClick={() => leaveComment(post.id)}>Leave Comment</Button>
                 </Card.Body>
         </Card>
     );

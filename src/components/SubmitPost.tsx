@@ -1,79 +1,97 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import {Button, Card, Col, Form, Row} from "react-bootstrap";
+import {Button, Card, Col, Form, Modal, ModalProps, Row} from "react-bootstrap";
 import { postPostAsync } from "../slices/postSlice";
+import { Omit, BsPrefixProps } from "react-bootstrap/esm/helpers";
 
-const SubmitPost : React.FC = () => {
+function SubmitPost(props:any){
 
     const dispatch = useDispatch();
 
     let initialPost = {
+        id: 0,
         title: "",
-        text: "",
-        imageURL: "https://testimageurl.com"
+        postText: "",
+        imageURL: "",
+        profile: {
+            id: 0,
+            first_name: "",
+            last_name: "",
+            profile_img: "",
+            header_img: "",
+            about_me: ""
+        },
+        comments: []
     }
 
     const [post, setPost] = useState(initialPost);
 
-    const dispatchPost = (event: React.FormEvent<HTMLFormElement>) => {
+    const dispatchPost = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
-
-        // dispatch
         dispatch(postPostAsync(post));
     };
 
+    function closeSubmit(event: React.MouseEvent<HTMLButtonElement>){
+        dispatchPost(event);
+        props.onHide();
+    }
+
     return(
-        <Card>
-            <Card.Header>
-                <h1>New Post</h1>
-            </Card.Header>
-            <Card.Body>
+        <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+            id="createPostModal"
+            >
+            <Modal.Header closeButton>
+                <Modal.Title>
+                    New Post
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form>
+                    {/* Picture Input */}
+                    <Form.Group as={Row} className="mb-3" controlId="">
+                        <Col sm={11}>
+                            <Form.Control 
+                                placeholder="image URL"
+                                id="image"
+                                onChange={(event)=> setPost({...post, imageURL: event.target.value})} />
+                        </Col>
+                    </Form.Group>
 
-            <Form onSubmit={dispatchPost}>
-                {/* Picture Input */}
-                <Form.Group as={Row} className="mb-3" controlId="">
-                    <Form.Label column sm={1}>
-                        Photo
-                    </Form.Label>
-                    <Col sm={11}>
-                        <Form.Control type="file"
-                         onChange={(event)=> setPost({...post, imageURL: "https://testimageurl.com/"})} />
-                    </Col>
-                </Form.Group>
+                    {/* Title Input */}
+                    <Form.Group as={Row} className="mb-3" controlId="">
+                        <Col sm={11}>
+                            <Form.Control
+                                placeholder="Post Title"
+                                style={{height: "25px"}}
+                                id="link"
+                                onChange={(event)=> setPost({...post, title: event.target.value})}
+                            />
+                        </Col>
+                    </Form.Group>
 
-                {/* Title Input */}
-                <Form.Group as={Row} className="mb-3" controlId="">
-                    <Form.Label column sm={1}>Link</Form.Label>
-                    <Col sm={11}>
-                        <Form.Control
-                            as="textarea"
-                            placeholder=""
-                            style={{height: "25px"}}
-                            id="link"
-                            onChange={(event)=> setPost({...post, title: event.target.value})}
-                        />
-                    </Col>
-                </Form.Group>
-
-                {/* Text Input */}
-                <Form.Group as={Row} className="mb-3" controlId="">
-                    <Form.Label column sm={2}>What is on your mind?</Form.Label>
-                    <Col sm={12}>
-                        <Form.Control
-                            as="textarea"
-                            placeholder=""
-                            id="text"   
-                            style={{height: "100px"}}
-                            onChange={(event)=> setPost({...post, text: event.target.value})}
-                        />
-                    </Col>
-                </Form.Group>
-
+                    {/* Text Input */}
+                    <Form.Group as={Row} className="mb-3" controlId="">
+                        <Col sm={12}>
+                            <Form.Control
+                                as="textarea"
+                                placeholder="Post"
+                                id="text"   
+                                style={{height: "100px"}}
+                                onChange={(event)=> setPost({...post, postText: event.target.value})}
+                            />
+                        </Col>
+                    </Form.Group>
+                </Form>
+            </Modal.Body>
+            <Modal.Footer>
                 {/* Submit Button */}
-                <Button type="submit">Post to ReverB</Button>
-            </Form>
-            </Card.Body>
-        </Card>
+                <Button type="button" onClick={closeSubmit}>Post to Reverb</Button>
+            </Modal.Footer>
+        </Modal>
     );
 }
 

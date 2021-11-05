@@ -1,3 +1,7 @@
+import { Profile } from "./profileModel";
+
 export interface Comment {
-    commentText: String
+    commentId: number,
+    commentText: String,
+    profile: Profile
 }
