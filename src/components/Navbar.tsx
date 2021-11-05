@@ -24,17 +24,17 @@ const NavigationBar:React.FC<NavigationBarProps> = ({loggedIn}:{loggedIn:string}
     const history = useHistory();
 
     // The method that will be used to do the 'search'.
-    const searchHandler = (props:string) => {    
-        console.log(props)
-        return props;
-    }
+    // const searchHandler = (props:string) => {    
+    //     console.log(props)
+    //     return props;
+    // }
 
     // Handles the form submitting. Used to stop it from refreshing the page as well as
     // having it 'search'.
-    const formHandler = (event:any) => {
-        searchHandler(search);
-        event.preventDefault();
-    }
+    // const formHandler = (event:any) => {
+    //     searchHandler(search);
+    //     event.preventDefault();
+    // }
     let sideNavBar = <></>;
     if(!loggedIn){
         sideNavBar = <div style={{float:"left"}}>
@@ -117,21 +117,6 @@ const NavigationBar:React.FC<NavigationBarProps> = ({loggedIn}:{loggedIn:string}
                     />
                     Profile
                 </Nav.Link>
-
-                {/* The form takes in the on submit to make sure the page
-                    does not refresh on submit. It also calls the search function. */}
-                <Form className="text-center" 
-                    onSubmit={(e)=>formHandler(e)}
-                    style={{paddingLeft:"4px", paddingRight:"4px"}}
-                >
-                    <input type="search"
-                    className="form-control" 
-                    placeholder="Search..." 
-                    value={search}
-                    onChange={(e)=>setSearch(e.target.value)}
-                    aria-label="Search"
-                    />
-                </Form>
 
                 {/* The link to the friends page. */}
                 <Nav.Link as={Link} to={"/friends"} onClick={()=>history.push("/friends")} eventKey="friends-link">

@@ -49,7 +49,7 @@ describe('logged in navbar', () => {
         </BrowserRouter>
     </Provider>
   );
-    expect(getByText(/Profile/i)).toBeInTheDocument();
+    expect(getByText("Profile")).toBeInTheDocument();
   })
   it('should show friends', ()=>{
     const { getByText } = render(
