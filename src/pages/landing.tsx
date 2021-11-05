@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button,Container, Card} from 'react-bootstrap'
+import { Container, Card } from 'react-bootstrap'
 import Logo from '../assets/images/rev-logo.png'
 const Landing = ()=> {
 
@@ -21,9 +21,9 @@ const Landing = ()=> {
                 <Card style={{width:"600px",height:"250px",borderWidth:"10px",borderRadius:"10px", borderColor:"#B9B9BA",backgroundColor:"#B9B9BA"}}>
                     <Card.Title>Reverb</Card.Title>
                 <Card.Text>
-                    Reverb is a new social media for users that allow you to collaborate and communicate with other users. 
-                    Users can customize their “Stage” user profiles and listen in to other users’ posts from around the world. 
-                    If someone’s post really reverberates with a user, they can “ReverB” it or just give it a passing vibe check. 
+                    Reverb is a new social media for users that allow you to collaborate and communicate with other users.
+                    Users can customize their “Stage” user profiles and listen in to other users’ posts from around the world.
+                    If someone’s post really reverberates with a user, they can “ReverB” it or just give it a passing vibe check.
                 </Card.Text>
                 </Card>
                 </Container>

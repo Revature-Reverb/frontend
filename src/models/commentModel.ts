@@ -2,6 +2,7 @@ import { Profile } from "./profileModel";
 
 export interface Comment {
     commentId: number,
-    commentText: String,
+    commentText: string,
+    date: string,
     profile: Profile
 }

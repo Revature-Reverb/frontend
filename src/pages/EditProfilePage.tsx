@@ -7,7 +7,7 @@ export default function EditProfilePage() {
     return(
         <div>
             <Row>
-                <EditProfile />    
+                <EditProfile />
             </Row>
         </div>
     )

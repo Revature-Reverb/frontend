@@ -49,12 +49,15 @@ function EditProfile() {
             <Card>
                  <div className="form_input-group">
                     <label htmlFor="first_name">First Name</label>
+
                     <input className="form_input" type="text" name="first_name" placeholder="First name" value={input.first_name} 
+
                     onChange={handleChange} required />
                 </div>
 
                 <div className="form_input-group">
                     <label htmlFor="last_name">Last Name</label>
+
                     <input className="form_input" type="textbox" name="last_name" placeholder="Last name"  value={input.last_name} 
                     onChange={handleChange} required />
                 </div>
@@ -62,6 +65,7 @@ function EditProfile() {
                 <div className="form_input-group">
                     <label htmlFor="last_name">Birthday</label>
                     <input className="form_input" type="textbox" name="birthday" placeholder="Birthday"  value={input.birthday} 
+
                     onChange={handleChange} required />
                 </div>
 
@@ -79,7 +83,7 @@ function EditProfile() {
                 
                 <div className="form_input-group">
                     <label htmlFor="profile_img">Select Profile Image</label>
-                    <input className="form_input" type="text" name="profile_img" placeholder="Profile Image url"  value={input.profile_img} 
+                    <input className="form_input" type="text" name="profile_img" placeholder="Profile Image url"  value={input.profile_img}
                     onChange={handleChange} required />
                 </div>
 
