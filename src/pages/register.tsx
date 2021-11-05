@@ -4,8 +4,22 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase'
 import { Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Register() {
+
+  // Registering user into backend database
+  const registerUser = (token: string) => {
+
+    const url = 'http://localhost:8080/api/user/register';
+    const header = {
+      'Authorization': token,
+      'Content-Type': 'application/json'
+    };
+    axios.post(url, '',  {headers: header, withCredentials: true}  )
+      .then(response => console.log("RESPONSE", response))
+      .catch(err => console.log(err));
+  }
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -15,11 +29,15 @@ export default function Register() {
     event.preventDefault();
 
     if (emailRef.current !== null && passwordRef.current !== null) {
+      // Creating a user within firebase, a user object is returned which contains its token
       createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
-        .then((userCredential) => {
-          // Signed in 
+        .then(async (userCredential) => {
           const user = userCredential.user;
-          console.log("Registered user: ", user);
+          // Call back end to register user
+          const token = await userCredential.user.getIdToken(true);
+
+          registerUser(token);
+
           alert("Registered user: " + user);
           // ...
         })
@@ -27,7 +45,6 @@ export default function Register() {
           const errorCode = error.code;
           const errorMessage = error.message;
           alert(errorMessage);
-          console.log("Register user error msg: ", errorMessage);
           // ..
         });
     }

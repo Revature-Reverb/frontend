@@ -3,7 +3,6 @@ import { auth } from "../firebase";
 import { Token } from "../models/tokenModel";
 import { getToken } from '../remote/reverb-api/token.api'
 import { Credentials } from "../models/credModel";
-import userSlice from "./userSlice";
 
 export type TokenState = Token[];
 
@@ -38,7 +37,7 @@ export const authSlice = createSlice({
                 // do nothing
             })
             .addCase(setTokenAsync.fulfilled, (state, action) => {
-                console.log (action.payload.token);
+                console.log ("From setTokenAsync extraReducer: ", action.payload.token);
                 return [action.payload];
 			})
             .addCase(setTokenAsync.rejected, (state, action) => {

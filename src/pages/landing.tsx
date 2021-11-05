@@ -28,7 +28,7 @@ const Landing = ()=> {
                 </Card>
                 </Container>
             </div>
-            </>
+        </>
     )
 }
 
