@@ -8,7 +8,7 @@ export const getNumLikes = async (postId: number): Promise<Likes> => {
 }
 
 export const likePost = async (postId: number) => {
-    reverbClientWithAuth.get<void>('/api/like/like-post/' + postId);
+    reverbClientWithAuth.put<void>('/api/like/like-post/' + postId);
 }
 
 export const checkIfPostCanBeLiked = async (postId: number): Promise<boolean> => {
