@@ -65,7 +65,7 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
                     <ListGroupItem>
                         {comment.commentText}
                         <footer style={{ float: "right", fontSize: "0.8rem", marginTop: "0.8rem" }}>
-                            {comment.profile.first_name} {comment.profile.last_name} | {comment.date}
+                            <Link to={`profile/${comment.profile.id}`}>{comment.profile.first_name} {comment.profile.last_name}</Link> | {comment.date}
                         </footer>
                     </ListGroupItem>
 
