@@ -9,9 +9,10 @@ function SubmitPost(props:any){
     const dispatch = useDispatch();
 
     let initialPost = {
+        id: 0,
         title: "",
         postText: "",
-        imageURL: "https://testimageurl.com",
+        imageURL: "",
         profile: {
             id: 0,
             first_name: "",
@@ -27,7 +28,6 @@ function SubmitPost(props:any){
 
     const dispatchPost = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
-        // dispatch
         dispatch(postPostAsync(post));
     };
 
@@ -57,7 +57,7 @@ function SubmitPost(props:any){
                             <Form.Control 
                                 placeholder="image URL"
                                 id="image"
-                                onChange={(event)=> setPost({...post, imageURL: "https://testimageurl.com/"})} />
+                                onChange={(event)=> setPost({...post, imageURL: event.target.value})} />
                         </Col>
                     </Form.Group>
 
