@@ -1,7 +1,7 @@
-import { Grid, TextField } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { useState } from 'react';
 import { Card } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import "./EditProfile.css";
 
 function EditProfile() {

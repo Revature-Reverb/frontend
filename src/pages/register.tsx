@@ -1,4 +1,4 @@
-import React, { FC, useRef } from 'react'
+import React, { useRef } from 'react'
 import { Form, Button, Card } from 'react-bootstrap'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase'
@@ -42,7 +42,6 @@ export default function Register() {
           // ...
         })
         .catch((error) => {
-          const errorCode = error.code;
           const errorMessage = error.message;
           alert(errorMessage);
           // ..

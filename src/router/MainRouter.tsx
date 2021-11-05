@@ -16,14 +16,14 @@ import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { logout } from '../slices/authSlice'
 import ProfilePage from "../pages/ProfilePage";
 import EditProfilePage from "../pages/EditProfilePage";
-import TestPage from "../pages/testPage";
-export default function MainRouter(props: any) {
 
-  const history = useHistory();
+
+interface MainRouterProps{
+  loggedIn:string
+}
+
+const MainRouter:React.FC<MainRouterProps> = ({loggedIn}:{loggedIn:string}) => {
   const dispatch = useAppDispatch();
-  
-  // Logged in state being tracked in Redux store, referenced with useAppSelector
-  const loggedIn = useAppSelector(state => state.auth[0].token);
 
   // Logout now dispatching to store to update state
   const doLogout = () => {
@@ -43,9 +43,6 @@ export default function MainRouter(props: any) {
           <Route exact path="/search">
             <Search />
           </Route>
-          <Route exact path="/event">
-            <Event />
-          </Route>
           <Route exact path="/settings">
             <Settings />
           </Route>
@@ -61,9 +58,6 @@ export default function MainRouter(props: any) {
           <Route exact path="/logout">
             {doLogout}
           </Route>
-          {/* <Route path="/" component={TestPage}>
-                        <TestPage />
-                    </Route> */}
           <Route path="/">
             <Feed/>
           </Route>
@@ -95,3 +89,5 @@ export default function MainRouter(props: any) {
     </>
   )
 }
+
+export default MainRouter

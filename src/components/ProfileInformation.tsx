@@ -1,17 +1,10 @@
 import React, { useEffect } from "react";
 import { Button, Card, Stack } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import defaultImage from '../blankUserIcon.png';
-import Logo from '../reverb_logo2.png';
 import { useDispatch, useSelector } from "react-redux";
-import axios from 'axios';
 import { Grid } from "@material-ui/core";
 import { getProfileAsync, selectProfile } from "../slices/profileSlice";
-import { Profile } from "../models/profileModel";
 
-let userName = 'Craig';
-let profileBody = 'This is just a placeholder for whatever is to come from the profile body'
-let imageSource = false;
 
 export default function ProfileInformation() {
     const profile = useSelector(selectProfile);
@@ -41,7 +34,7 @@ export default function ProfileInformation() {
     useEffect(() => {
         // dispatch(getUserAsync(dud));
         dispatch(getProfileAsync(profile));
-      }, []);
+      }, [dispatch, profile]);
 
     const goToEditProfile = () => {
         history.push("/editProfile");
