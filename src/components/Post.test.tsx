@@ -17,7 +17,10 @@ describe('Post testing', () => {
         last_name: '',
         profile_img: '',
         header_img: '',
-        about_me: ''
+        about_me: '',
+        birthday: '',
+        hobby: '',
+        location: ''
     }
 
     const aPost: PostModel = {
@@ -32,7 +35,7 @@ describe('Post testing', () => {
     const { getByText } = render(
       <Provider store={store}>
           <BrowserRouter>
-            <Post post={aPost} leaveComment={undefined}/>
+            <Post post={aPost} leaveComment={undefined} shouldUpdateLikes={[]}/>
           </BrowserRouter>
       </Provider>
     );

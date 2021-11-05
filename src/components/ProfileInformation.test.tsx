@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 describe('ProfileInformation testing', () => {
 
-  it('should show My first name', ()=>{
+  it('should show Edit Profile', ()=>{
 
     const { getByText } = render(
       <Provider store={store}>
@@ -16,7 +16,7 @@ describe('ProfileInformation testing', () => {
           </BrowserRouter>
       </Provider>
     );
-    expect(getByText("My first name")).toBeInTheDocument();
+    expect(getByText("Edit Profile")).toBeInTheDocument();
   })
 
 });

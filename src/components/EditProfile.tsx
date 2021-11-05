@@ -8,7 +8,7 @@ import { Profile } from '../models/profileModel';
 import { getProfileAsync, selectProfile, updateProfileAsync } from '../slices/profileSlice';
 import "./EditProfile.css";
 
-function EditProfile() {
+export default function EditProfile() {
     useEffect(() => {
         // dispatch(getUserAsync(dud));
         dispatch(getProfileAsync(profile));
@@ -108,4 +108,4 @@ function EditProfile() {
 
 }
 
-export default EditProfile;
+

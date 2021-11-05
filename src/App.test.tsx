@@ -2,23 +2,21 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
-import {register, unregister} from './serviceWorker';
+import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App'
 
-describe('The ServiceWorker page', () => {
+describe('App testing', () => {
 
-  it('should show Reverb', ()=>{
+  it('should show First Name', ()=>{
+
     const { getByText } = render(
       <Provider store={store}>
           <BrowserRouter>
-            {register()}
-            {unregister()}
             <App/>
           </BrowserRouter>
       </Provider>
     );
     expect(getByText("Reverb")).toBeInTheDocument();
   })
-});
 
+});
