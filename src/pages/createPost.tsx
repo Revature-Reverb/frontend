@@ -1,11 +1,11 @@
 import React from 'react'
 import SubmitPost from '../components/SubmitPost'
 
-const CreatePost = ()=> {
+const createPost = ()=> {
 
     return(
         <SubmitPost></SubmitPost>
     );
 }
 
-export default CreatePost
+export default createPost
