@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Search from "../pages/Search";
+
 import { useAppDispatch } from "../app/hooks";
 import { logout } from '../slices/authSlice';
 import CreatePost from "../pages/createPost";
@@ -12,6 +12,7 @@ import Feed from "../pages/feed";
 import Register from "../pages/register";
 import Login from "../pages/login";
 import Landing from "../pages/landing";
+import Search from "../pages/Search";
 
 interface MainRouterProps{
   loggedIn:string
