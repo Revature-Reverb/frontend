@@ -5,6 +5,7 @@ import { useAppDispatch } from '../app/hooks'
 import { Link } from 'react-router-dom'
 import { setTokenAsync } from '../slices/authSlice'
 import { reverbClientWithAuth } from '../remote/reverb-api/reverbClient'
+import swal from 'sweetalert';
 
 export default function Login() {
 
@@ -19,12 +20,12 @@ export default function Login() {
 
     if (emailRef.current !== null && passwordRef.current !== null) {
 
-      let email: string = emailRef.current.value;
-      let password: string = passwordRef.current.value;
-      
+      const email: string = emailRef.current.value;
+      const password: string = passwordRef.current.value;
+
       // Token is set to store on login
       await dispatch(setTokenAsync({email, password}));
-      
+
       // Call to backend on successful log in that ensures user is already stored in our database, if it is not then the user is added to the database.
       reverbClientWithAuth.post("/api/user/login");
 
@@ -35,7 +36,7 @@ export default function Login() {
     <Container className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh" }}
     >
-      <div className="w-100" style={{ maxWidth: '400px' }}>
+      <div className="w-100" style={{ maxWidth: '400px', marginRight: 150 }}>
         <Card>
           <Card.Body>
             <h2 className="text-center mb-4">Login</h2>
@@ -51,9 +52,6 @@ export default function Login() {
               <Button className="w-100 mt-2" type="submit" onClick={loginAccount}>Login</Button>
               {/* <Button className="w-100 mt-2" type="submit" onClick={checkAuth}>Login</Button> */}
             </Form>
-            <div className="text-center">
-              <Link to="/register">Register a new account</Link>
-            </div>
           </Card.Body>
         </Card>
       </div>

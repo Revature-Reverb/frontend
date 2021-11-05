@@ -30,8 +30,8 @@ describe('logged in navbar', () => {
 
 });
 describe('logged in navbar', () => {
-  
-  it('should show home', ()=>{  
+
+  it('should show home', ()=>{
     const { getByText } = render(
     <Provider store={store}>
         <BrowserRouter>
@@ -41,7 +41,7 @@ describe('logged in navbar', () => {
   );
     expect(getByText("Home")).toBeInTheDocument();
   })
-  it('should show profile', ()=>{  
+  it('should show profile', ()=>{
     const { getByText } = render(
     <Provider store={store}>
         <BrowserRouter>
@@ -51,7 +51,7 @@ describe('logged in navbar', () => {
   );
     expect(getByText(/Profile/i)).toBeInTheDocument();
   })
-  it('should show friends', ()=>{  
+  it('should show friends', ()=>{
     const { getByText } = render(
     <Provider store={store}>
         <BrowserRouter>
@@ -61,7 +61,7 @@ describe('logged in navbar', () => {
   );
     expect(getByText('Friends')).toBeInTheDocument();
   })
-  it('should show settings', ()=>{  
+  it('should show settings', ()=>{
     const { getByText } = render(
     <Provider store={store}>
         <BrowserRouter>
@@ -71,7 +71,7 @@ describe('logged in navbar', () => {
   );
     expect(getByText(/Settings/i)).toBeInTheDocument();
   })
-  it('should show logout', ()=>{  
+  it('should show logout', ()=>{
     const { getByText } = render(
     <Provider store={store}>
         <BrowserRouter>

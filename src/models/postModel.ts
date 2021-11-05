@@ -3,9 +3,10 @@ import { Comment } from "./commentModel";
 
 export interface PostModel {
     id: number,
-    title: String,
-    postText: String,
-    imageURL: String,
+    title: string,
+    postText: string,
+    imageURL: string,
+    date: string,
     profile: Profile,
     comments: Comment[]
-};
+}

@@ -42,8 +42,8 @@ const NavigationBar:React.FC<NavigationBarProps> = ({loggedIn}:{loggedIn:string}
     width: 150, height:"100vh", minHeight:"450px", fontSize:"24px",lineHeight:"30px"}}
                 className="justify-content-center">
         <Nav className="mr-auto"></Nav>
-        <Nav defaultActiveKey="home" 
-        className="flex-column justify-content-center text-center" 
+        <Nav defaultActiveKey="home"
+        className="flex-column justify-content-center text-center"
         style={{position:"absolute", top:"0px", height:"100vh"}}>
 
 
