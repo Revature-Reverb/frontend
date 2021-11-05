@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { Button, Card, Col, Form, ListGroup, ListGroupItem, Row } from "react-bootstrap";
-import { propTypes } from "react-bootstrap/esm/Image";
-import { Profile } from '../models/profileModel';
+import { Button, Card, ListGroup, ListGroupItem, Row } from "react-bootstrap";
 import { PostModel } from '../models/postModel'
 import { Likes } from "../models/likesModel";
 import { checkIfPostCanBeLiked, getNumLikes, likePost } from "../remote/reverb-api/likes.api";
@@ -14,7 +12,10 @@ const Post = ({ post, leaveComment }: { post: PostModel, leaveComment: any }) =>
     const [canLike, setCanLike] = useState(false);
 
     const updateLikes = () => {
-        getNumLikes(post.id).then((data) => { setLikes(data) });
+        getNumLikes(post.id)
+        .then(
+            (data) => { setLikes(data) }
+        );
     }
 
     const likePostFunc = () => {

@@ -20,12 +20,12 @@ export default function Login() {
 
     if (emailRef.current !== null && passwordRef.current !== null) {
 
-      let email: string = emailRef.current.value;
-      let password: string = passwordRef.current.value;
-      
+      const email: string = emailRef.current.value;
+      const password: string = passwordRef.current.value;
+
       // Token is set to store on login
       await dispatch(setTokenAsync({email, password}));
-      
+
       // Call to backend on successful log in that ensures user is already stored in our database, if it is not then the user is added to the database.
       reverbClientWithAuth.post("/api/user/login");
 

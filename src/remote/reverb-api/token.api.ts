@@ -3,6 +3,7 @@ import swal from "sweetalert";
 import { auth } from "../../firebase";
 import { Token } from "../../models/tokenModel";
 
+
 export const getToken = async (email: string, password: string): Promise<Token> => {
     // Error handling for firebase authentication on login
     try{

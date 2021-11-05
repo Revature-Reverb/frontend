@@ -1,5 +1,5 @@
 import { PostModel } from "../../models/postModel";
-import { reverbClient, reverbClientWithAuth } from './reverbClient'
+import { reverbClientWithAuth } from './reverbClient'
 
 export const createPost = async (neoPost: PostModel): Promise<PostModel> => {
   const {data: post} = await reverbClientWithAuth.post<PostModel>('/api/post/submit', neoPost);

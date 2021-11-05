@@ -1,4 +1,3 @@
-import { AnyPtrRecord } from "dns";
 import React, { useState } from "react";
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
@@ -6,7 +5,7 @@ import { createComment } from "../remote/reverb-api/comment.api";
 import { getPostsAsync } from "../slices/postSlice";
 
 function SubmitComment(props: any) {
-    let initialComment = {
+    const initialComment = {
         commentId: 0,
         commentText: "",
         date: "",
@@ -26,11 +25,14 @@ function SubmitComment(props: any) {
     const dispatchComment = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         console.log("tried to send comment with post id " + props.postId);
-        createComment(props.postId, comment).then(() => { dispatch(getPostsAsync({})) });
+        createComment(props.postId, comment)
+            .then(
+                () => { dispatch(getPostsAsync({})) }
+            );
     };
 
     function closeSubmit(event: React.MouseEvent<HTMLButtonElement>) {
-        if (comment.commentText != "") {
+        if (comment.commentText !== "") {
             dispatchComment(event);
             setComment(initialComment);
         }

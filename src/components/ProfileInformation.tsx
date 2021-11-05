@@ -10,29 +10,7 @@ export default function ProfileInformation() {
     const profile = useSelector(selectProfile);
     const dispatch = useDispatch();
     const history = useHistory();
-    // let dud: User= {
-    //     userid: "0",
-    //     email: "fake@email.com",
-    //     profile: {
-    //         id: 0,
-    //         firstname: "my first name",
-    //         lastname: "my last name",
-    //         about_me:"about me"
-    //     }
-    // };
-
-    // let profile: Profile = {
-    //     id: 0,
-    //     first_name: "My first name",
-    //     last_name: "My last name",
-    //     profile_img: "https://simg.nicepng.com/png/small/128-1280406_view-user-icon-png-user-circle-icon-png.png",
-    //     header_img: "https://static.onecms.io/wp-content/uploads/sites/28/2021/05/06/portand-oregon-PORTLANDTG0521.jpg",
-    //     about_me: "I like to eat food in general."
-    // }
-
-
     useEffect(() => {
-        // dispatch(getUserAsync(dud));
         dispatch(getProfileAsync(profile));
       }, [dispatch, profile]);
 
