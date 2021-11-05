@@ -21,14 +21,14 @@ const Post = ({ post, leaveComment }: { post: PostModel, leaveComment: any }) =>
     }
 
     const likePostFunc = () => {
-        likePost(post.id).then((successful) => {
-            if (successful) {
-                //post was liked successfully
-                //makes it so user cannot press like button again
-                setCanLike(false);
-                updateLikes();
-            }
-        })
+        likePost(post.id).then(() => {
+            //post was liked successfully
+            //makes it so user cannot press like button again
+            setCanLike(false);
+            updateLikes();
+        }).catch(
+            //unsuccessful
+        )
     }
 
     //checks to see if the post can be liked
@@ -43,7 +43,7 @@ const Post = ({ post, leaveComment }: { post: PostModel, leaveComment: any }) =>
                 <Card.Title>{"" + post.title}</Card.Title>
                 <Card.Subtitle>{"" + post.profile.first_name} {"" + post.profile.last_name}</Card.Subtitle>
                 <Card.Text>Date</Card.Text>
-                <Button onClick={() => likePostFunc()} variant="warning" 
+                <Button onClick={() => likePostFunc()} variant="warning"
                     style={{ float: 'right', marginTop: "-5rem" }} disabled={!canLike}>{canLike ? "ReverB!" : "Oh Yeah"}</Button>
                 <Card.Subtitle style={{ float: 'right', marginTop: "-2.5rem" }}>{likes.numLikes} ReverBs</Card.Subtitle>
             </Card.Header>
