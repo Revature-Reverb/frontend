@@ -48,10 +48,10 @@ const MainRouter:React.FC<MainRouterProps> = ({loggedIn}:{loggedIn:string}) => {
             <Friends />
           </Route>
           <Route exact path="/profile">
-            <ProfilePage/>
+            <ProfilePage beep={true}/>
           </Route>
           <Route exact path="/profile/:id">
-            <ProfilePage/>
+            <ProfilePage beep={false}/>
           </Route>
           <Route exact path="/editProfile">
             <EditProfilePage/>
