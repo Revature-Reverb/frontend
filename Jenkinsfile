@@ -29,7 +29,7 @@ pipeline {
         stage('Run Coverage Test') {
           steps {
             echo 'Test coverage...'
-            sh 'npm run test:cov'
+            sh 'npm run test:cov .'
             echo 'Successfully ran test coverage'
           }
         }
@@ -42,6 +42,8 @@ pipeline {
       steps {
         withSonarQubeEnv(installationName: 'SonarCloud', credentialsId: 'a') {
           echo 'Starting Sonar...'
+          // sh 'npm run test:cov .'
+          sh "cat ./coverage/lcov.info"
           sh "${scannerHome}/bin/sonar-scanner"
           echo 'Successfully ran Sonar'
         }
@@ -85,15 +87,17 @@ pipeline {
         footer = 'Jenkins Discord Notifier'
         url = 'https://discord.com/api/webhooks/905935341721092118/Wrz7wszOrsJL5SJkNqomcB4Pq1iR_BEF_Z1mcuaEJRkAtdXsVd2dmEBnyKLRmr6L9mDM'
 
-        GIT_AUTHOR_EMAIL = sh (
-          script: "git --no-pager show -s --format='%ae'",
-          returnStdout: true
-        ).trim()
+        // GIT_AUTHOR_EMAIL = sh (
+        //   script: "git --no-pager show -s --format='%ae'",
+        //   returnStdout: true
+        // ).trim()
+
+        GIT_NAME = ${env.GIT_NAME}
 
         description = """**Build:** ${env.BUILD_NUMBER}
         **Status:** ${status}
         **Changes:**
-        - `${commit}` *${GIT_COMMIT_MESSAGE}* - ${GIT_AUTHOR_EMAIL}"""
+        - `${commit}` *${GIT_COMMIT_MESSAGE}* - ${GIT_NAME}"""
 
         discordSend description: "${description}", footer: "${footer}", link: env.BUILD_URL, result: currentBuild.currentResult, title: "${title}", webhookURL: "${url}"
       }
