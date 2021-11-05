@@ -92,12 +92,15 @@ pipeline {
         //   script: "git --no-pager show -s --format='%ae'",
         //   returnStdout: true
         // ).trim()
-
+        GIT_AUTHOR = sh(
+          script: "git show -s --pretty=\"%an <%ae>\" ${GIT_COMMIT}",
+          returnStdout: true
+        )
 
         description = """**Build:** ${env.BUILD_NUMBER}
         **Status:** ${status}
         **Changes:**
-        - `${commit}` *${GIT_COMMIT_MESSAGE}* - """
+        - `${commit}` *${GIT_COMMIT_MESSAGE}* - ${GIT_AUTHOR}"""
         // ${GIT_COMMITTER_EMAIL}
         discordSend description: "${description}", footer: "${footer}", link: env.BUILD_URL, result: currentBuild.currentResult, title: "${title}", webhookURL: "${url}"
       }
