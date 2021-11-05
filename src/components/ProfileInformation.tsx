@@ -1,17 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Stack } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Grid } from "@material-ui/core";
-import { getProfileAsync, selectProfile } from "../slices/profileSlice";
+import { getProfileAsync, getProfileByIdAsync, selectProfile } from "../slices/profileSlice";
+import { checkProfileOwnership } from "../remote/reverb-api/profile.api";
 
 
 export default function ProfileInformation() {
     const profile = useSelector(selectProfile);
     const dispatch = useDispatch();
     const history = useHistory();
+    const params: {id: string} = useParams();
+    const [showEditButton, setShowEditButton] = useState(false);
     useEffect(() => {
-        dispatch(getProfileAsync(profile));
+        if(Object.keys(params).length == 0) {
+            dispatch(getProfileAsync(profile));
+            setShowEditButton(true);
+        } else {
+            dispatch(getProfileByIdAsync(params.id));
+            checkProfileOwnership(params.id).then((owns) => {
+                setShowEditButton(owns);
+            })
+        }
+        
+
       }, []);
 
     const goToEditProfile = () => {
@@ -32,7 +45,7 @@ export default function ProfileInformation() {
                 <Card.Text style={{ backgroundColor: 'skyblue'}}>
                 {profile.about_me}
                 </Card.Text>
-                <Button variant="primary" onClick={goToEditProfile}>Edit Profile</Button>
+                {showEditButton ? <Button variant="primary" onClick={goToEditProfile}>Edit Profile</Button> : <></>}
             </Card.Body>
         </Card>
         </Grid>
