@@ -65,7 +65,7 @@ const Post = ({ post, leaveComment }: { post: PostModel, leaveComment: any }) =>
 
             </ListGroup>
             <Card.Body>
-                <Button onClick={() => leaveComment("",post.id)}>Leave Comment</Button>
+                <Button onClick={() => leaveComment(post.id)}>Leave Comment</Button>
             </Card.Body>
         </Card>
     );
