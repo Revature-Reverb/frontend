@@ -1,39 +1,15 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
 import {Button, Col, Form, Modal, Row} from "react-bootstrap";
-import { postPostAsync } from "../slices/postSlice";
 
 function SubmitPost(props:any){
 
-    const dispatch = useDispatch();
-
-    const initialPost = {
-        id: 0,
-        title: "",
-        postText: "",
-        imageURL: "",
-        date: "",
-        profile: {
-            id: 0,
-            first_name: "",
-            last_name: "",
-            profile_img: "",
-            header_img: "",
-            about_me: ""
-        },
-        comments: []
-    }
-
-    const [post, setPost] = useState(initialPost);
-
-    const dispatchPost = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-        dispatch(postPostAsync(post));
-    };
-
     function closeSubmit(event: React.MouseEvent<HTMLButtonElement>){
-        dispatchPost(event);
-        props.onHide();
+        if(props.post.title!="" && props.post.postText!="") {
+            props.onHide();
+            props.dispatchPost();
+        } else {
+            alert("Posts must have a title and body!");
+        }
     }
 
     return(
@@ -44,7 +20,7 @@ function SubmitPost(props:any){
             centered
             id="createPostModal"
             >
-            <Modal.Header closeButton>
+            <Modal.Header closeButton >
                 <Modal.Title>
                     New Post
                 </Modal.Title>
@@ -52,36 +28,33 @@ function SubmitPost(props:any){
             <Modal.Body>
                 <Form>
                     {/* Picture Input */}
-                    <Form.Group as={Row} className="mb-3" controlId="">
+                    <Form.Group as={Row} className="mb-3">
                         <Col sm={11}>
                             <Form.Control
                                 placeholder="image URL"
-                                id="image"
-                                onChange={(event)=> setPost({...post, imageURL: event.target.value})} />
+                                onChange={(event)=> props.setPost({...props.post, imageURL: event.target.value})} />
                         </Col>
                     </Form.Group>
 
                     {/* Title Input */}
-                    <Form.Group as={Row} className="mb-3" controlId="">
+                    <Form.Group as={Row} className="mb-3">
                         <Col sm={11}>
                             <Form.Control
                                 placeholder="Post Title"
                                 style={{height: "25px"}}
-                                id="link"
-                                onChange={(event)=> setPost({...post, title: event.target.value})}
+                                onChange={(event)=> props.setPost({...props.post, title: event.target.value})}
                             />
                         </Col>
                     </Form.Group>
 
                     {/* Text Input */}
-                    <Form.Group as={Row} className="mb-3" controlId="">
+                    <Form.Group as={Row} className="mb-3">
                         <Col sm={12}>
                             <Form.Control
                                 as="textarea"
-                                placeholder="Post"
-                                id="text"   
+                                placeholder="Post"  
                                 style={{height: "100px"}}
-                                onChange={(event)=> setPost({...post, postText: event.target.value})}
+                                onChange={(event)=> props.setPost({...props.post, postText: event.target.value})}
                             />
                         </Col>
                     </Form.Group>
