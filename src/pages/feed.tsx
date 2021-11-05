@@ -41,7 +41,7 @@ const Feed = () => {
       />
 
 
-      {posts.map(post => (<Post post={post} leaveComment={leaveComment}/>))}
+      {posts.map(post => (<Post post={post} leaveComment={leaveComment}/>)).reverse()}
     </>
   );
 }

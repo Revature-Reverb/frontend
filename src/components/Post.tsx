@@ -9,30 +9,28 @@ import { checkIfPostCanBeLiked, getNumLikes, likePost } from "../remote/reverb-a
 
 const Post = ({ post, leaveComment }: { post: PostModel, leaveComment: any }) => {
 
-    const initialLikes: Likes = {
-        numLikes: 0,
-        postId: post.id
-    }
+    const initialLikes: number = 0;
     const [likes, setLikes] = useState(initialLikes);
-    const [canLike, setCanLike] = useState(true);
+    const [canLike, setCanLike] = useState(false);
 
     const updateLikes = () => {
-        getNumLikes(post.id).then((numLikesReturn) => { setLikes(numLikesReturn) });
+        getNumLikes(post.id).then((data) => { setLikes(data) });
     }
 
     const likePostFunc = () => {
-        likePost(post.id).then((successful) => {
-            if (successful) {
-                //post was liked successfully
-                //makes it so user cannot press like button again
-                setCanLike(false);
-                updateLikes();
-            }
+        likePost(post.id).then(() => {
+            //post was liked successfully
+            //makes it so user cannot press like button again
+            setCanLike(false);
+            updateLikes();
+        }).catch((e) => {
+            //unsuccessful
+            console.log(e)
         })
     }
 
     //checks to see if the post can be liked
-    checkIfPostCanBeLiked(post.id).then(canLikeReturn => setCanLike(canLikeReturn));
+    checkIfPostCanBeLiked(post.id).then(canLikeReturn => setCanLike(!canLikeReturn));
 
     //updates the number of likes
     updateLikes();
@@ -42,10 +40,10 @@ const Post = ({ post, leaveComment }: { post: PostModel, leaveComment: any }) =>
             <Card.Header>
                 <Card.Title>{"" + post.title}</Card.Title>
                 <Card.Subtitle>{"" + post.profile.first_name} {"" + post.profile.last_name}</Card.Subtitle>
-                <Card.Text>Date</Card.Text>
-                <Button onClick={() => likePostFunc()} variant="warning" 
+                <Card.Text>{""+post.date}</Card.Text>
+                <Button onClick={() => likePostFunc()} variant="warning"
                     style={{ float: 'right', marginTop: "-5rem" }} disabled={!canLike}>{canLike ? "ReverB!" : "Oh Yeah"}</Button>
-                <Card.Subtitle style={{ float: 'right', marginTop: "-2.5rem" }}>{likes.numLikes} ReverBs</Card.Subtitle>
+                <Card.Subtitle style={{ float: 'right', marginTop: "-2.5rem" }}>{likes} ReverBs</Card.Subtitle>
             </Card.Header>
             <Card.Body>
                 <Card.Img variant='top' src={"" + post.imageURL} />
@@ -55,11 +53,11 @@ const Post = ({ post, leaveComment }: { post: PostModel, leaveComment: any }) =>
             </Card.Body>
             <ListGroup className="list-group-flush">
                 {post.comments.map(comment => (
-
+                    
                     <ListGroupItem>
                         {comment.commentText}
                         <footer style={{ float: "right", fontSize: "0.8rem", marginTop: "0.8rem" }}>
-                            {comment.profile.first_name} {comment.profile.last_name} | <Card.Link>Reply</Card.Link>
+                            {comment.profile.first_name} {comment.profile.last_name} | {comment.date}
                         </footer>
                     </ListGroupItem>
 
