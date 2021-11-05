@@ -1,17 +1,14 @@
 import React, { useState } from 'react'
-import {Nav, NavLink, Form, Stack} from 'react-bootstrap'
+import {Nav, NavLink, Form} from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
-import Logo from '../reverb_logo2.png'
+import Logo from '../assets/images/reverb_logo2.png'
 //import RevLogo from '../rev-logo.png'
-import ProfileImage from '../logo.svg'
+import ProfileImage from '../assets/images/blankUserIcon.png'
 import { Link, useHistory } from 'react-router-dom'
-import MainRouter from '../router/MainRouter'
-import { useAppSelector, useAppDispatch } from '../app/hooks'
-import { logout } from '../slices/authSlice'
 
 // The props that are allowed to be passed to this.
-interface Props {
-    children?:JSX.Element
+interface NavigationBarProps {
+    loggedIn:string
 }
 
 
@@ -19,14 +16,12 @@ interface Props {
 // through destructuring.
 
 // {children}:{children:JSX.Element}
-const NavigationBar:React.FC<Props> = () =>
+const NavigationBar:React.FC<NavigationBarProps> = ({loggedIn}:{loggedIn:string}) =>
 {
     // The state of the input typed in the search field.
     // Used later when calling the searchHandler.
     const [search, setSearch] = useState("")
     const history = useHistory();
-
-    const loggedIn = useAppSelector(state => state.auth[0].token);
 
     // The method that will be used to do the 'search'.
     const searchHandler = (props:string) => {    
@@ -64,12 +59,13 @@ const NavigationBar:React.FC<Props> = () =>
             </Nav.Link>
             <ul className="nav flex-column mb-auto text-center">
 
+                {/* The link to the Login page. */}
                 <Nav.Link as={Link} to={"/login"}  onClick={()=>history.push("/login")}
                 className="justify-content-center" eventKey="login-link">
                     Login
                 </Nav.Link>
 
-                {/* The link to the friends page. */}
+                {/* The link to the Register page. */}
                 <Nav.Link as={Link} to={"/register"} onClick={()=>history.push("/register")} eventKey="register-link">
                     Register
                 </Nav.Link>

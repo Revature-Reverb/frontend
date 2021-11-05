@@ -4,22 +4,14 @@ import './index.css';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import Stack from 'react-bootstrap/Stack';
-import MainRouter from './router/MainRouter';
-import Navbar  from './components/Navbar';
 import { BrowserRouter as Router } from 'react-router-dom';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <Router>
-        
-        <Stack direction="horizontal" gap={5}>
-        <Navbar/>
-        <div className="justify-content-center" style={{width:"100%", overflowY:"scroll"}} >
-            <MainRouter/>
-        </div>
-        </Stack>
+        <App/>
       </Router>
     </Provider>
   </React.StrictMode>,

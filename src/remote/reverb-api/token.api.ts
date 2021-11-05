@@ -4,6 +4,7 @@ import { auth } from "../../firebase";
 import { Token } from "../../models/tokenModel";
 
 export const getToken = async (email: string, password: string): Promise<Token> => {
+    // Error handling for firebase authentication on login
     try{
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const token = await userCredential.user.getIdTokenResult(true)
@@ -14,8 +15,5 @@ export const getToken = async (email: string, password: string): Promise<Token> 
         swal("Uh oh!", errorCode, "error");
         return errorCode;
     }
-
-
-    // console.log("userCredential: ", userCredential);
 
 }
