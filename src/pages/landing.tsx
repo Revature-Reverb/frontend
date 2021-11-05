@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button,Container, Card} from 'react-bootstrap'
-import Logo from '../rev-logo.png'
+import Logo from '../assets/images/rev-logo.png'
 const Landing = ()=> {
 
     const toReturn = <>Landing Page</>
