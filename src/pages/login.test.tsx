@@ -17,7 +17,7 @@ describe('login test', () => {
     );
     expect(getByText("Email")).toBeInTheDocument();
   })
-  it('should show Register a new account', ()=>{
+  it('should show Password', ()=>{
     const { getByText } = render(
     <Provider store={store}>
         <BrowserRouter>
@@ -25,7 +25,7 @@ describe('login test', () => {
         </BrowserRouter>
     </Provider>
     );
-    expect(getByText("Register a new account")).toBeInTheDocument();
+    expect(getByText("Password")).toBeInTheDocument();
   })
 
 });

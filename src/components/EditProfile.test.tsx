@@ -2,19 +2,21 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { store } from '../app/store';
-import Register from './register';
+import EditProfile from './EditProfile';
 import { BrowserRouter } from 'react-router-dom';
 
-describe('The Register page', () => {
+describe('EditProfile testing', () => {
 
-  it('should show Email', ()=>{
+  it('should show About Me', ()=>{
+
     const { getByText } = render(
       <Provider store={store}>
           <BrowserRouter>
-            <Register/>
+            <EditProfile/>
           </BrowserRouter>
       </Provider>
     );
-    expect(getByText("Email")).toBeInTheDocument();
+    expect(getByText("About Me")).toBeInTheDocument();
   })
+
 });
