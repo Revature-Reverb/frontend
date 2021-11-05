@@ -26,9 +26,10 @@ const Post = ({ post, leaveComment }: { post: PostModel, leaveComment: any }) =>
             //makes it so user cannot press like button again
             setCanLike(false);
             updateLikes();
-        }).catch(
+        }).catch((e) => {
             //unsuccessful
-        )
+            console.log(e)
+        })
     }
 
     //checks to see if the post can be liked
