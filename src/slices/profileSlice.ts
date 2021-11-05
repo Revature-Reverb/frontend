@@ -1,7 +1,7 @@
 /* eslint-disable no-empty-pattern */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Profile } from "../models/profileModel";
-import { getProfile } from "../remote/reverb-api/profile.api";
+import { getProfile, updateProfile } from "../remote/reverb-api/profile.api";
 import { store } from "../app/store";
 
 export type ProfileState = Profile;
@@ -16,12 +16,26 @@ const initialState: ProfileState = {
 }
 
 export const getProfileAsync = createAsyncThunk<Profile, object>(
-    'profile/get/async',
+    'profile/pyt/async',
     async ( { }, thunkAPI ) =>
     {
         try
         {
             return await getProfile();
+        } catch ( error )
+        {
+            return thunkAPI.rejectWithValue( error );
+        }
+    }
+);
+
+export const updateProfileAsync = createAsyncThunk<Profile, Profile>(
+    'profile/put/async',
+    async ( updatedProfile:Profile, thunkAPI ) =>
+    {
+        try
+        {
+            return await updateProfile(updatedProfile);
         } catch ( error )
         {
             return thunkAPI.rejectWithValue( error );
@@ -47,6 +61,19 @@ const profileSlice = createSlice( {
                 return action.payload;
             } )
             .addCase( getProfileAsync.rejected, ( state, action ) =>
+            {
+                console.log( action.error );
+            } )
+            .addCase( updateProfileAsync.pending, ( state ) =>
+            {
+                //do nothing
+            } )
+            .addCase( updateProfileAsync.fulfilled, ( state, action ) =>
+            {
+                // console.log(action.payload.first_name);
+                return action.payload;
+            } )
+            .addCase( updateProfileAsync.rejected, ( state, action ) =>
             {
                 console.log( action.error );
             } )

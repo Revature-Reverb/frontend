@@ -34,7 +34,7 @@ export default function ProfileInformation() {
     useEffect(() => {
         // dispatch(getUserAsync(dud));
         dispatch(getProfileAsync(profile));
-      }, [dispatch, profile]);
+      }, []);
 
     const goToEditProfile = () => {
         history.push("/editProfile");
@@ -47,7 +47,7 @@ export default function ProfileInformation() {
                 <Card.Img src={profile.header_img} style={{ border: '2px solid blue', height:'96px'}}/>
             </Stack>
             <Card.Body>
-                <Card.Title style={{ textAlign:'center' }}>{profile.first_name}</Card.Title>
+                <Card.Title style={{ textAlign:'center' }}>{profile.first_name} {profile.last_name}</Card.Title>
                 <Card.Text style={{ backgroundColor: 'skyblue'}}>
                 {profile.about_me}
                 </Card.Text>
