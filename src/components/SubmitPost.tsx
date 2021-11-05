@@ -12,6 +12,7 @@ function SubmitPost(props:any){
         title: "",
         postText: "",
         imageURL: "",
+        date: "",
         profile: {
             id: 0,
             first_name: "",

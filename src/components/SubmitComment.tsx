@@ -8,6 +8,7 @@ function SubmitComment(props: any) {
     const initialComment = {
         commentId: 0,
         commentText: "",
+        date: "",
         profile: {
             id: 0,
             first_name: "",

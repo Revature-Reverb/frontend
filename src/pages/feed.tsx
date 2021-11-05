@@ -20,9 +20,15 @@ const Feed = () => {
   const [modalShowComment, setModalShowComment] = useState(false);
 
   const [postId, setPostId] = useState(0);
+  const [replyTo, setReplyTo] = useState("");
 
-  const leaveComment = (npostId: number) => {
-    setPostId(npostId);
+  const leaveComment = (re: string, postId: number) => {
+    if(re != "") {
+      setReplyTo(re);
+    } else {
+      setReplyTo("");
+    }
+    setPostId(postId);
     setModalShowComment(true);
   }
 
@@ -41,10 +47,11 @@ const Feed = () => {
         show={modalShowComment}
         onHide={() => setModalShowComment(false)}
         postId={postId}
+        replyTo={replyTo}
       />
 
 
-      {posts.map(post => (<Post post={post} leaveComment={leaveComment}/>))}
+      {posts.map(post => (<Post post={post} leaveComment={leaveComment}/>)).reverse()}
     </>
   );
 }

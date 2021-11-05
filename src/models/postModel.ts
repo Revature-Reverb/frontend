@@ -6,6 +6,7 @@ export interface PostModel {
     title: string,
     postText: string,
     imageURL: string,
+    date: string,
     profile: Profile,
     comments: Comment[]
 }
