@@ -5,6 +5,7 @@ import { auth } from '../firebase'
 import { Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 export default function Register() {
 
@@ -35,17 +36,14 @@ export default function Register() {
           const user = userCredential.user;
           // Call back end to register user
           const token = await userCredential.user.getIdToken(true);
-
           registerUser(token);
 
-          alert("Registered user: " + user);
-          // ...
+          swal("Success!", "Registration complete, please log in!", "success");
         })
         .catch((error) => {
-          const errorCode = error.code;
+          const errorCode = error.code.slice(5);
           const errorMessage = error.message;
-          alert(errorMessage);
-          // ..
+          swal("Uh oh!", errorCode, "error")
         });
     }
   }
@@ -54,7 +52,7 @@ export default function Register() {
     <Container className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh" }}
     >
-      <div className="w-100" style={{ maxWidth: '400px' }}>
+      <div className="w-100" style={{ maxWidth: '400px', marginRight: 150 }}>
         <Card>
           <Card.Body>
             <h2 className="text-center mb-4">Sign Up</h2>
@@ -71,10 +69,6 @@ export default function Register() {
             </Form>
           </Card.Body>
         </Card>
-        <div className="w-100, text-center mt-2">
-          <span>Already have an account? </span>
-          <Link to="/login">Login</Link>
-        </div>
       </div>
     </Container>
   )

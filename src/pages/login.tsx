@@ -1,14 +1,11 @@
 import React, { useRef } from 'react'
 import { Form, Button, Card } from 'react-bootstrap'
-import { auth } from '../firebase'
-import { signInWithEmailAndPassword } from "firebase/auth"
 import { Container } from 'react-bootstrap'
-import { store } from '../app/store'
 import { useAppDispatch } from '../app/hooks'
 import { Link } from 'react-router-dom'
 import { setTokenAsync } from '../slices/authSlice'
-import axios from 'axios'
 import { reverbClientWithAuth } from '../remote/reverb-api/reverbClient'
+import swal from 'sweetalert';
 
 export default function Login() {
 
@@ -39,7 +36,7 @@ export default function Login() {
     <Container className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh" }}
     >
-      <div className="w-100" style={{ maxWidth: '400px' }}>
+      <div className="w-100" style={{ maxWidth: '400px', marginRight: 150 }}>
         <Card>
           <Card.Body>
             <h2 className="text-center mb-4">Login</h2>
@@ -55,9 +52,6 @@ export default function Login() {
               <Button className="w-100 mt-2" type="submit" onClick={loginAccount}>Login</Button>
               {/* <Button className="w-100 mt-2" type="submit" onClick={checkAuth}>Login</Button> */}
             </Form>
-            <div className="text-center">
-              <Link to="/register">Register a new account</Link>
-            </div>
           </Card.Body>
         </Card>
       </div>
