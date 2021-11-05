@@ -42,6 +42,7 @@ pipeline {
       steps {
         withSonarQubeEnv(installationName: 'SonarCloud', credentialsId: 'a') {
           echo 'Starting Sonar...'
+          
           // sh 'npm run test:cov .'
           sh "cat ./coverage/lcov.info"
           sh "${scannerHome}/bin/sonar-scanner"
