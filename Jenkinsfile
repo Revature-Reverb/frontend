@@ -45,6 +45,9 @@ pipeline {
           
           // sh 'npm run test:cov .'
           sh "cat ./coverage/lcov.info"
+          echo 'COVERAGE THINGS'
+          sh "cat sonar-project.properties"
+          echo 'COVERAGE'
           sh "${scannerHome}/bin/sonar-scanner"
           echo 'Successfully ran Sonar'
         }
@@ -88,18 +91,20 @@ pipeline {
         footer = 'Jenkins Discord Notifier'
         url = 'https://discord.com/api/webhooks/905935341721092118/Wrz7wszOrsJL5SJkNqomcB4Pq1iR_BEF_Z1mcuaEJRkAtdXsVd2dmEBnyKLRmr6L9mDM'
 
-        // GIT_AUTHOR_EMAIL = sh (
+        // GIT_COMMITTER_EMAIL = sh(
         //   script: "git --no-pager show -s --format='%ae'",
         //   returnStdout: true
         // ).trim()
-
-        GIT_NAME = ${env.GIT_NAME}
+        GIT_AUTHOR = sh(
+          script: "git show -s --pretty=\"%an <%ae>\" ${GIT_COMMIT}",
+          returnStdout: true
+        )
 
         description = """**Build:** ${env.BUILD_NUMBER}
         **Status:** ${status}
         **Changes:**
-        - `${commit}` *${GIT_COMMIT_MESSAGE}* - ${GIT_NAME}"""
-
+        - `${commit}` *${GIT_COMMIT_MESSAGE}* - ${GIT_AUTHOR}"""
+        // ${GIT_COMMITTER_EMAIL}
         discordSend description: "${description}", footer: "${footer}", link: env.BUILD_URL, result: currentBuild.currentResult, title: "${title}", webhookURL: "${url}"
       }
     }
