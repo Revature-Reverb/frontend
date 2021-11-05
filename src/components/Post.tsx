@@ -47,13 +47,7 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
         <Card bg='light' style={{ width: "500px" }}>
             <Card.Header>
                 <Card.Title>{"" + post.title}</Card.Title>
-
-               
-
                 <Card.Subtitle><Link to={`profile/${post.profile.id}`}>{"" + post.profile.first_name} {"" + post.profile.last_name}</Link></Card.Subtitle>
-
-
-
                 <Card.Text>{"" + post.date}</Card.Text>
                 <Button onClick={() => likePostFunc()} variant="warning"
                     style={{ float: 'right', marginTop: "-5rem" }} disabled={!canLike}>{canLike ? "ReverB!" : "Oh Yeah"}</Button>
