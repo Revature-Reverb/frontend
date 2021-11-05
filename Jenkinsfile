@@ -45,6 +45,9 @@ pipeline {
           
           // sh 'npm run test:cov .'
           sh "cat ./coverage/lcov.info"
+          echo 'COVERAGE THINGS'
+          sh "cat sonar-project.properties"
+          echo 'COVERAGE'
           sh "${scannerHome}/bin/sonar-scanner"
           echo 'Successfully ran Sonar'
         }
