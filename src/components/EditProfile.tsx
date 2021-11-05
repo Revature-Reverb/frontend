@@ -38,7 +38,7 @@ function EditProfile() {
 
     return (
         <div>
-             <Grid container direction="column" alignItems="center" justify="center">
+            <Grid container direction="column" alignItems="center" justify="center">
             <Card>
                  <div className="form_input-group">
                     <label htmlFor="first_name">First Name</label>

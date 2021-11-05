@@ -6,3 +6,7 @@ export const getProfile = async () => {
     
     return profile;
 }
+
+export const updateProfile = async () => {
+    const { data: profile } = await reverbClientWithAuth.put<Profile>("/profile/update");
+}
