@@ -7,7 +7,7 @@ import { getProfileAsync, getProfileByIdAsync, selectProfile } from "../slices/p
 import { checkProfileOwnership } from "../remote/reverb-api/profile.api";
 
 
-export default function ProfileInformation() {
+export default function ProfileInformation(props: any) {
     const profile = useSelector(selectProfile);
     const dispatch = useDispatch();
     const history = useHistory();
@@ -23,9 +23,7 @@ export default function ProfileInformation() {
                 setShowEditButton(owns);
             })
         }
-        
-
-      }, []);
+      }, [props.beep]); // beep beep :^)
 
     const goToEditProfile = () => {
         history.push("/editProfile");
