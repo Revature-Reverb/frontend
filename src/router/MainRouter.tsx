@@ -3,12 +3,12 @@ import Navbar from "../components/Navbar";
 import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
 import CreatePost from "../pages/createPost";
 import Feed from "../pages/feed";
-import Profile from "../pages/profile";
-import Search from "../pages/search";
+import Profile from "../pages/Profile";
+import Search from "../pages/Search";
 import Login from "../pages/login";
 import Register from "../pages/register";
-import Friends from "../pages/friends";
-import Settings from "../pages/settings";
+import Friends from "../pages/Friends";
+import Settings from "../pages/Settings";
 import Landing from "../pages/landing";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { logout } from '../slices/authSlice'
