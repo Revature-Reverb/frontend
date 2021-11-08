@@ -90,6 +90,23 @@ Page styling regulars:
   }
 }
 
-avbar{
-
+#navbar{
+  background-color:"#B9B9BA";
+  width: 150; 
+  height:"100vh";
+  min-height:"450px";
+  font-size:"24px";
+  line-height:"30px";
 }
+
+ul {
+  color: #ffff;
+  font-size: 38;
+}
+#feedBody{
+  align-items: center;
+}
+#postCard{
+  width:3fr
+}
+

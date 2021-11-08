@@ -44,7 +44,7 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
 
 
     return (
-        <Card bg='light' style={{ width: "500px" }}>
+        <Card id="postCard">
             <Card.Header>
                 <Card.Title>{"" + post.title}</Card.Title>
                 <Card.Subtitle><Link to={`profile/${post.profile.id}`}>{"" + post.profile.first_name} {"" + post.profile.last_name}</Link></Card.Subtitle>

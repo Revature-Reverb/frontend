@@ -96,35 +96,38 @@ const Feed = () => {
   }
 
   return (
-    <>
-      <Button variant="primary" onClick={() => leavePost()}>
-        Create Post
-      </Button>
-      <Button variant="primary" onClick={() => updateAll()}>
-        Refresh
-      </Button>
+    <div id="feedBody">
+      <div> 
+        <Button id="postBtn" variant="primary" onClick={() => leavePost()}>
+          Create Post
+        </Button>
+        <Button id="refreshBtn" variant="primary" onClick={() => updateAll()}>
+          Refresh
+        </Button>
+      </div>
+      <div>
+        <SubmitPost
+          setPost={setPost}
+          post={post}
+          dispatchPost={dispatchPost}
+          show={modalShowPost}
+          onHide={() => setModalShowPost(false)}
+        />
 
-      <SubmitPost
-        setPost={setPost}
-        post={post}
-        dispatchPost={dispatchPost}
-        show={modalShowPost}
-        onHide={() => setModalShowPost(false)}
-      />
-
-      <SubmitComment
-        setComment={setComment}
-        comment={comment}
-        show={modalShowComment}
-        dispatchComment={dispatchComment}
-        onHide={() => setModalShowComment(false)}
-        postId={postId}
-      />
+        <SubmitComment
+          setComment={setComment}
+          comment={comment}
+          show={modalShowComment}
+          dispatchComment={dispatchComment}
+          onHide={() => setModalShowComment(false)}
+          postId={postId}
+        />
 
 
-      {posts.map((post) => (<Post shouldUpdateLikes={shouldUpdateLikes}
-        post={post} leaveComment={leaveComment} key={post.id} />)).reverse()}
-    </>
+        {posts.map((post) => (<Post shouldUpdateLikes={shouldUpdateLikes}
+          post={post} leaveComment={leaveComment} key={post.id} />)).reverse()}
+      </div>
+    </div>
   );
 }
 
