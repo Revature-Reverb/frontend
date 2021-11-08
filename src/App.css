@@ -1,3 +1,55 @@
+/*
+Page styling regulars:
+  
+  Primary colors: 
+    orange: #F26925
+    white: #FFFFF
+    dark gray: #474C55
+  
+  secondary colors:
+    blue: #72A4C2
+    yellow: #FCB414
+    light gray: #B9B9BA
+
+  h1:
+    font: futura-medium
+    size: 48
+  h2:
+    font: futura-medium
+    size: 38
+  h3:
+    font: futura-book
+    size 30
+    letter space: 3%
+  text: 
+    font: futura
+    size: 24
+    letter space: 3%
+  comments:
+    font: futura-book
+    size: 18
+    letter space: 3%
+  subtext:
+    font: futura-book
+    size: 12
+    letter space: 3%
+*/
+@font-face {
+  font-family: futura-bold;
+  src: url('./assets/fonts/Futura-Std-Bold.otf');
+}
+@font-face {
+  font-family: futura-book;
+  src: url('./assets/fonts/Futura-Std-Book.otf');
+}
+@font-face {
+  font-family: futura-heavy;
+  src: url('./assets/fonts/Futura-Std-Heavy.otf');
+}
+@font-face {
+  font-family: futura-meduim;
+  src: url('./assets/fonts/Futura-Std-Medium.otf');
+}
 .App {
   text-align: center;
 }
@@ -36,4 +88,8 @@
   100% {
     transform: translateY(0px);
   }
+}
+
+avbar{
+
 }

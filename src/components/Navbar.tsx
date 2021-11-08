@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {Nav, NavLink, Form} from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
-import Logo from '../assets/images/reverb_logo2.png'
+import Logo from '../assets/images/reverb_logo_final_light.png'
 //import RevLogo from '../rev-logo.png'
 import ProfileImage from '../assets/images/blankUserIcon.png'
 import { Link, useHistory } from 'react-router-dom'
