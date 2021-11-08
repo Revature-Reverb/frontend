@@ -127,7 +127,7 @@ Page styling regulars:
 
 #loginCard button {
     border-color: #F26925;
-    background-color: transparent;
+    background-color: #F26925;
     max-width: 150px;
     min-height: 40px;
     border-radius: 13px;
@@ -147,10 +147,10 @@ Page styling regulars:
 }
 
 #landingCard {
-  background: #474C55;
-  color: white;
-  margin: 0;
-  border-radius: 20px;
+    background: #474C55;
+    color: white;
+    margin: 0;
+    border-radius: 20px;
 }
 
 #email,
