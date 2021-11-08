@@ -1,39 +1,89 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+    .App-logo {
+        animation: App-logo-float infinite 3s ease-in-out;
+    }
 }
 
 .App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
 }
 
 .App-link {
-  color: rgb(112, 76, 182);
+    color: rgb(112, 76, 182);
 }
 
 @keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.loginRow {
+    margin-right: 150px;
+}
+
+.loginRow h2 {
+    color: #474C55;
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+#loginDiv {
+    /* border: solid; */
+    min-width: '600px';
+    min-height: '500px';
+    text-align: center;
+}
+
+#loginCard {
+    background-color: #474C55;
+    color: white;
+    min-width: 600px;
+    min-height: 500px;
+    margin: 0;
+    border-radius: 20px;
+}
+
+#loginCard button {
+    border-color: #F26925;
+    background-color: #F26925;
+    max-width: 130px;
+    min-height: 40px;
+    border-radius: 13px;
+}
+
+#loginCard input {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    max-width: 350px;
+    /* min-height: 40px; */
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+#email,
+#password {
+    font-size: 36px;
 }
