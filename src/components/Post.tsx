@@ -5,6 +5,7 @@ import { Likes } from "../models/likesModel";
 import { checkIfPostCanBeLiked, getNumLikes, likePost } from "../remote/reverb-api/likes.api";
 import { selectPosts } from "../slices/postSlice";
 import { Link } from "react-router-dom";
+import ReverbIcon from "../assets/images/reverb_icon_final.png"
 
 
 const Post = ({ shouldUpdateLikes, post, leaveComment }: 
@@ -44,16 +45,15 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
 
 
     return (
-        <Card bg='light' style={{ width: "500px" }}>
+        <Card id="postCard">
             <Card.Header>
-                <Card.Title>{"" + post.title}</Card.Title>
-                <Card.Subtitle><Link to={`profile/${post.profile.id}`}>{"" + post.profile.first_name} {"" + post.profile.last_name}</Link></Card.Subtitle>
+                <h3>{"" + post.title}</h3>
+                <Card.Subtitle id="cardSubtitle"><Link to={`profile/${post.profile.id}`}>{"" + post.profile.first_name} {"" + post.profile.last_name}</Link></Card.Subtitle>
                 <Card.Text>{"" + post.date}</Card.Text>
-                <Button onClick={() => likePostFunc()} variant="warning"
-                    style={{ float: 'right', marginTop: "-5rem" }} disabled={!canLike}>{canLike ? "ReverB!" : "Oh Yeah"}</Button>
-                <Card.Subtitle style={{ float: 'right', marginTop: "-2.5rem" }}>{likes} ReverBs</Card.Subtitle>
+                <Button id="reverbButton" onClick={() => likePostFunc()} variant="warning"
+                    style={{ float: 'right', marginTop: "-5rem" }} disabled={!canLike}>{likes}<img id="reverbIcon" src={ReverbIcon} alt="Click to Reverb!"/></Button>
             </Card.Header>
-            <Card.Body>
+            <Card.Body id="postBody">
                 <Card.Img variant='top' src={"" + post.imageURL} />
                 <Card.Text>
                     {post.postText}
