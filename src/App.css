@@ -146,6 +146,13 @@ Page styling regulars:
     border-radius: 20px;
 }
 
+#landingCard {
+  background: #474C55;
+  color: white;
+  margin: 0;
+  border-radius: 20px;
+}
+
 #email,
 #password {
     font-family: 'futura-medium';
