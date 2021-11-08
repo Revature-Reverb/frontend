@@ -2,12 +2,14 @@ import React, { useRef } from 'react'
 import { Form, Button, Card } from 'react-bootstrap'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase'
-import { Container } from 'react-bootstrap'
-import { Link } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap'
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 
 export default function Register() {
+
+  const history = useHistory();
 
   // Registering user into backend database
   const registerUser = (token: string) => {
@@ -17,7 +19,7 @@ export default function Register() {
       'Authorization': token,
       'Content-Type': 'application/json'
     };
-    axios.post(url, '',  {headers: header, withCredentials: true}  )
+    axios.post(url, '', { headers: header, withCredentials: true })
       .then(response => console.log("RESPONSE", response))
       .catch(err => console.log(err));
   }
@@ -39,6 +41,7 @@ export default function Register() {
           registerUser(token);
 
           swal("Success!", "Registration complete, please log in!", "success");
+          history.push("/login");
         })
         .catch((error) => {
           const errorCode = error.code.slice(5);
@@ -52,24 +55,28 @@ export default function Register() {
     <Container className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh" }}
     >
-      <div className="w-100" style={{ maxWidth: '400px', marginRight: 150 }}>
-        <Card>
-          <Card.Body>
-            <h2 className="text-center mb-4">Sign Up</h2>
-            <Form>
-              <Form.Group id="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" ref={emailRef} required />
-              </Form.Group>
-              <Form.Group id="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" ref={passwordRef} required />
-              </Form.Group>
-              <Button className="w-100 mt-2" type="submit" onClick={registerAccount}>Sign Up</Button>
-            </Form>
-          </Card.Body>
-        </Card>
-      </div>
+      <Row className="loginRow">
+        <Col>
+          <h2>Register</h2>
+          <div id="loginDiv" className="d-flex">
+            <Card id="loginCard">
+              <Card.Body>
+                <Form id="inputLogin">
+                  <Form.Group id="email">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control type="email" ref={emailRef} required />
+                  </Form.Group>
+                  <Form.Group id="password">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" ref={passwordRef} required />
+                  </Form.Group>
+                  <Button className="w-100 mt-2" type="submit" onClick={registerAccount}>Sign Up</Button>
+                </Form>
+              </Card.Body>
+            </Card>
+          </div>
+        </Col>
+      </Row>
     </Container>
   )
 }

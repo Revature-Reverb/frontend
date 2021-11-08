@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Profile } from '../models/profileModel';
 import { getProfileAsync, selectProfile, updateProfileAsync } from '../slices/profileSlice';
-import "./EditProfile.css";
+// import "./EditProfile.css";
 
 export default function EditProfile() {
     useEffect(() => {
@@ -46,7 +46,7 @@ export default function EditProfile() {
     return (
         <div>
             <Grid container direction="column" alignItems="center" justify="center">
-            <Card>
+            <Card id="EditProfile">
                  <div className="form_input-group">
                     <label htmlFor="first_name">First Name</label>
 
@@ -63,6 +63,12 @@ export default function EditProfile() {
                 </div>
 
                 <div className="form_input-group">
+                    <label htmlFor="about_me">About Me</label>
+                    <textarea className="form_input" rows={10} name="about_me" placeholder="Your about me"  value={input.about_me}
+                    onChange={handleChange}  > </textarea>
+                </div>
+
+                <div className="form_input-group">
                     <label htmlFor="last_name">Birthday</label>
                     <input className="form_input" type="textbox" name="birthday" placeholder="Birthday"  value={input.birthday} 
 
@@ -70,7 +76,7 @@ export default function EditProfile() {
                 </div>
 
                 <div className="form_input-group">
-                    <label htmlFor="last_name">Hobby</label>
+                    <label htmlFor="last_name">Hobbies</label>
                     <input className="form_input" type="textbox" name="hobby" placeholder="Hobby"  value={input.hobby} 
                     onChange={handleChange} required />
                 </div>
@@ -92,15 +98,9 @@ export default function EditProfile() {
                     <input className="form_input" type="text" name="header_img" placeholder="Header Image url"  value={input.header_img}
                     onChange={handleChange} required />
                 </div>
-
-                <div className="form_input-group">
-                    <label htmlFor="about_me">About Me</label>
-                    <textarea className="form_input" rows={5} name="about_me" placeholder="Your about me"  value={input.about_me}
-                    onChange={handleChange}  > </textarea>
-                </div>
-
-                <button className="btn_color" type="submit" onClick={update} >Update</button><br />
-                <button className="cancel_color" type="submit" onClick={cancel} >Cancel</button><br />
+                <br /><br />
+                <button id = "UpdateProfile" type="submit" onClick={update} >Update</button><br />
+                <button id="CancelEdits" type="submit" onClick={cancel} >Cancel</button><br />
             </Card>
             </Grid>
         </div>
