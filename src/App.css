@@ -179,6 +179,7 @@ ul {
     border-radius: 2%;
     background-color: #474C55;
     color: white;
+}
 #loginDiv {
     /* border: solid; */
     min-width: '600px';
@@ -197,7 +198,7 @@ ul {
 
 #loginCard button {
     border-color: #F26925;
-    background-color: transparent;
+    background-color: #F26925;
     max-width: 150px;
     min-height: 40px;
     border-radius: 13px;
