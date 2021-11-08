@@ -51,7 +51,7 @@ Page styling regulars:
 }
 
 @font-face {
-    font-family: futura-meduim;
+    font-family: futura-medium;
     src: url('./assets/fonts/Futura-Std-Medium.otf');
 }
 
@@ -101,6 +101,7 @@ Page styling regulars:
 
 .loginRow h2 {
     color: #474C55;
+    font-family: 'futura-medium';
     font-size: 48px;
     margin-bottom: 20px;
 }
@@ -124,9 +125,11 @@ Page styling regulars:
 #loginCard button {
     border-color: #F26925;
     background-color: #F26925;
-    max-width: 130px;
+    max-width: 150px;
     min-height: 40px;
     border-radius: 13px;
+    font-family: futura-book;
+    font-size: 30px;
 }
 
 #loginCard input {
@@ -142,5 +145,6 @@ Page styling regulars:
 
 #email,
 #password {
+    font-family: 'futura-medium';
     font-size: 36px;
 }

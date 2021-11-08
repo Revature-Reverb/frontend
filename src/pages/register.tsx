@@ -3,11 +3,13 @@ import { Form, Button, Card } from 'react-bootstrap'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase'
 import { Container, Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 
 export default function Register() {
+
+  const history = useHistory();
 
   // Registering user into backend database
   const registerUser = (token: string) => {
@@ -39,6 +41,7 @@ export default function Register() {
           registerUser(token);
 
           swal("Success!", "Registration complete, please log in!", "success");
+          history.push("/login");
         })
         .catch((error) => {
           const errorCode = error.code.slice(5);
