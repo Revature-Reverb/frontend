@@ -30,22 +30,31 @@ export default function ProfileInformation(props: any) {
     }
     return(
         <Grid container direction="column" alignItems="center" justify="center">
-        <Card style={{ width: '35rem', border: '2px solid gray' }}>
+        <Card id="ProfilePage">
             <Stack direction={"horizontal"} gap={1}>
-                <Card.Img src={profile.profile_img} style={{ border: '2px solid black',borderRadius:"50%", height:'96px', width:'50%'}}/>
-                <Card.Img src={profile.header_img} style={{ border: '2px solid blue', height:'96px'}}/>
+                <Card.Img src={profile.profile_img} id="ProfileImg" />
+                <Card.Img src={profile.header_img} id="HeaderImg" />
             </Stack>
+            <br />
             <Card.Body>
-                <Card.Title style={{ textAlign:'center' }}>Name: {profile.first_name} {profile.last_name}</Card.Title>
-                <Card.Text style={{ textAlign:'center' }}>Birthday: {profile.birthday}</Card.Text>
-                <Card.Text style={{ textAlign:'center' }}>Hobbies: {profile.hobby}</Card.Text>
-                <Card.Text style={{ textAlign:'center' }}>Location: {profile.location}</Card.Text>
-                <Card.Text style={{ backgroundColor: 'skyblue'}}>
-                {profile.about_me}
+                <Card.Title id = "ProfileName">{profile.first_name} {profile.last_name}</Card.Title>
+                <br /><br />
+                <Card.Text id="AboutMe">
+                    <h5>About Me</h5>
+                    {profile.about_me}
                 </Card.Text>
-                {showEditButton ? <Button variant="primary" onClick={goToEditProfile}>Edit Profile</Button> : <></>}
+                <br />
+                <Card.Text id="AboutMe">
+                    <h5>Fast Facts</h5>
+                    Birthday: {profile.birthday}
+                    <br />
+                    Hobbies: {profile.hobby}
+                    <br />
+                    Location: {profile.location}
+                </Card.Text>
             </Card.Body>
         </Card>
+        {showEditButton ? <Button id="EditProfileButton" onClick={goToEditProfile}>Edit Profile</Button> : <></>}
         </Grid>
     )
 }
