@@ -5,6 +5,7 @@ import Logo from '../assets/images/reverb_logo_final_light.png'
 //import RevLogo from '../rev-logo.png'
 import ProfileImage from '../assets/images/blankUserIcon.png'
 import { Link, useHistory } from 'react-router-dom'
+import '../styling/navbar.css';
 
 // The props that are allowed to be passed to this.
 interface NavigationBarProps {
@@ -18,6 +19,10 @@ interface NavigationBarProps {
 // {children}:{children:JSX.Element}
 const NavigationBar:React.FC<NavigationBarProps> = ({loggedIn}:{loggedIn:string}) =>
 {
+    //font family and style for the links
+    const fontStyle = {
+        fontFamily: ''
+    }
     // The state of the input typed in the search field.
     // Used later when calling the searchHandler.
     const [search, setSearch] = useState("")
@@ -38,9 +43,9 @@ const NavigationBar:React.FC<NavigationBarProps> = ({loggedIn}:{loggedIn:string}
     let sideNavBar = <></>;
     if(!loggedIn){
         sideNavBar = <div style={{float:"left"}}>
-    <Navbar style={{backgroundColor:"#B9B9BA",
-    width: 150, height:"100vh", minHeight:"450px", fontSize:"24px",lineHeight:"30px"}}
-                className="justify-content-center">
+    <Navbar style={{backgroundColor:"#474C55",
+    width: 150, height:"100vh", minHeight:"450px",lineHeight:"30px", color:"#FFFFF", fontSize:"38"}}
+    className="justify-content-center" id="navbar">
         <Nav className="mr-auto"></Nav>
         <Nav defaultActiveKey="home"
         className="flex-column justify-content-center text-center"
@@ -52,16 +57,17 @@ const NavigationBar:React.FC<NavigationBarProps> = ({loggedIn}:{loggedIn:string}
                 <img
                     alt=""
                     src={Logo}
-                    width="120"
-                    height="70"
+                    width="100%"
+                    height=""
                     className="d-inline-block align-top"
                 />
             </Nav.Link>
-            <ul className="nav flex-column mb-auto text-center">
+            <ul className="nav flex-column mb-auto text-center" style={{color:"#FFFFF", fontSize:"38"}}>
 
                 {/* The link to the Login page. */}
                 <Nav.Link as={Link} to={"/login"}  onClick={()=>history.push("/login")}
-                className="justify-content-center" eventKey="login-link">
+                className="justify-content-center" eventKey="login-link"
+                >
                     Login
                 </Nav.Link>
 
@@ -80,10 +86,10 @@ const NavigationBar:React.FC<NavigationBarProps> = ({loggedIn}:{loggedIn:string}
     // Float left is needed to keep the other content right of the navbar instead of 
     // below it.
     sideNavBar = <div style={{float:"left"}} >
-    <Navbar style={{backgroundColor:"#B9B9BA",
-    width: 150, height:"100vh", minHeight:"450px", fontSize:"24px",lineHeight:"30px"}}
-                className="justify-content-center">
-        <Nav className="mr-auto"></Nav>
+    <Navbar style={{backgroundColor:"#474C55",
+    width: 150, height:"100vh", minHeight:"450px",lineHeight:"30px", color:"#FFFFF", fontSize:"38"}}
+    className="justify-content-center" id="navbar">
+        <Nav className="mr-auto" ></Nav>
         {/* The  100vh is used to make it the entire screen height.
             the top:0px is used to keep the content attached to the top of the screen.*/}
         <Nav defaultActiveKey="home" 
@@ -104,31 +110,15 @@ const NavigationBar:React.FC<NavigationBarProps> = ({loggedIn}:{loggedIn:string}
             </Nav.Link>
             <ul className="nav flex-column mb-auto text-center">
 
-                {/* The Profile Image above the word Profile.
-                    Clicking Either will change to the profile page. */}
+                {/* The link to the profile page */}
                 <Nav.Link as={Link} to={"/profile"}  onClick={()=>history.push("/profile")}
                 className="justify-content-center" eventKey="profile-link">
-                    <img
-                        alt=""
-                        src={ProfileImage}
-                        width="120"
-                        height="70"
-                        className="d-inline-block align-top"
-                    />
                     Profile
                 </Nav.Link>
 
-                {/* The link to the friends page. */}
-                <Nav.Link as={Link} to={"/friends"} onClick={()=>history.push("/friends")} eventKey="friends-link">
-                    Friends
-                </Nav.Link>
             </ul>
             
             {/* These elements are instead attached to the bottom. */}
-            {/* The link to the settings page. */}
-            <Nav.Link as={Link} to={"/settings"} eventKey="settings-link">
-                Settings
-            </Nav.Link>
 
             {/* The link to logout. */}
             <NavLink as={Link} to={"/logout"}
