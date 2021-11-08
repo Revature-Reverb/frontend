@@ -140,21 +140,46 @@ ul {
   color: #ffff;
   font-size: 38;
 }
+/* post feed */
 #feedBody{
-
+  transition-property: all;
+  transition-duration: 3s;
+  transition-timing-function: ease;
 }
 #postCard{
     text-align: left;
     margin-top: 50px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+#commentBody{
+  font-family: futura-book;
+  font-size: 18px;
+}
+
+#commentfFooter{
+  font-family: futura-book;
+  font-size: 12px;
 }
 
 #reverbIcon {
     width: 25px;
+    transition-property: all;
+    transition-duration: .5s;
+    transition-timing-function: ease-in-out;
+}
+
+#reverbIcon:hover {
+  transform: translateX(5px);
+  transition-property: all;
+  transition-duration: .5s;
+  transition-timing-function: ease-in-out;
 }
 
 #reverbButton {
     color: white;
     background-color: #F26925;
+    border-radius: 20px;
 }
 
 #feedButtons {
@@ -167,10 +192,23 @@ ul {
     margin: 0.5em;
 }
 
+#postBtn, 
+#refreshBtn,
+#leaveCommentBtn,
+#submitPostBtn,
+#submitCommentBtn{
+  background-color: #72A4C2;
+  border-color: #72A4C2;
+  border-radius: 20px;
+  font-family: futura-book;
+  font-size: 18px;
+}
+
 #postColumn {
     background-color: #474C55;
     padding-right: 10%;
     padding-left: 10%;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
 }
 
 #landingCard {
@@ -355,10 +393,39 @@ ul {
     color: white;
     font-family: futura-book;
 }
+#postBtn, 
+#refreshBtn,
+#leaveCommentBtn,
+#submitPostBtn,
+#submitCommentBtn,
+#loginCard button,
+#EditProfileButton,
+#UpdateProfile,
+#CancelEdits {
+  transition-property: all;
+  -webkit-transition-property: all;
+  transition-duration: .2s;
+  -webkit-transition-duration: .2s;
+  transition-timing-function: ease;
+  -webkit-transition-timing-function: ease;
+}
 
+#postBtn:hover, 
+#refreshBtn:hover,
+#leaveCommentBtn:hover,
+#submitPostBtn:hover,
+#submitCommentBtn:hover,
 #loginCard button:hover,
 #EditProfileButton:hover,
 #UpdateProfile:hover,
 #CancelEdits:hover {
-    font-weight: bold;
+  transition-property: all;
+  -webkit-transition-property: all;
+  transition-duration: .2s;
+  -webkit-transition-duration: .2s;
+  transition-timing-function: ease;
+  -webkit-transition-timing-function: ease;
+  font-weight: bold;
+  transform: scale(1.05);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
