@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
 import CreatePost from "../pages/createPost";
 import Feed from "../pages/feed";
-import Profile from "../pages/profile";
 import Login from "../pages/login";
 import Register from "../pages/register";
 import Landing from "../pages/landing";
