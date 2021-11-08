@@ -2,17 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
 import CreatePost from "../pages/createPost";
 import Feed from "../pages/feed";
-<<<<<<< HEAD
-import Profile from "../pages/profile";
-import Search from "../pages/Search";
 import Login from "../pages/login";
 import Register from "../pages/register";
-import Friends from "../pages/Friends";
-import Settings from "../pages/Settings";
-=======
-import Login from "../pages/login";
-import Register from "../pages/register";
->>>>>>> 54ed066132b61c1aa1158d75111b13037a8ecc6a
 import Landing from "../pages/landing";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { logout } from '../slices/authSlice'
