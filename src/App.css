@@ -90,6 +90,24 @@ Page styling regulars:
   }
 }
 
+h3 {
+    font-family: futura-book;
+    font-size: 30px;
+    letter-spacing: 3%;
+}
+
+#cardSubtitle {
+    font-family: futura-book;
+    font-size: 18px;
+    letter-spacing: 3%;
+}
+
+#postBody {
+    font-family: futura-book;
+    font-size: 24px;
+    letter-spacing: 3%;
+}
+
 #navbar{
   background-color:"#B9B9BA";
   width: 150; 
@@ -104,9 +122,34 @@ ul {
   font-size: 38;
 }
 #feedBody{
-  align-items: center;
+
 }
 #postCard{
-  width:3fr
+    text-align: left;
+    margin-top: 50px;
 }
 
+#reverbIcon {
+    width: 25px;
+}
+
+#reverbButton {
+    color: white;
+    background-color: #F26925;
+}
+
+#feedButtons {
+    float: right;
+    position: fixed;
+}
+
+#feedButtons button {
+    display: block;
+    margin: 0.5em;
+}
+
+#postColumn {
+    background-color: #474C55;
+    padding-right: 10%;
+    padding-left: 10%;
+}
