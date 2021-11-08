@@ -24,11 +24,12 @@ const Landing = ()=> {
                 width="210"
                 />
                 <Row className="justify-content-md-center">
-                    <Col md="6">
+                    <Col md="8">
                         <Card id="landingCard">
                             <Card.Text>
-                            <i>Reverb</i> is social network for Revature Employees! Users can customize their user profiles and view a stream of Revature posts from around the world.
-                            If someone’s post really reverberates with a user, they can “ReverB” it! 
+                            <i>Reverb</i> is social network for Revature Employees!
+                            Users can customize their user profiles and view a stream of Revature posts from around the world!
+                            If someone’s post "vibes" with a user, they can “ReverB” it! 
                             </Card.Text>
                         </Card>
                     </Col>
