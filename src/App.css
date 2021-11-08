@@ -153,3 +153,11 @@ ul {
     padding-right: 10%;
     padding-left: 10%;
 }
+
+#landingCard {
+    padding: 10%;
+    margin: 10%;
+    border-radius: 2%;
+    background-color: #474C55;
+    color: white;
+}
