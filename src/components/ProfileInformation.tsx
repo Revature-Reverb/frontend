@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Grid } from "@material-ui/core";
 import { getProfileAsync, getProfileByIdAsync, selectProfile } from "../slices/profileSlice";
 import { checkProfileOwnership } from "../remote/reverb-api/profile.api";
+import Image from 'react-bootstrap/Image'
 
 
 export default function ProfileInformation(props: any) {
@@ -13,14 +14,18 @@ export default function ProfileInformation(props: any) {
     const history = useHistory();
     const params: {id: string} = useParams();
     const [showEditButton, setShowEditButton] = useState(false);
+    const [doneLoading, setDoneLoading] = useState(false);
     useEffect(() => {
+        setDoneLoading(false);
         if(Object.keys(params).length == 0) {
             dispatch(getProfileAsync(profile));
             setShowEditButton(true);
+            setTimeout(() => setDoneLoading(true), 100);
         } else {
             dispatch(getProfileByIdAsync(params.id));
             checkProfileOwnership(params.id).then((owns) => {
                 setShowEditButton(owns);
+                setTimeout(() => setDoneLoading(true), 100);
             })
         }
       }, [props.beep]); // beep beep :^)
@@ -29,6 +34,7 @@ export default function ProfileInformation(props: any) {
         history.push("/editProfile");
     }
     return(
+        doneLoading ? (
         <Grid container direction="column" alignItems="center" justify="center">
         <Card style={{ width: '35rem', border: '2px solid gray' }}>
             <Stack direction={"horizontal"} gap={1}>
@@ -46,6 +52,7 @@ export default function ProfileInformation(props: any) {
                 {showEditButton ? <Button variant="primary" onClick={goToEditProfile}>Edit Profile</Button> : <></>}
             </Card.Body>
         </Card>
-        </Grid>
+        </Grid>) : (<Image src = {"https://app.revature.com/assets/images/ajax-loader-logo.0cd555cc.gif"} 
+        style={{height:'192px', width: '300px'}} fluid/>)
     )
 }
