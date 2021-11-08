@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button } from 'react-bootstrap';
+import { Button, Container, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import SubmitPost from '../components/SubmitPost'
 import { getPostsAsync, postPostAsync, selectPosts } from '../slices/postSlice'
@@ -96,38 +96,39 @@ const Feed = () => {
   }
 
   return (
-    <div id="feedBody">
-      <div> 
-        <Button id="postBtn" variant="primary" onClick={() => leavePost()}>
-          Create Post
-        </Button>
-        <Button id="refreshBtn" variant="primary" onClick={() => updateAll()}>
-          Refresh
-        </Button>
-      </div>
-      <div>
-        <SubmitPost
-          setPost={setPost}
-          post={post}
-          dispatchPost={dispatchPost}
-          show={modalShowPost}
-          onHide={() => setModalShowPost(false)}
-        />
-
-        <SubmitComment
-          setComment={setComment}
-          comment={comment}
-          show={modalShowComment}
-          dispatchComment={dispatchComment}
-          onHide={() => setModalShowComment(false)}
-          postId={postId}
-        />
-
-
+    <Container id="feedBody">
+      <Row>
+        <Col id="postColumn" xs={{span: 9, offset: 1}}>
         {posts.map((post) => (<Post shouldUpdateLikes={shouldUpdateLikes}
           post={post} leaveComment={leaveComment} key={post.id} />)).reverse()}
-      </div>
-    </div>
+        </Col>
+        <Col xs="2">
+          <div id="feedButtons"> 
+            <Button id="postBtn" variant="primary" onClick={() => leavePost()}>
+              Create Post
+            </Button>
+            <Button id="refreshBtn" variant="primary" onClick={() => updateAll()}>
+              Refresh
+            </Button>
+          </div>
+          <SubmitPost
+            setPost={setPost}
+            post={post}
+            dispatchPost={dispatchPost}
+            show={modalShowPost}
+            onHide={() => setModalShowPost(false)}
+          />
+          <SubmitComment
+            setComment={setComment}
+            comment={comment}
+            show={modalShowComment}
+            dispatchComment={dispatchComment}
+            onHide={() => setModalShowComment(false)}
+            postId={postId}
+          />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
