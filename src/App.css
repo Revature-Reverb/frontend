@@ -127,39 +127,69 @@ h3 {
     letter-spacing: 3%;
 }
 
-#navbar{
-  background-color:"#B9B9BA";
-  width: 150; 
-  height:"100vh";
-  min-height:"450px";
-  font-size:"24px";
-  line-height:"30px";
+#navbar {
+    background-color: "#B9B9BA";
+    width: 150;
+    height: "100vh";
+    min-height: "450px";
+    /* font-size: "24px";
+    line-height: "30px"; */
 }
 
-ul {
-  color: #ffff;
-  font-size: 38;
+#loginLink,
+#registerLink,
+#logoutLink {
+    color: white;
+    font-size: 38px;
+    font-family: 'futura-medium';
+    margin-top: 7vh;
+    padding-bottom: 15px;
 }
+
+#profileLink {
+    color: white;
+    font-size: 38px;
+    font-family: 'futura-medium';
+    margin-top: 7vh;
+}
+
+#loginLink:hover,
+#registerLink:hover,
+#profileLink:hover,
+#logoutLink:hover {
+    background-color: #F26925;
+}
+
+
+/* ul {
+    color: #ffff;
+    font-size: 38;
+} */
+
+
 /* post feed */
-#feedBody{
-  transition-property: all;
-  transition-duration: 3s;
-  transition-timing-function: ease;
+
+#feedBody {
+    transition-property: all;
+    transition-duration: 3s;
+    transition-timing-function: ease;
 }
-#postCard{
+
+#postCard {
     text-align: left;
     margin-top: 50px;
     border-radius: 20px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
-#commentBody{
-  font-family: futura-book;
-  font-size: 18px;
+
+#commentBody {
+    font-family: futura-book;
+    font-size: 18px;
 }
 
-#commentfFooter{
-  font-family: futura-book;
-  font-size: 12px;
+#commentfFooter {
+    font-family: futura-book;
+    font-size: 12px;
 }
 
 #reverbIcon {
@@ -170,10 +200,10 @@ ul {
 }
 
 #reverbIcon:hover {
-  transform: translateX(5px);
-  transition-property: all;
-  transition-duration: .5s;
-  transition-timing-function: ease-in-out;
+    transform: translateX(5px);
+    transition-property: all;
+    transition-duration: .5s;
+    transition-timing-function: ease-in-out;
 }
 
 #reverbButton {
@@ -203,16 +233,16 @@ ul {
     float: right;
 }
 
-#postBtn, 
+#postBtn,
 #refreshBtn,
 #leaveCommentBtn,
 #submitPostBtn,
-#submitCommentBtn{
-  background-color: #72A4C2;
-  border-color: #72A4C2;
-  border-radius: 20px;
-  font-family: futura-book;
-  font-size: 18px;
+#submitCommentBtn {
+    background-color: #72A4C2;
+    border-color: #72A4C2;
+    border-radius: 20px;
+    font-family: futura-book;
+    font-size: 18px;
 }
 
 #postColumn {
@@ -230,6 +260,7 @@ ul {
     background-color: #474C55;
     color: white;
 }
+
 #loginDiv {
     /* border: solid; */
     min-width: '600px';
@@ -405,7 +436,8 @@ ul {
     color: white;
     font-family: futura-book;
 }
-#postBtn, 
+
+#postBtn,
 #refreshBtn,
 #leaveCommentBtn,
 #submitPostBtn,
@@ -414,15 +446,15 @@ ul {
 #EditProfileButton,
 #UpdateProfile,
 #CancelEdits {
-  transition-property: all;
-  -webkit-transition-property: all;
-  transition-duration: .2s;
-  -webkit-transition-duration: .2s;
-  transition-timing-function: ease;
-  -webkit-transition-timing-function: ease;
+    transition-property: all;
+    -webkit-transition-property: all;
+    transition-duration: .2s;
+    -webkit-transition-duration: .2s;
+    transition-timing-function: ease;
+    -webkit-transition-timing-function: ease;
 }
 
-#postBtn:hover, 
+#postBtn:hover,
 #refreshBtn:hover,
 #leaveCommentBtn:hover,
 #submitPostBtn:hover,
@@ -431,13 +463,23 @@ ul {
 #EditProfileButton:hover,
 #UpdateProfile:hover,
 #CancelEdits:hover {
-  transition-property: all;
-  -webkit-transition-property: all;
-  transition-duration: .2s;
-  -webkit-transition-duration: .2s;
-  transition-timing-function: ease;
-  -webkit-transition-timing-function: ease;
-  font-weight: bold;
-  transform: scale(1.05);
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    transition-property: all;
+    -webkit-transition-property: all;
+    transition-duration: .2s;
+    -webkit-transition-duration: .2s;
+    transition-timing-function: ease;
+    -webkit-transition-timing-function: ease;
+    font-weight: bold;
+    transform: scale(1.05);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+#homeLink:hover {
+    transition-property: all;
+    -webkit-transition-property: all;
+    transition-duration: .2s;
+    -webkit-transition-duration: .2s;
+    transition-timing-function: ease;
+    -webkit-transition-timing-function: ease;
+    transform: scale(1.03);
 }
