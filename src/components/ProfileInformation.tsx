@@ -38,12 +38,12 @@ export default function ProfileInformation(props: any) {
         doneLoading ? (
         <Grid container direction="column" alignItems="center" justify="center">
         <Card id="ProfilePage">
-            <Stack direction={"horizontal"} gap={1}>
+            <Stack >
                 <Card.Img src={profile.profile_img} id="ProfileImg" />
                 <Card.Img src={profile.header_img} id="HeaderImg" />
             </Stack>
             <br />
-            <Card.Body>
+            <Card.Body id="profileBody">
                 <Card.Title id = "ProfileName">{profile.first_name} {profile.last_name}</Card.Title>
                 <br /><br />
                 <Card.Text id="AboutMe">
