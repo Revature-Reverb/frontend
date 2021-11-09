@@ -55,46 +55,6 @@ Page styling regulars:
     src: url('./assets/fonts/Futura-Std-Medium.otf');
 }
 
-.App {
-    text-align: center;
-}
-
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-float infinite 3s ease-in-out;
-    }
-}
-
-.App-header {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-}
-
-.App-link {
-    color: rgb(112, 76, 182);
-}
-
-@keyframes App-logo-float {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(10px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-}
-
 
 /*LOGIN & REGISTRATION*/
 
@@ -132,17 +92,42 @@ h3 {
     width: 150;
     height: "100vh";
     min-height: "450px";
-    font-size: "24px";
-    line-height: "30px";
+    /* font-size: "24px";
+    line-height: "30px"; */
 }
 
-ul {
+#loginLink,
+#registerLink,
+#logoutLink {
+    color: white;
+    font-size: 38px;
+    font-family: 'futura-medium';
+    margin-top: 7vh;
+    padding-bottom: 15px;
+}
+
+#profileLink {
+    color: white;
+    font-size: 38px;
+    font-family: 'futura-medium';
+    margin-top: 7vh;
+}
+
+#loginLink:hover,
+#registerLink:hover,
+#profileLink:hover,
+#logoutLink:hover {
+    background-color: #F26925;
+}
+
+
+/* ul {
     color: #ffff;
     font-size: 38;
-}
+} */
 
 
-/* POST FEED */
+/* post feed */
 
 #feedBody {
     transition-property: all;
@@ -274,10 +259,10 @@ ul {
 }
 
 #landingCard {
-  background: #474C55;
-  color: white;
-  margin: 5%;
-  border-radius: 20px;
+    background: #474C55;
+    color: white;
+    margin: 5%;
+    border-radius: 20px;
 }
 
 #email,
@@ -302,7 +287,7 @@ ul {
 }
 
 #EditProfile {
-    width: 600px;
+    width: 1000px;
     max-width: 1000px;
     margin: 1rem;
     padding: 2rem;
@@ -366,6 +351,30 @@ ul {
     margin-right: auto;
 }
 
+#editCol2 {
+    margin-left: -20px !important;
+    padding-left: 20px !important;
+    border-left: 3px solid #ffff;
+}
+
+#editCol1 {
+    padding-right: 20px !important;
+}
+
+#editCol1,
+#editCol2 {
+    margin: 20px;
+}
+
+#updateProfileBtnCol,
+#cancelProfileBtnCol {
+    text-align: center;
+}
+
+#editButtonsRow {
+    margin-top: 30px;
+}
+
 #EditProfile .form_input-group {
     margin-bottom: 1rem;
     color: white;
@@ -414,7 +423,14 @@ ul {
     font-family: futura-book;
 }
 
+#UpdateProfile {
+    width: 10em;
+    height: 2.5em;
+}
+
 #CancelEdits {
+    height: 2.5em;
+    width: 10em;
     background-color: #FCB414;
     border-color: transparent;
     border-radius: 10px;
@@ -457,4 +473,14 @@ ul {
     font-weight: bold;
     transform: scale(1.05);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+#homeLink:hover {
+    transition-property: all;
+    -webkit-transition-property: all;
+    transition-duration: .2s;
+    -webkit-transition-duration: .2s;
+    transition-timing-function: ease;
+    -webkit-transition-timing-function: ease;
+    transform: scale(1.03);
 }

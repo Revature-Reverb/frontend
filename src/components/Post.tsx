@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, ListGroup, ListGroupItem, Row } from "react-bootstrap";
+import { Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import { PostModel } from '../models/postModel'
-import { Likes } from "../models/likesModel";
 import { checkIfPostCanBeLiked, getNumLikes, likePost } from "../remote/reverb-api/likes.api";
-import { selectPosts } from "../slices/postSlice";
 import { Link } from "react-router-dom";
 import ReverbIcon from "../assets/images/reverb_icon_final.png"
 
@@ -16,7 +14,6 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
     const [canLike, setCanLike] = useState(false);
 
     const updateLikes = () => {
-        console.log("Calling backend to update likes.");
         getNumLikes(post.id)
             .then(
                 (data) => { setLikes(data) }
