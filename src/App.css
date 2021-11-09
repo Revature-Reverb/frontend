@@ -158,17 +158,28 @@ ul {
 }
 
 #feedButtons {
-    float: right;
-    position: fixed;
 }
 
 #feedButtons button {
-    display: block;
-    margin: 0.5em;
+    background-color: #F26925;
+    border-color: #F26925;
+}
+
+#feedButtons button img {
+    height: 20px;
+}
+
+#postBtn {
+    float: left;
+}
+
+#refreshBtn {
+    float: right;
 }
 
 #postColumn {
     background-color: #474C55;
+    padding-top: 2%;
     padding-right: 10%;
     padding-left: 10%;
 }
