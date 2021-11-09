@@ -35,6 +35,10 @@ Page styling regulars:
     letter space: 3%
 */
 
+.App {
+    text-align: center;
+}
+
 @font-face {
     font-family: futura-bold;
     src: url('./assets/fonts/Futura-Std-Bold.otf');
