@@ -8,6 +8,7 @@ import SubmitComment from '../components/SubmitComment';
 import { createComment } from '../remote/reverb-api/comment.api';
 import { PostModel } from '../models/postModel';
 import { Comment } from '../models/commentModel';
+import RefreshIcon from '../assets/images/refreshicon.svg'
 
 const Feed = () => {
   const dispatch = useDispatch();
@@ -91,17 +92,14 @@ const Feed = () => {
   return (
     <Container id="feedBody">
       <Row>
-        <Col id="postColumn" xs={{span: 9, offset: 1}}>
-        {posts.map((postx) => (<Post shouldUpdateLikes={shouldUpdateLikes}
-          post={postx} leaveComment={leaveComment} key={postx.id} />)).reverse()}
-        </Col>
-        <Col xs="2">
+        <Col id="postColumn" xs={{span: 8, offset: 2}}>
+
           <div id="feedButtons"> 
             <Button id="postBtn" variant="primary" onClick={() => leavePost()}>
-              Create Post
+              + Create Post
             </Button>
             <Button id="refreshBtn" variant="primary" onClick={() => updateAll()}>
-              Refresh
+              <img src={RefreshIcon} /> Refresh
             </Button>
           </div>
           <SubmitPost
@@ -119,7 +117,10 @@ const Feed = () => {
             onHide={() => setModalShowComment(false)}
             postId={postId}
           />
+          {posts.map((post) => (<Post shouldUpdateLikes={shouldUpdateLikes}
+            post={post} leaveComment={leaveComment} key={post.id} />)).reverse()}
         </Col>
+        
       </Row>
     </Container>
   );
