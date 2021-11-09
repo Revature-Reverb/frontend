@@ -3,7 +3,7 @@ import { Form, Button, Card } from 'react-bootstrap'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase'
 import { Container, Row, Col } from 'react-bootstrap'
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 
@@ -35,8 +35,6 @@ export default function Register() {
       // Creating a user within firebase, a user object is returned which contains its token
       createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
         .then(async (userCredential) => {
-          const user = userCredential.user;
-          // Call back end to register user
           const token = await userCredential.user.getIdToken(true);
           registerUser(token);
 
@@ -45,7 +43,6 @@ export default function Register() {
         })
         .catch((error) => {
           const errorCode = error.code.slice(5);
-          const errorMessage = error.message;
           swal("Uh oh!", errorCode, "error")
         });
     }
