@@ -14,7 +14,6 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
     const [canLike, setCanLike] = useState(false);
 
     const updateLikes = () => {
-        console.log("Calling backend to update likes.");
         getNumLikes(post.id)
             .then(
                 (data) => { setLikes(data) }
