@@ -21,13 +21,6 @@ const Feed = () => {
 
   const [shouldUpdateLikes, setShouldUpdateLikes] = useState([false]);
 
-
-
-  // useEffect(
-  //   () => { updateAll() }
-  //   , []);
-
-
   const updateAll = () => {
     dispatch(getPostsAsync({}))
     setShouldUpdateLikes([!shouldUpdateLikes[0]]); // :^)
@@ -81,9 +74,9 @@ const Feed = () => {
     setModalShowPost(true);
   }
 
-  const leaveComment = (postId: number) => {
+  const leaveComment = (npostId: number) => {
     setComment(initialComment);
-    setPostId(postId);
+    setPostId(npostId);
     setModalShowComment(true);
   }
 
@@ -99,8 +92,8 @@ const Feed = () => {
     <Container id="feedBody">
       <Row>
         <Col id="postColumn" xs={{span: 9, offset: 1}}>
-        {posts.map((post) => (<Post shouldUpdateLikes={shouldUpdateLikes}
-          post={post} leaveComment={leaveComment} key={post.id} />)).reverse()}
+        {posts.map((postx) => (<Post shouldUpdateLikes={shouldUpdateLikes}
+          post={postx} leaveComment={leaveComment} key={postx.id} />)).reverse()}
         </Col>
         <Col xs="2">
           <div id="feedButtons"> 
