@@ -61,7 +61,6 @@ export default function ProfileInformation(props: any) {
             </Card.Body>
         </Card>
         {showEditButton ? <Button id="EditProfileButton" onClick={goToEditProfile}>Edit Profile</Button> : <></>}
-        </Grid>) : (<Image src = {"https://app.revature.com/assets/images/ajax-loader-logo.0cd555cc.gif"} 
-        style={{height:'192px', width: '300px'}} fluid/>)
+        </Grid>) : (<Image id="LoadingImg" src = {"https://app.revature.com/assets/images/ajax-loader-logo.0cd555cc.gif"} fluid/>)
     )
 }
