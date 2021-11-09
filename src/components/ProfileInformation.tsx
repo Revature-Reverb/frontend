@@ -12,7 +12,7 @@ export default function ProfileInformation(props: any) {
     const profile = useSelector(selectProfile);
     const dispatch = useDispatch();
     const history = useHistory();
-    const params = useParams();
+    const params: {id: string} = useParams();
     const [showEditButton, setShowEditButton] = useState(false);
     const [doneLoading, setDoneLoading] = useState(false);
     useEffect(() => {
@@ -20,12 +20,12 @@ export default function ProfileInformation(props: any) {
         if(Object.keys(params).length == 0) {
             dispatch(getProfileAsync(profile));
             setShowEditButton(true);
-            setTimeout(() => setDoneLoading(true), 100);
+            setTimeout(() => setDoneLoading(true), 200);
         } else {
-            dispatch(getProfileByIdAsync(params.id||""));
-            checkProfileOwnership(params.id||"").then((owns) => {
+            dispatch(getProfileByIdAsync(params.id));
+            checkProfileOwnership(params.id).then((owns) => {
                 setShowEditButton(owns);
-                setTimeout(() => setDoneLoading(true), 100);
+                setTimeout(() => setDoneLoading(true), 200);
             })
         }
       }, [props.beep]); // beep beep :^)
