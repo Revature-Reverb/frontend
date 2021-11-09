@@ -62,7 +62,7 @@ function SubmitPost(props: any) {
             </Modal.Body>
             <Modal.Footer>
                 {/* Submit Button */}
-                <Button data-testid="submitButton" id="submitPostBtn" type="button" onClick={closeSubmit}>Post to Reverb</Button>
+                <Button data-testid="submitPostButton" id="submitPostBtn" type="button" onClick={closeSubmit}>Post to Reverb</Button>
             </Modal.Footer>
         </Modal>
     );

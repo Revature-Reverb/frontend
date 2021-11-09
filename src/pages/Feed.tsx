@@ -6,8 +6,16 @@ import { getPostsAsync, postPostAsync, selectPosts } from '../slices/postSlice'
 import Post from '../components/Post'
 import SubmitComment from '../components/SubmitComment';
 import { createComment } from '../remote/reverb-api/comment.api';
-import { PostModel } from '../models/postModel';
-import { Comment } from '../models/commentModel';
+import { initialPost, PostModel } from '../models/postModel';
+import { Comment, initialComment } from '../models/commentModel';
+
+export let util = {
+  updateAll: () => { },
+  leavePost: () => { },
+  leaveComment: (npostId: number) => { },
+  dispatchComment: () => { },
+  dispatchPost: () => { }
+};
 
 const Feed = () => {
   const dispatch = useDispatch();
@@ -21,93 +29,54 @@ const Feed = () => {
 
   const [shouldUpdateLikes, setShouldUpdateLikes] = useState([false]);
 
-  const updateAll = () => {
+  util.updateAll = () => {
     dispatch(getPostsAsync({}))
     setShouldUpdateLikes([!shouldUpdateLikes[0]]); // :^)
     console.log("Updated feed");
   }
 
-
-
-  const initialPost: PostModel = {
-    id: 0,
-    title: "",
-    postText: "",
-    imageURL: "",
-    date: "",
-    profile: {
-      id: 0,
-      first_name: "",
-      last_name: "",
-      birthday: "",
-      hobby: "",
-      location: "",
-      profile_img: "",
-      header_img: "",
-      about_me: ""
-    },
-    comments: []
-  }
-
-  const initialComment: Comment = {
-    commentId: 0,
-    commentText: "",
-    date: "",
-    profile: {
-      id: 0,
-      first_name: "",
-      last_name: "",
-      birthday: "",
-      hobby: "",
-      location: "",
-      profile_img: "",
-      header_img: "",
-      about_me: ""
-    }
-  }
-
   const [comment, setComment] = useState(initialComment);
   const [post, setPost] = useState(initialPost);
 
-  const leavePost = () => {
+  util.leavePost = () => {
     setPost(initialPost);
     setModalShowPost(true);
   }
 
-  const leaveComment = (npostId: number) => {
+  util.leaveComment = (npostId: number) => {
     setComment(initialComment);
     setPostId(npostId);
     setModalShowComment(true);
   }
 
-  const dispatchComment = () => {
-    createComment(postId, comment).then(() => { updateAll() });
+  util.dispatchComment = () => {
+    createComment(postId, comment).then(() => util.updateAll());
   }
 
-  const dispatchPost = () => {
+  util.dispatchPost = () => {
     dispatch(postPostAsync(post));
   }
 
   return (
     <Container id="feedBody">
       <Row>
-        <Col id="postColumn" xs={{span: 9, offset: 1}}>
-        {posts.map((postx) => (<Post shouldUpdateLikes={shouldUpdateLikes}
-          post={postx} leaveComment={leaveComment} key={postx.id} />)).reverse()}
+        <Col id="postColumn" xs={{ span: 9, offset: 1 }}>
+          {posts.map((postx) => (<Post shouldUpdateLikes={shouldUpdateLikes}
+            post={postx} leaveComment={util.leaveComment} key={postx.id} />)).reverse()}
         </Col>
         <Col xs="2">
-          <div id="feedButtons"> 
-            <Button id="postBtn" variant="primary" onClick={() => leavePost()}>
+          <div id="feedButtons">
+            <Button data-testid="postButton" id="postBtn" variant="primary" onClick={() => util.leavePost()}>
               Create Post
             </Button>
-            <Button id="refreshBtn" variant="primary" onClick={() => updateAll()}>
+            <Button data-testid="refreshButton" id="refreshBtn" variant="primary" onClick={() => util.updateAll()}>
               Refresh
             </Button>
           </div>
           <SubmitPost
             setPost={setPost}
             post={post}
-            dispatchPost={dispatchPost}
+            dispatchPost={util.dispatchPost}
             show={modalShowPost}
             onHide={() => setModalShowPost(false)}
           />
@@ -115,7 +84,7 @@ const Feed = () => {
             setComment={setComment}
             comment={comment}
             show={modalShowComment}
-            dispatchComment={dispatchComment}
+            dispatchComment={util.dispatchComment}
             onHide={() => setModalShowComment(false)}
             postId={postId}
           />

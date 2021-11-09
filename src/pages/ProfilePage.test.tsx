@@ -8,13 +8,13 @@ import { BrowserRouter } from 'react-router-dom';
 describe('The ProfilePage page', () => {
 
   it('should show Edit Profile', ()=>{
-    const { getByText } = render(
+    const { getByRole } = render(
       <Provider store={store}>
           <BrowserRouter>
             <ProfilePage/>
           </BrowserRouter>
       </Provider>
     );
-    expect(getByText("Edit Profile")).toBeInTheDocument();
+    expect(getByRole("img")).toBeInTheDocument();
   })
 });

@@ -5,6 +5,8 @@ import { useAppDispatch } from '../app/hooks'
 import { setTokenAsync } from '../slices/authSlice'
 import { reverbClientWithAuth } from '../remote/reverb-api/reverbClient'
 
+export let util = {loginAccount: (event: any) => {}};
+
 export default function Login() {
 
   const dispatch = useAppDispatch();
@@ -13,7 +15,7 @@ export default function Login() {
   const passwordRef = useRef<HTMLInputElement>(null);
 
   // Verifying login credentials through firebase, alerting with error message coming from Firebase
-  async function loginAccount(event: any) {
+  util.loginAccount = async (event: any) => {
     event.preventDefault();
 
     if (emailRef.current !== null && passwordRef.current !== null) {
@@ -49,7 +51,7 @@ export default function Login() {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" ref={passwordRef} required />
                   </Form.Group>
-                  <Button className="w-100 mt-2" type="submit" onClick={loginAccount}>Login</Button>
+                  <Button data-testid="submitButton" className="w-100 mt-2" type="submit" onClick={(event) => util.loginAccount(event)}>Login</Button>
                 </Form>
               </Card.Body>
             </Card>

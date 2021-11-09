@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getProfileAsync, selectProfile, updateProfileAsync } from '../slices/profileSlice';
 
+export let util = {update: (e: any) => {}, cancel: (e: any) => {}};
+
 export default function EditProfile() {
     useEffect(() => {
         dispatch(getProfileAsync(profile));
@@ -27,14 +29,14 @@ export default function EditProfile() {
     };
 
     
-    const update = (e: any) => {
+    util.update = (e: any) => {
         e.preventDefault();
         console.log('editProfile' + JSON.stringify(input));
         dispatch(updateProfileAsync(input));
         history.push('/profile');
     }
 
-    const cancel = (e: any) => {
+    util.cancel = (e: any) => {
         e.preventDefault();
         history.push('/profile');
     }
@@ -95,8 +97,8 @@ export default function EditProfile() {
                     onChange={handleChange} required />
                 </div>
                 <br /><br />
-                <button id = "UpdateProfile" type="submit" onClick={update} >Update</button><br />
-                <button id="CancelEdits" type="submit" onClick={cancel} >Cancel</button><br />
+                <button data-testid="updateButton" id = "UpdateProfile" type="submit" onClick={(e) => util.update(e)} >Update</button><br />
+                <button data-testid="cancelButton" id="CancelEdits" type="submit" onClick={(e) => util.cancel(e)} >Cancel</button><br />
             </Card>
             </Grid>
         </div>

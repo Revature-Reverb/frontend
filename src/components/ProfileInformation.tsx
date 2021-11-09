@@ -9,12 +9,13 @@ import Image from 'react-bootstrap/Image'
 
 
 export default function ProfileInformation(props: any) {
+    const [doneLoading, setDoneLoading] = React.useState(false);
     const profile = useSelector(selectProfile);
     const dispatch = useDispatch();
     const history = useHistory();
     const params: {id: string} = useParams();
-    const [showEditButton, setShowEditButton] = useState(false);
-    const [doneLoading, setDoneLoading] = useState(false);
+    const [showEditButton, setShowEditButton] = React.useState(false);
+    
     useEffect(() => {
         setDoneLoading(false);
         if(Object.keys(params).length == 0) {
@@ -62,6 +63,6 @@ export default function ProfileInformation(props: any) {
         </Card>
         {showEditButton ? <Button id="EditProfileButton" onClick={goToEditProfile}>Edit Profile</Button> : <></>}
         </Grid>) : (<Image src = {"https://app.revature.com/assets/images/ajax-loader-logo.0cd555cc.gif"} 
-        style={{height:'192px', width: '300px'}} fluid/>)
+        style={{height:'192px', width: '300px'}} fluid data-testid="gif"/>)
     )
 }

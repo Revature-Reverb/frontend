@@ -5,15 +5,17 @@ import { checkIfPostCanBeLiked, getNumLikes, likePost } from "../remote/reverb-a
 import { Link } from "react-router-dom";
 import ReverbIcon from "../assets/images/reverb_icon_final.png"
 
+export let util = {likePostFunc: () => {}, updateLikes: () => {}};
 
 const Post = ({ shouldUpdateLikes, post, leaveComment }: 
     { shouldUpdateLikes: boolean[], post: PostModel, leaveComment: any }) => {
 
     const initialLikes: number = 0;
-    const [likes, setLikes] = useState(initialLikes);
-    const [canLike, setCanLike] = useState(false);
+    const [canLike, setCanLike] = React.useState(false);
+    const [likes, setLikes] = React.useState(initialLikes);
+    
 
-    const updateLikes = () => {
+    util.updateLikes = () => {
         console.log("Calling backend to update likes.");
         getNumLikes(post.id)
             .then(
@@ -21,7 +23,7 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
             );
     }
 
-    const likePostFunc = () => {
+    util.likePostFunc = () => {
         setCanLike(false);
         likePost(post.id).then(async () => {
             //instead of making another DB call, it just updates the likes by 1
@@ -37,10 +39,9 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
     //checks to see if the post can be liked
     //updates the number of likes
     useEffect(() => {
-        updateLikes();
+        util.updateLikes();
         checkIfPostCanBeLiked(post.id).then(canLikeReturn => setCanLike(!canLikeReturn));
     }, [shouldUpdateLikes]);
-
 
     return (
         <Card id="postCard">
@@ -48,7 +49,7 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
                 <h3>{"" + post.title}</h3>
                 <Card.Subtitle id="cardSubtitle"><Link to={`profile/${post.profile.id}`}>{"" + post.profile.first_name} {"" + post.profile.last_name}</Link></Card.Subtitle>
                 <Card.Text>{"" + post.date}</Card.Text>
-                <Button id="reverbButton" onClick={() => likePostFunc()} variant="warning"
+                <Button data-testid="reverbButton" id="reverbButton" onClick={() => util.likePostFunc()} variant="warning"
                     style={{ float: 'right', marginTop: "-5rem" }} disabled={!canLike}>{likes}<img id="reverbIcon" src={ReverbIcon} alt="Click to Reverb!"/></Button>
             </Card.Header>
             <Card.Body id="postBody">
@@ -59,19 +60,17 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
             </Card.Body>
             <ListGroup id="commentBody" className="list-group-flush">
                 {post.comments.map(comment => (
-
                     <ListGroupItem>
                         {comment.commentText}
                         <footer id="commentFooter" style={{ float: "right", fontSize: "0.8rem", marginTop: "0.8rem" }}>
                             <Link to={`profile/${comment.profile.id}`}>{comment.profile.first_name} {comment.profile.last_name}</Link> | {comment.date}
                         </footer>
                     </ListGroupItem>
-
                 ))}
 
             </ListGroup>
             <Card.Body>
-                <Button id="leaveCommentBtn" onClick={() => leaveComment(post.id)}>Leave Comment</Button>
+                <Button data-testid="submitButton" id="leaveCommentBtn" onClick={() => leaveComment(post.id)}>Leave Comment</Button>
             </Card.Body>
         </Card>
     );

@@ -48,7 +48,7 @@ describe('SubmitComment testing', () => {
     );
     expect(getByText("New Comment")).toBeInTheDocument();
 
-    const button = getByTestId("submitButton");
+    const button = getByTestId("submitCommentButton");
     fireEvent.click(button);
     expect(dummyThicc).toBeCalled();
   })
