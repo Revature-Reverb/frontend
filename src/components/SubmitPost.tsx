@@ -31,7 +31,7 @@ function SubmitPost(props:any){
                     <Form.Group as={Row} className="mb-3">
                         <Col sm={11}>
                             <Form.Control
-                                placeholder="image URL"
+                                placeholder="Image URL"
                                 onChange={(event)=> props.setPost({...props.post, imageURL: event.target.value})} />
                         </Col>
                     </Form.Group>
