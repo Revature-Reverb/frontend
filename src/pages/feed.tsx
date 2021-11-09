@@ -99,7 +99,7 @@ const Feed = () => {
   return (
     <Container id="feedBody">
       <Row>
-        <Col id="postColumn" xs={{span: 9, offset: 1}}>
+        <Col id="postColumn" xs={{span: 8, offset: 2}}>
           <div id="feedButtons"> 
             <Button id="postBtn" variant="primary" onClick={() => leavePost()}>
               + Create Post
