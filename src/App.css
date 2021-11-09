@@ -59,8 +59,82 @@ Page styling regulars:
     src: url('./assets/fonts/Futura-Std-Medium.otf');
 }
 
+#navbar {
+    background-color: "#B9B9BA";
+    width: 150;
+    height: "100vh";
+    min-height: "450px";
+    /* font-size: "24px";
+    line-height: "30px"; */
+}
+
+h3 {
+    font-family: futura-book;
+    font-size: 30px;
+    letter-spacing: 3%;
+}
+
+/* LANDING */
+
+#landingCard {
+    padding: 10%;
+    margin: 10%;
+    border-radius: 2%;
+    background-color: #474C55;
+    color: white;
+}
+
+#landingCard {
+    padding: 10%;
+    margin: 10%;
+    background: #474C55;
+    color: white;
+    margin: 5%;
+    border-radius: 20px;
+}
 
 /*LOGIN & REGISTRATION*/
+
+#loginDiv {
+    min-width: '600px';
+    min-height: '500px';
+    text-align: center;
+}
+
+#loginCard {
+    background-color: #474C55;
+    color: white;
+    min-width: 600px;
+    min-height: 500px;
+    margin: 0;
+    border-radius: 20px;
+}
+
+#loginCard button {
+    border-color: #F26925;
+    background-color: #F26925;
+    max-width: 150px;
+    min-height: 40px;
+    border-radius: 13px;
+    font-family: futura-book;
+    font-size: 30px;
+}
+
+#loginCard input {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    max-width: 350px;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+#email,
+#password {
+    font-family: 'futura-medium';
+    font-size: 36px;
+}
 
 .loginRow {
     margin-right: 150px;
@@ -73,31 +147,10 @@ Page styling regulars:
     margin-bottom: 20px;
 }
 
-h3 {
-    font-family: futura-book;
-    font-size: 30px;
-    letter-spacing: 3%;
-}
-
 #cardSubtitle {
     font-family: futura-book;
     font-size: 18px;
     letter-spacing: 3%;
-}
-
-#postBody {
-    font-family: futura-book;
-    font-size: 24px;
-    letter-spacing: 3%;
-}
-
-#navbar {
-    background-color: "#B9B9BA";
-    width: 150;
-    height: "100vh";
-    min-height: "450px";
-    /* font-size: "24px";
-    line-height: "30px"; */
 }
 
 #loginLink,
@@ -124,19 +177,18 @@ h3 {
     background-color: #F26925;
 }
 
-
-/* ul {
-    color: #ffff;
-    font-size: 38;
-} */
-
-
-/* post feed */
+/* POST FEED */
 
 #feedBody {
     transition-property: all;
     transition-duration: 3s;
     transition-timing-function: ease;
+}
+
+#postBody {
+    font-family: futura-book;
+    font-size: 24px;
+    letter-spacing: 3%;
 }
 
 #postCard {
@@ -170,45 +222,6 @@ h3 {
     transition-timing-function: ease-in-out;
 }
 
-#reverbButton {
-    color: white;
-    background-color: #F26925;
-    border-radius: 20px;
-}
-
-#feedButtons {
-    margin-bottom: 10%;
-}
-
-#feedButtons button {
-    background-color: #F26925;
-    border-color: #F26925;
-}
-
-#feedButtons button img {
-    height: 20px;
-}
-
-#postBtn {
-    float: left;
-}
-
-#refreshBtn {
-    float: right;
-}
-
-#postBtn,
-#refreshBtn,
-#leaveCommentBtn,
-#submitPostBtn,
-#submitCommentBtn {
-    background-color: #72A4C2;
-    border-color: #72A4C2;
-    border-radius: 20px;
-    font-family: futura-book;
-    font-size: 18px;
-}
-
 #postColumn {
     background-color: #474C55;
     padding-top: 2%;
@@ -216,65 +229,6 @@ h3 {
     padding-left: 10%;
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
 }
-
-#landingCard {
-    padding: 10%;
-    margin: 10%;
-    border-radius: 2%;
-    background-color: #474C55;
-    color: white;
-}
-
-#loginDiv {
-    /* border: solid; */
-    min-width: '600px';
-    min-height: '500px';
-    text-align: center;
-}
-
-#loginCard {
-    background-color: #474C55;
-    color: white;
-    min-width: 600px;
-    min-height: 500px;
-    margin: 0;
-    border-radius: 20px;
-}
-
-#loginCard button {
-    border-color: #F26925;
-    background-color: #F26925;
-    max-width: 150px;
-    min-height: 40px;
-    border-radius: 13px;
-    font-family: futura-book;
-    font-size: 30px;
-}
-
-#loginCard input {
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 20px;
-    margin-bottom: 60px;
-    max-width: 350px;
-    /* min-height: 40px; */
-    font-size: 18px;
-    border-radius: 20px;
-}
-
-#landingCard {
-    background: #474C55;
-    color: white;
-    margin: 5%;
-    border-radius: 20px;
-}
-
-#email,
-#password {
-    font-family: 'futura-medium';
-    font-size: 36px;
-}
-
 
 /* PROFILE */
 
@@ -286,10 +240,6 @@ h3 {
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     background-color: #474C55;
-}
-
-#profileBody{
-    margin-top: -100px;
 }
 
 #EditProfile {
@@ -328,8 +278,8 @@ h3 {
 }
 
 #HeaderImg {
-    max-height: 70%;
-    max-width: 100%;
+    max-height: 350px;
+    max-width: 1000px;
     position: relative;
     object-fit:cover;
     top: 0;
@@ -340,9 +290,9 @@ h3 {
 #ProfileImg {
     border: 2px solid #72A4C2;
     border-radius: 50%;
-    /* filter: brightness(); */
-    /* height: 120px; */
-    width: 20%;
+    height: 175px;
+    width: 175px;
+    object-fit:cover;
     position: absolute;
     top: 30%;
     left: 40%;
@@ -356,6 +306,8 @@ h3 {
     margin-left: auto;
     margin-right: auto;
 }
+
+/* EDIT PROFILE */
 
 #editCol2 {
     margin-left: -20px !important;
@@ -493,4 +445,44 @@ h3 {
     transition-timing-function: ease;
     -webkit-transition-timing-function: ease;
     transform: scale(1.03);
+}
+
+#reverbButton {
+    color: white;
+    background-color: #F26925;
+    border:none;
+    border-radius: 20px;
+}
+
+#feedButtons {
+    margin-bottom: 10%;
+}
+
+#feedButtons button {
+    background-color: #F26925;
+    border-color: #F26925;
+}
+
+#feedButtons button img {
+    height: 20px;
+}
+
+#postBtn {
+    float: left;
+}
+
+#refreshBtn {
+    float: right;
+}
+
+#postBtn,
+#refreshBtn,
+#leaveCommentBtn,
+#submitPostBtn,
+#submitCommentBtn {
+    background-color: #72A4C2;
+    border-color: #72A4C2;
+    border-radius: 20px;
+    font-family: futura-book;
+    font-size: 18px;
 }
