@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 describe('The ProfilePage page', () => {
 
-  it('should show Edit Profile', ()=>{
+  it('should show profile with loading gif image', ()=>{
     const { getByRole } = render(
       <Provider store={store}>
           <BrowserRouter>

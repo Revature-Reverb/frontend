@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
+import swal from 'sweetalert';
 
 function SubmitComment(props: any) {
 
@@ -8,7 +9,7 @@ function SubmitComment(props: any) {
             props.onHide();
             props.dispatchComment();
         } else {
-            alert("Your comment cannot be empty!");
+            swal("", "Your comment cannot be empty!", "error");
         }
     }
 

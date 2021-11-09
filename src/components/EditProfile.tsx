@@ -1,6 +1,6 @@
 import { Grid } from '@material-ui/core';
 import { useEffect, useState } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getProfileAsync, selectProfile, updateProfileAsync } from '../slices/profileSlice';
@@ -44,62 +44,75 @@ export default function EditProfile() {
     return (
         <div>
             <Grid container direction="column" alignItems="center" justify="center">
-            <Card id="EditProfile">
-                 <div className="form_input-group">
-                    <label htmlFor="first_name">First Name</label>
+                <Card id="EditProfile">
+                    <Container>
+                        <Row>  
+                            <Col id="editCol1">
+                                <div className="form_input-group">
+                                    <label htmlFor="first_name">First Name</label>
 
-                    <input className="form_input" type="text" name="first_name" placeholder="First name" value={input.first_name} 
+                                    <input className="form_input" type="text" name="first_name" placeholder="First name" value={input.first_name} 
 
-                    onChange={handleChange} required />
-                </div>
+                                    onChange={handleChange} required />
+                                </div>
 
-                <div className="form_input-group">
-                    <label htmlFor="last_name">Last Name</label>
+                                <div className="form_input-group">
+                                    <label htmlFor="last_name">Last Name</label>
 
-                    <input className="form_input" type="textbox" name="last_name" placeholder="Last name"  value={input.last_name} 
-                    onChange={handleChange} required />
-                </div>
+                                    <input className="form_input" type="textbox" name="last_name" placeholder="Last name"  value={input.last_name} 
+                                    onChange={handleChange} required />
+                                </div>
 
-                <div className="form_input-group">
-                    <label htmlFor="about_me">About Me</label>
-                    <textarea className="form_input" rows={10} name="about_me" placeholder="Your about me"  value={input.about_me}
-                    onChange={handleChange}  > </textarea>
-                </div>
+                                <div className="form_input-group">
+                                    <label htmlFor="about_me">About Me</label>
+                                    <textarea className="form_input" rows={10} name="about_me" placeholder="Your about me"  value={input.about_me}
+                                    onChange={handleChange}  > </textarea>
+                                </div>
+                            </Col>
+                            <Col id="editCol2">
+                                <div className="form_input-group">
+                                    <label htmlFor="last_name">Birthday</label>
+                                    <input className="form_input" type="textbox" name="birthday" placeholder="Birthday"  value={input.birthday} 
 
-                <div className="form_input-group">
-                    <label htmlFor="last_name">Birthday</label>
-                    <input className="form_input" type="textbox" name="birthday" placeholder="Birthday"  value={input.birthday} 
+                                    onChange={handleChange} required />
+                                </div>
+                            
+                                <div className="form_input-group">
+                                    <label htmlFor="last_name">Hobbies</label>
+                                    <input className="form_input" type="textbox" name="hobby" placeholder="Hobby"  value={input.hobby} 
+                                    onChange={handleChange} required />
+                                </div>
 
-                    onChange={handleChange} required />
-                </div>
+                                <div className="form_input-group">
+                                    <label htmlFor="last_name">Location</label>
+                                    <input className="form_input" type="textbox" name="location" placeholder="Location"  value={input.location} 
+                                    onChange={handleChange} required />
+                                </div>
+                                
+                                <div className="form_input-group">
+                                    <label htmlFor="profile_img">Select Profile Image</label>
+                                    <input className="form_input" type="text" name="profile_img" placeholder="Profile Image url"  value={input.profile_img}
+                                    onChange={handleChange} required />
+                                </div>
 
-                <div className="form_input-group">
-                    <label htmlFor="last_name">Hobbies</label>
-                    <input className="form_input" type="textbox" name="hobby" placeholder="Hobby"  value={input.hobby} 
-                    onChange={handleChange} required />
-                </div>
-
-                <div className="form_input-group">
-                    <label htmlFor="last_name">Location</label>
-                    <input className="form_input" type="textbox" name="location" placeholder="Location"  value={input.location} 
-                    onChange={handleChange} required />
-                </div>
-                
-                <div className="form_input-group">
-                    <label htmlFor="profile_img">Select Profile Image</label>
-                    <input className="form_input" type="text" name="profile_img" placeholder="Profile Image url"  value={input.profile_img}
-                    onChange={handleChange} required />
-                </div>
-
-                <div className="form_input-group">
-                    <label htmlFor="header_img">Select Header Image</label>
-                    <input className="form_input" type="text" name="header_img" placeholder="Header Image url"  value={input.header_img}
-                    onChange={handleChange} required />
-                </div>
-                <br /><br />
-                <button data-testid="updateButton" id = "UpdateProfile" type="submit" onClick={(e) => util.update(e)} >Update</button><br />
-                <button data-testid="cancelButton" id="CancelEdits" type="submit" onClick={(e) => util.cancel(e)} >Cancel</button><br />
-            </Card>
+                                <div className="form_input-group">
+                                    <label htmlFor="header_img">Select Header Image</label>
+                                    <input className="form_input" type="text" name="header_img" placeholder="Header Image url"  value={input.header_img}
+                                    onChange={handleChange} required />
+                                </div>
+                                <br /><br />
+                            </Col>
+                        </Row>
+                        <Row id="editButtonsRow">
+                            <Col id="updateProfileBtnCol"> 
+                                <button data-testid="updateButton" id = "UpdateProfile" type="submit" onClick={util.update} >Update</button><br />
+                            </Col>
+                            <Col id="cancelProfileBtnCol">
+                                <button data-testid="cancelButton" id="CancelEdits" type="submit" onClick={util.cancel} >Cancel</button><br />
+                            </Col>
+                        </Row>
+                    </Container>
+                </Card>
             </Grid>
         </div>
     )

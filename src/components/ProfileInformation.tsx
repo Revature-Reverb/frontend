@@ -18,7 +18,7 @@ export default function ProfileInformation(props: any) {
     
     useEffect(() => {
         setDoneLoading(false);
-        if(Object.keys(params).length == 0) {
+        if(params.id === undefined) {
             dispatch(getProfileAsync(profile));
             setShowEditButton(true);
             setTimeout(() => setDoneLoading(true), 200);

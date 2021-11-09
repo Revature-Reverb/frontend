@@ -7,8 +7,6 @@ export interface Comment {
     profile: Profile
 }
 
-
-
 export const initialComment: Comment = {
     commentId: 0,
     commentText: "",

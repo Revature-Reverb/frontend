@@ -6,8 +6,9 @@ import { getPostsAsync, postPostAsync, selectPosts } from '../slices/postSlice'
 import Post from '../components/Post'
 import SubmitComment from '../components/SubmitComment';
 import { createComment } from '../remote/reverb-api/comment.api';
-import { initialPost, PostModel } from '../models/postModel';
-import { Comment, initialComment } from '../models/commentModel';
+import { initialPost } from '../models/postModel';
+import { initialComment } from '../models/commentModel';
+import RefreshIcon from '../assets/images/refreshicon.svg'
 
 export let util = {
   updateAll: () => { },
@@ -16,6 +17,7 @@ export let util = {
   dispatchComment: () => { },
   dispatchPost: () => { }
 };
+
 
 const Feed = () => {
   const dispatch = useDispatch();
@@ -60,17 +62,13 @@ const Feed = () => {
   return (
     <Container id="feedBody">
       <Row>
-        <Col id="postColumn" xs={{ span: 9, offset: 1 }}>
-          {posts.map((postx) => (<Post shouldUpdateLikes={shouldUpdateLikes}
-            post={postx} leaveComment={util.leaveComment} key={postx.id} />)).reverse()}
-        </Col>
-        <Col xs="2">
-          <div id="feedButtons">
+        <Col id="postColumn" xs={{span: 8, offset: 2}}>
+          <div id="feedButtons"> 
             <Button data-testid="postButton" id="postBtn" variant="primary" onClick={() => util.leavePost()}>
-              Create Post
+              + Create Post
             </Button>
             <Button data-testid="refreshButton" id="refreshBtn" variant="primary" onClick={() => util.updateAll()}>
-              Refresh
+              <img src={RefreshIcon} /> Refresh
             </Button>
           </div>
           <SubmitPost
@@ -88,7 +86,10 @@ const Feed = () => {
             onHide={() => setModalShowComment(false)}
             postId={postId}
           />
+          {posts.map((post) => (<Post shouldUpdateLikes={shouldUpdateLikes}
+            post={post} leaveComment={util.leaveComment} key={post.id} />)).reverse()}
         </Col>
+        
       </Row>
     </Container>
   );
