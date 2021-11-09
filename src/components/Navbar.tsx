@@ -110,31 +110,15 @@ const NavigationBar:React.FC<NavigationBarProps> = ({loggedIn}:{loggedIn:string}
             </Nav.Link>
             <ul className="nav flex-column mb-auto text-center">
 
-                {/* The Profile Image above the word Profile.
-                    Clicking Either will change to the profile page. */}
+                {/* The link to the profile page */}
                 <Nav.Link as={Link} to={"/profile"}  onClick={()=>history.push("/profile")}
                 className="justify-content-center" eventKey="profile-link">
-                    <img
-                        alt=""
-                        src={ProfileImage}
-                        width="120"
-                        height="70"
-                        className="d-inline-block align-top"
-                    />
                     Profile
                 </Nav.Link>
 
-                {/* The link to the friends page. */}
-                <Nav.Link as={Link} to={"/friends"} onClick={()=>history.push("/friends")} eventKey="friends-link">
-                    Friends
-                </Nav.Link>
             </ul>
             
             {/* These elements are instead attached to the bottom. */}
-            {/* The link to the settings page. */}
-            <Nav.Link as={Link} to={"/settings"} eventKey="settings-link">
-                Settings
-            </Nav.Link>
 
             {/* The link to logout. */}
             <NavLink as={Link} to={"/logout"}

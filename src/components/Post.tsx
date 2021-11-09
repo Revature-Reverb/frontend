@@ -59,12 +59,12 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
                     {post.postText}
                 </Card.Text>
             </Card.Body>
-            <ListGroup className="list-group-flush">
+            <ListGroup id="commentBody" className="list-group-flush">
                 {post.comments.map(comment => (
 
                     <ListGroupItem>
                         {comment.commentText}
-                        <footer style={{ float: "right", fontSize: "0.8rem", marginTop: "0.8rem" }}>
+                        <footer id="commentFooter" style={{ float: "right", fontSize: "0.8rem", marginTop: "0.8rem" }}>
                             <Link to={`profile/${comment.profile.id}`}>{comment.profile.first_name} {comment.profile.last_name}</Link> | {comment.date}
                         </footer>
                     </ListGroupItem>
@@ -73,7 +73,7 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
 
             </ListGroup>
             <Card.Body>
-                <Button onClick={() => leaveComment(post.id)}>Leave Comment</Button>
+                <Button id="leaveCommentBtn" onClick={() => leaveComment(post.id)}>Leave Comment</Button>
             </Card.Body>
         </Card>
     );

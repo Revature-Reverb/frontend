@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
 import CreatePost from "../pages/createPost";
 import Feed from "../pages/feed";
-import Profile from "../pages/profile";
-import Search from "../pages/search";
 import Login from "../pages/login";
 import Register from "../pages/register";
-import Friends from "../pages/friends";
-import Settings from "../pages/settings";
 import Landing from "../pages/landing";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { logout } from '../slices/authSlice'
@@ -37,15 +32,6 @@ const MainRouter:React.FC<MainRouterProps> = ({loggedIn}:{loggedIn:string}) => {
         <Switch>
           <Route exact path="/create_post">
             <CreatePost />
-          </Route>
-          <Route exact path="/search">
-            <Search />
-          </Route>
-          <Route exact path="/settings">
-            <Settings />
-          </Route>
-          <Route exact path="/friends">
-            <Friends />
           </Route>
           <Route exact path="/profile">
             <ProfilePage beep={true}/>

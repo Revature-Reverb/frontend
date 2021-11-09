@@ -62,7 +62,7 @@ function SubmitPost(props:any){
             </Modal.Body>
             <Modal.Footer>
                 {/* Submit Button */}
-                <Button type="button" onClick={closeSubmit}>Post to Reverb</Button>
+                <Button id="submitPostBtn" type="button" onClick={closeSubmit}>Post to Reverb</Button>
             </Modal.Footer>
         </Modal>
     );
