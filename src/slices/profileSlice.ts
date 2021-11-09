@@ -74,7 +74,6 @@ const profileSlice = createSlice( {
             } )
             .addCase( getProfileAsync.fulfilled, ( state, action ) =>
             {
-                // console.log(action.payload.first_name);
                 return action.payload;
             } )
             .addCase( getProfileAsync.rejected, ( state, action ) =>
@@ -100,7 +99,6 @@ const profileSlice = createSlice( {
             } )
             .addCase( updateProfileAsync.fulfilled, ( state, action ) =>
             {
-                // console.log(action.payload.first_name);
                 return action.payload;
             } )
             .addCase( updateProfileAsync.rejected, ( state, action ) =>

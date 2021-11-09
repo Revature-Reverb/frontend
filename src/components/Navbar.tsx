@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { Nav, NavLink, Form } from 'react-bootstrap'
+
+import {Nav, NavLink } from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
 import Logo from '../assets/images/reverb_logo_final_light.png'
-//import RevLogo from '../rev-logo.png'
-import ProfileImage from '../assets/images/blankUserIcon.png'
 import { Link, useHistory } from 'react-router-dom'
 import '../styling/navbar.css';
 
@@ -16,29 +15,17 @@ interface NavigationBarProps {
 // The function component typed as well as its props defined and typed
 // through destructuring.
 
-// {children}:{children:JSX.Element}
 const NavigationBar: React.FC<NavigationBarProps> = ({ loggedIn }: { loggedIn: string }) => {
     //font family and style for the links
     const fontStyle = {
         fontFamily: ''
     }
+
     // The state of the input typed in the search field.
     // Used later when calling the searchHandler.
     const [search, setSearch] = useState("")
     const history = useHistory();
 
-    // The method that will be used to do the 'search'.
-    // const searchHandler = (props:string) => {    
-    //     console.log(props)
-    //     return props;
-    // }
-
-    // Handles the form submitting. Used to stop it from refreshing the page as well as
-    // having it 'search'.
-    // const formHandler = (event:any) => {
-    //     searchHandler(search);
-    //     event.preventDefault();
-    // }
     let sideNavBar = <></>;
     if (!loggedIn) {
         sideNavBar = <div style={{ float: "left" }}>

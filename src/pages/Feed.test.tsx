@@ -2,19 +2,20 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { store } from '../app/store';
-import Landing from './landing';
+import Feed from './Feed';
 import { BrowserRouter } from 'react-router-dom';
 
-describe('The landing page', () => {
+describe('Feed testing', () => {
 
-  it('should show Reverb', ()=>{
+  it('should show Create Post', ()=>{
     const { getByText } = render(
       <Provider store={store}>
           <BrowserRouter>
-            <Landing/>
+            <Feed/>
           </BrowserRouter>
       </Provider>
     );
-    expect(getByText("Reverb")).toBeInTheDocument();
+    expect(getByText("Create Post")).toBeInTheDocument();
   })
+
 });

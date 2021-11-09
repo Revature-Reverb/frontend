@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { store } from '../app/store';
-import Login from './login';
+import Login from './Login';
 import { BrowserRouter } from 'react-router-dom';
 
 describe('login test', () => {
