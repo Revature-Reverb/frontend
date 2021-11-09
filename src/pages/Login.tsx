@@ -2,10 +2,8 @@ import React, { useRef } from 'react'
 import { Form, Button, Card } from 'react-bootstrap'
 import { Container, Row, Col } from 'react-bootstrap'
 import { useAppDispatch } from '../app/hooks'
-import { Link } from 'react-router-dom'
 import { setTokenAsync } from '../slices/authSlice'
 import { reverbClientWithAuth } from '../remote/reverb-api/reverbClient'
-import swal from 'sweetalert';
 
 export default function Login() {
 

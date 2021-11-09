@@ -1,11 +1,9 @@
 import React from 'react'
-import { Container, Row, Col, Card, Button } from 'react-bootstrap'
+import { Container, Row, Col, Card } from 'react-bootstrap'
 import Logo from '../assets/images/reverb_logo2.png'
 import RevatureLogo from '../assets/images/by_rev_logo.png'
 
 const Landing = ()=> {
-
-    const toReturn = <>Landing Page</>
 
     return(
         <>

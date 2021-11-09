@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
-import CreatePost from "../pages/createPost";
-import Feed from "../pages/feed";
-import Login from "../pages/login";
-import Register from "../pages/register";
-import Landing from "../pages/landing";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import CreatePost from "../pages/CreatePost";
+import Feed from "../pages/Feed";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import Landing from "../pages/Landing";
+import { useAppDispatch } from "../app/hooks";
 import { logout } from '../slices/authSlice'
 import ProfilePage from "../pages/ProfilePage";
 import EditProfilePage from "../pages/EditProfilePage";
@@ -30,19 +30,19 @@ const MainRouter:React.FC<MainRouterProps> = ({loggedIn}:{loggedIn:string}) => {
     toReturn =
       <div>
         <Switch>
-          <Route exact path="/create_post">
+          <Route path="/create_post">
             <CreatePost />
           </Route>
-          <Route exact path="/profile">
-            <ProfilePage beep={true}/>
-          </Route>
-          <Route exact path="/profile/:id">
+          <Route path="/profile/:id">
             <ProfilePage beep={false}/>
           </Route>
-          <Route exact path="/editProfile">
+          <Route path="/profile">
+            <ProfilePage beep={true}/>
+          </Route>
+          <Route path="/editProfile">
             <EditProfilePage/>
           </Route>
-          <Route exact path="/logout">
+          <Route path="/logout">
             {doLogout}
           </Route>
           <Route path="/">
