@@ -1,16 +1,12 @@
-import { updateProfile } from '@firebase/auth';
 import { Grid } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Profile } from '../models/profileModel';
 import { getProfileAsync, selectProfile, updateProfileAsync } from '../slices/profileSlice';
-// import "./EditProfile.css";
 
 export default function EditProfile() {
     useEffect(() => {
-        // dispatch(getUserAsync(dud));
         dispatch(getProfileAsync(profile));
       }, []);
 

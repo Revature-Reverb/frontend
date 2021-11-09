@@ -5,8 +5,6 @@ import RevatureLogo from '../assets/images/by_rev_logo.png'
 
 const Landing = ()=> {
 
-    const toReturn = <>Landing Page</>
-
     return(
         <>
             <Container fluid="md" className="">

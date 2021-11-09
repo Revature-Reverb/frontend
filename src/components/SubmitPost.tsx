@@ -1,5 +1,6 @@
 import React from "react";
 import {Button, Col, Form, Modal, Row} from "react-bootstrap";
+import swal from 'sweetalert';
 
 function SubmitPost(props:any){
 
@@ -8,7 +9,7 @@ function SubmitPost(props:any){
             props.onHide();
             props.dispatchPost();
         } else {
-            alert("Posts must have a title and body!");
+            swal("", "Posts must have a title and body!", "error");
         }
     }
 
