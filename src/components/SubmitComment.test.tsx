@@ -30,7 +30,7 @@ describe('SubmitComment testing', () => {
       }
     }
 
-    const dummyThicc = jest.fn();
+    const dummyFunc = jest.fn();
 
     const { getByText, getByTestId } = render(
       <Provider store={store}>
@@ -39,7 +39,7 @@ describe('SubmitComment testing', () => {
             setComment={() => { }}
             comment={initialComment}
             show={true}
-            dispatchComment={dummyThicc}
+            dispatchComment={dummyFunc}
             onHide={() => { }}
             postId={0} />
           <SubmitComment />
@@ -50,7 +50,7 @@ describe('SubmitComment testing', () => {
 
     const button = getByTestId("submitCommentButton");
     fireEvent.click(button);
-    expect(dummyThicc).toBeCalled();
+    expect(dummyFunc).toBeCalled();
   })
 
 });
