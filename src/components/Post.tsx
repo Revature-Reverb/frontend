@@ -14,7 +14,7 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
     
 
     const updateLikes = () => {
-        console.log("Calling backend to update likes on post " + post.id);
+        // console.log("Calling backend to update likes on post " + post.id);
         getNumLikes(post.id)
             .then(
                 (data) => { setLikes(data) }
@@ -29,7 +29,7 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
         }).catch((e) => {
             //unsuccessful
             setCanLike(true);
-            console.log(e)
+            // console.log(e)
         })
     }
 

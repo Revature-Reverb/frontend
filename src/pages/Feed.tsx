@@ -34,7 +34,7 @@ const Feed = () => {
   util.updateAll = () => {
     dispatch(getPostsAsync({}))
     setShouldUpdateLikes([!shouldUpdateLikes[0]]); // :^)
-    console.log("Updated feed");
+    // console.log("Updated feed");
   }
 
   const [comment, setComment] = useState(initialComment);

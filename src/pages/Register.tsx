@@ -22,8 +22,8 @@ export default function Register() {
       'Content-Type': 'application/json'
     };
     axios.post(url, '', { headers: header, withCredentials: true })
-      .then(response => console.log("RESPONSE", response))
-      .catch(err => console.log(err));
+      .then(response => {})
+      .catch(err => {});
   }
 
   const emailRef = useRef<HTMLInputElement>(null);
