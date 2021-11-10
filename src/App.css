@@ -74,6 +74,25 @@ h3 {
     letter-spacing: 3%;
 }
 
+/* LANDING */
+
+#landingCard {
+    padding: 10%;
+    margin: 10%;
+    border-radius: 2%;
+    background-color: #474C55;
+    color: white;
+}
+
+#landingCard {
+    padding: 10%;
+    margin: 10%;
+    background: #474C55;
+    color: white;
+    margin: 5%;
+    border-radius: 20px;
+}
+
 /*LOGIN & REGISTRATION*/
 
 #loginDiv {
