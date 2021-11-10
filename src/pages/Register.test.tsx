@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 describe('The Register page', () => {
 
-  it('should show Email', ()=>{
+  it('should show Email', async ()=>{
 
     const comp = <Register></Register>;
     const { getByText, getByTestId } = render(

@@ -9,7 +9,7 @@ import { Profile } from '../models/profileModel';
 
 describe('Post testing', () => {
 
-  it('should show Oh Yeah', () => {
+  it('should show Oh Yeah', async () => {
 
     const aProfile: Profile = {
       id: 0,

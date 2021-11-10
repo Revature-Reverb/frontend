@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 describe('EditProfile testing', () => {
 
-  it('should show First Name', ()=>{
+  it('should show First Name', async ()=>{
 
     const { getByText } = render(
       <Provider store={store}>
@@ -19,7 +19,7 @@ describe('EditProfile testing', () => {
     expect(getByText("First Name")).toBeInTheDocument();
   })
 
-  it('should call cancel and update when buttons are pushed', () => {
+  it('should call cancel and update when buttons are pushed', async () => {
     const { getByTestId } = render(
       <Provider store={store}>
           <BrowserRouter>

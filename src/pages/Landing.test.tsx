@@ -7,12 +7,12 @@ import { BrowserRouter } from 'react-router-dom';
 
 describe('The landing page', () => {
 
-  it('should show Reverb', ()=>{
+  it('should show Reverb', async () => {
     const { getByText } = render(
       <Provider store={store}>
-          <BrowserRouter>
-            <Landing/>
-          </BrowserRouter>
+        <BrowserRouter>
+          <Landing />
+        </BrowserRouter>
       </Provider>
     );
     expect(getByText("Reverb")).toBeInTheDocument();

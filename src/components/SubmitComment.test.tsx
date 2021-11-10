@@ -11,7 +11,7 @@ import App from '../App';
 
 describe('SubmitComment testing', () => {
 
-  it('should show Post to Reverb', () => {
+  it('should show Post to Reverb', async () => {
 
     const initialComment: Comment = {
       commentId: 0,

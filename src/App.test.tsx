@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 describe('App testing', () => {
 
-  it('should show First Name', ()=>{
+  it('should show First Name', async ()=>{
 
     const { getByText } = render(
       <Provider store={store}>

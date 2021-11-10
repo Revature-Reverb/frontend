@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 describe('ProfileInformation testing', () => {
 
-  it('should show a loading gif', () => {
+  it('should show a loading gif', async () => {
 
     React.useState = jest.fn()
       .mockReturnValueOnce([false, () => {}])
@@ -23,7 +23,7 @@ describe('ProfileInformation testing', () => {
     expect(getByTestId("gif")).toBeInTheDocument();
   })
 
-  it('should show about me and edit', () => {
+  it('should show about me and edit', async () => {
 
     React.useState = jest.fn()
       .mockReturnValueOnce([true, () => {}])

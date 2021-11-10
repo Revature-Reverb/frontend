@@ -10,7 +10,7 @@ import App from '../App';
 
 describe('SubmitPost testing', () => {
 
-  it('should show Post to Reverb', ()=>{
+  it('should show Post to Reverb', async ()=>{
 
     const initialPost: PostModel = {
       id: 0,

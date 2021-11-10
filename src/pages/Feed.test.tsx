@@ -7,23 +7,23 @@ import { BrowserRouter } from 'react-router-dom';
 
 describe('Feed testing', () => {
 
-  it('should show Create Post', ()=>{
+  it('should show Create Post', async () => {
     const { getByText } = render(
       <Provider store={store}>
-          <BrowserRouter>
-            <Feed/>
-          </BrowserRouter>
+        <BrowserRouter>
+          <Feed />
+        </BrowserRouter>
       </Provider>
     );
     expect(getByText("+ Create Post")).toBeInTheDocument();
   })
 
-  it('should call post and refresh when buttons are pushed', () => {
+  it('should call post and refresh when buttons are pushed', async () => {
     const { getByTestId } = render(
       <Provider store={store}>
-          <BrowserRouter>
-            <Feed/>
-          </BrowserRouter>
+        <BrowserRouter>
+          <Feed />
+        </BrowserRouter>
       </Provider>
     );
     const leavePost = jest.spyOn(util, 'leavePost');
@@ -35,6 +35,6 @@ describe('Feed testing', () => {
     const button2 = getByTestId("refreshButton");
     fireEvent.click(button2);
     expect(updateAll).toBeCalled();
-      
+
   })
 });

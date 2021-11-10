@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 describe('logged in navbar', () => {
 
-  it('should show register', () => {
+  it('should show register', async () => {
     const { getByText } = render(
       <Provider store={store}>
         <BrowserRouter>
@@ -17,7 +17,7 @@ describe('logged in navbar', () => {
     );
     expect(getByText("Register")).toBeInTheDocument();
   })
-  it('should show login', () => {
+  it('should show login', async () => {
     const { getByText } = render(
       <Provider store={store}>
         <BrowserRouter>
@@ -41,7 +41,7 @@ describe('logged in navbar', () => {
   //   );
   //   expect(getByTestId("logolink")).toBeInTheDocument();
   // })
-  it('should show profile', () => {
+  it('should show profile', async () => {
     const { getByText } = render(
       <Provider store={store}>
         <BrowserRouter>

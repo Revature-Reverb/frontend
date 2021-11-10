@@ -20,7 +20,7 @@ const initialState: ProfileState = {
 
 export const getProfileAsync = createAsyncThunk<Profile, object>(
     'profile/get/async',
-    async ( { }, thunkAPI ) =>
+    async (nothing, thunkAPI ) =>
     {
         try
         {
