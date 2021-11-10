@@ -25,7 +25,6 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
         setCanLike(false);
         likePost(post.id).then(async () => {
             //instead of making another DB call, it just updates the likes by 1
-            // updateLikes();
             setLikes(likes+1);
         }).catch((e) => {
             //unsuccessful
