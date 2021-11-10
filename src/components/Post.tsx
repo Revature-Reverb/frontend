@@ -46,7 +46,7 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
             <Card.Header>
                 <h3>{"" + post.title}</h3>
                 <Card.Subtitle id="cardSubtitle"><Link to={`profile/${post.profile.id}`}>{"" + post.profile.first_name} {"" + post.profile.last_name}</Link></Card.Subtitle>
-                <Card.Text>{"" + post.date + " ID " + post.id}</Card.Text>
+                <Card.Text>{"" + post.date}</Card.Text>
                 <Button data-testid="reverbButton" id="reverbButton" onClick={() => likePostFunc()} variant="warning"
                     style={{ float: 'right', marginTop: "-5rem" }} disabled={!canLike}>{likes}<img id="reverbIcon" src={ReverbIcon} alt="Click to Reverb!"/></Button>
             </Card.Header>
