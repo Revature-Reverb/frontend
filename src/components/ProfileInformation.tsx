@@ -13,18 +13,18 @@ export default function ProfileInformation(props: any) {
     const profile = useSelector(selectProfile);
     const dispatch = useDispatch();
     const history = useHistory();
-    const params: {id: string} = useParams();
+    const { id } = useParams();
     const [showEditButton, setShowEditButton] = React.useState(false);
     
     useEffect(() => {
         setDoneLoading(false);
-        if(params.id === undefined) {
+        if(id === undefined) {
             dispatch(getProfileAsync(profile));
             setShowEditButton(true);
             setTimeout(() => setDoneLoading(true), 200);
         } else {
-            dispatch(getProfileByIdAsync(params.id));
-            checkProfileOwnership(params.id).then((owns) => {
+            dispatch(getProfileByIdAsync(id));
+            checkProfileOwnership(id).then((owns) => {
                 setShowEditButton(owns);
                 setTimeout(() => setDoneLoading(true), 200);
             })
