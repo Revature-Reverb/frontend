@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 describe('EditProfilePage testing', () => {
 
-  it('should show Cancel', ()=>{
+  it('should show Cancel', async ()=>{
     const { getByText } = render(
       <Provider store={store}>
           <BrowserRouter>

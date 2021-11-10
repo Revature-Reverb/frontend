@@ -14,7 +14,7 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
     
 
     const updateLikes = () => {
-        console.log("Calling backend to update likes on post " + post.id);
+        // console.log("Calling backend to update likes on post " + post.id);
         getNumLikes(post.id)
             .then(
                 (data) => { setLikes(data) }
@@ -25,12 +25,11 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
         setCanLike(false);
         likePost(post.id).then(async () => {
             //instead of making another DB call, it just updates the likes by 1
-            // updateLikes();
             setLikes(likes+1);
         }).catch((e) => {
             //unsuccessful
             setCanLike(true);
-            console.log(e)
+            // console.log(e)
         })
     }
 

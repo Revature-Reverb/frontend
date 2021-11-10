@@ -7,12 +7,12 @@ import { BrowserRouter } from 'react-router-dom';
 
 describe('The Profile page', () => {
 
-  it('should show Profile Page', ()=>{
+  it('should show Profile Page', async () => {
     const { getByText } = render(
       <Provider store={store}>
-          <BrowserRouter>
-            <Profile/>
-          </BrowserRouter>
+        <BrowserRouter>
+          <Profile />
+        </BrowserRouter>
       </Provider>
     );
     expect(getByText("Profile Page")).toBeInTheDocument();

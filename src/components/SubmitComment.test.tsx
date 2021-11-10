@@ -4,14 +4,11 @@ import { Provider } from 'react-redux';
 import { store } from '../app/store';
 import SubmitComment from './SubmitComment';
 import { BrowserRouter } from 'react-router-dom';
-import { PostModel } from '../models/postModel';
-import { Profile } from '../models/profileModel';
 import { Comment } from '../models/commentModel';
-import App from '../App';
 
 describe('SubmitComment testing', () => {
 
-  it('should show Post to Reverb', () => {
+  it('should show Post to Reverb', async () => {
 
     const initialComment: Comment = {
       commentId: 0,

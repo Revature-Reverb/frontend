@@ -20,7 +20,7 @@ const initialState: ProfileState = {
 
 export const getProfileAsync = createAsyncThunk<Profile, object>(
     'profile/get/async',
-    async ( { }, thunkAPI ) =>
+    async ( nothing, thunkAPI ) =>
     {
         try
         {
@@ -78,7 +78,7 @@ const profileSlice = createSlice( {
             } )
             .addCase( getProfileAsync.rejected, ( state, action ) =>
             {
-                console.log( action.error );
+                // console.log( action.error );
             } )
             .addCase( getProfileByIdAsync.pending, ( state ) =>
             {
@@ -91,7 +91,7 @@ const profileSlice = createSlice( {
             } )
             .addCase( getProfileByIdAsync.rejected, ( state, action ) =>
             {
-                console.log( action.error );
+                // console.log( action.error );
             } )
             .addCase( updateProfileAsync.pending, ( state ) =>
             {
@@ -103,7 +103,7 @@ const profileSlice = createSlice( {
             } )
             .addCase( updateProfileAsync.rejected, ( state, action ) =>
             {
-                console.log( action.error );
+                // console.log( action.error );
             } )
     }
 

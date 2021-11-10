@@ -43,12 +43,12 @@ export const authSlice = createSlice( {
             } )
             .addCase( setTokenAsync.fulfilled, ( state, action ) =>
             {
-                console.log( "From setTokenAsync extraReducer: ", action.payload.token );
+                // console.log( "From setTokenAsync extraReducer: ", action.payload.token );
                 return [action.payload];
             } )
             .addCase( setTokenAsync.rejected, ( state, action ) =>
             {
-                console.log( action.error );
+                // console.log( action.error );
             } )
     }
 

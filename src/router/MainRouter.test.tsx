@@ -7,12 +7,12 @@ import { BrowserRouter } from 'react-router-dom';
 
 describe('The MainRouter page', () => {
 
-  it('should show MainRouter Page', ()=>{
+  it('should show MainRouter Page', async () => {
     const { getByText } = render(
       <Provider store={store}>
-          <BrowserRouter>
-            <MainRouter loggedIn={''}/>
-          </BrowserRouter>
+        <BrowserRouter>
+          <MainRouter loggedIn={''} />
+        </BrowserRouter>
       </Provider>
     );
     expect(getByText("Reverb")).toBeInTheDocument();

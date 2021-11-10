@@ -31,7 +31,7 @@ export default function EditProfile() {
 
     util.update = (e: any) => {
         e.preventDefault();
-        console.log('editProfile' + JSON.stringify(input));
+        // console.log('editProfile' + JSON.stringify(input));
         dispatch(updateProfileAsync(input));
         history.push('/profile');
     }

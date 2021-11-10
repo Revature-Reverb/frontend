@@ -10,7 +10,7 @@ const initialState: PostState = [];
 
 export const getPostsAsync = createAsyncThunk<PostModel[], object>(
     'post/get/async',
-    async ({}, thunkAPI) => {
+    async (nothing, thunkAPI) => {
         try {
             return await getAllPosts();
         } catch (error) {
@@ -47,13 +47,13 @@ const postSlice = createSlice({
             return action.payload;
         })
         .addCase(postPostAsync.fulfilled, (state, action) => {
-            state.push(action.payload);
+            // state.push(action.payload);
         })
         .addCase(getPostsAsync.rejected, (state, action) => {
-            console.log(action.error);
+            // console.log(action.error);
         })
         .addCase(postPostAsync.rejected, (state, action) => {
-            console.log(action.error);
+            // console.log(action.error);
         })
     }
 });
