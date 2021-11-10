@@ -46,6 +46,7 @@ describe('SubmitComment testing', () => {
         </BrowserRouter>
       </Provider>
     );
+    
     expect(getByText("New Comment")).toBeInTheDocument();
 
     const button = getByTestId("submitCommentButton");
