@@ -6,25 +6,24 @@ import { Grid } from "@material-ui/core";
 import { getProfileAsync, getProfileByIdAsync, selectProfile } from "../slices/profileSlice";
 import { checkProfileOwnership } from "../remote/reverb-api/profile.api";
 import Image from 'react-bootstrap/Image'
-import { Params } from "react-router";
 
 
 export default function ProfileInformation(props: any) {
     const profile = useSelector(selectProfile);
     const dispatch = useDispatch();
     const history = useHistory();
-    const { id } = useParams();
+    const params: { id: string } = useParams();
     const [showEditButton, setShowEditButton] = useState(false);
     const [doneLoading, setDoneLoading] = useState(false);
     useEffect(() => {
         setDoneLoading(false);
-        if(id === undefined) {
+        if(params.id === undefined) {
             dispatch(getProfileAsync(profile));
             setShowEditButton(true);
             setTimeout(() => setDoneLoading(true), 200);
         } else {
-            dispatch(getProfileByIdAsync(id));
-            checkProfileOwnership(id).then((owns) => {
+            dispatch(getProfileByIdAsync(params.id));
+            checkProfileOwnership(params.id).then((owns) => {
                 setShowEditButton(owns);
                 setTimeout(() => setDoneLoading(true), 200);
             })
