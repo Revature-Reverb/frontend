@@ -5,8 +5,6 @@ import { checkIfPostCanBeLiked, getNumLikes, likePost } from "../remote/reverb-a
 import { Link } from "react-router-dom";
 import ReverbIcon from "../assets/images/reverb_icon_final.png"
 
-export let util = {likePostFunc: () => {}, updateLikes: () => {}};
-
 const Post = ({ shouldUpdateLikes, post, leaveComment }: 
     { shouldUpdateLikes: boolean[], post: PostModel, leaveComment: any }) => {
 
@@ -15,15 +13,15 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
     const [likes, setLikes] = React.useState(initialLikes);
     
 
-    util.updateLikes = () => {
-        console.log("Calling backend to update likes.");
+    const updateLikes = () => {
+        console.log("Calling backend to update likes on post " + post.id);
         getNumLikes(post.id)
             .then(
                 (data) => { setLikes(data) }
             );
     }
 
-    util.likePostFunc = () => {
+    const likePostFunc = () => {
         setCanLike(false);
         likePost(post.id).then(async () => {
             //instead of making another DB call, it just updates the likes by 1
@@ -39,7 +37,7 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
     //checks to see if the post can be liked
     //updates the number of likes
     useEffect(() => {
-        util.updateLikes();
+        updateLikes();
         checkIfPostCanBeLiked(post.id).then(canLikeReturn => setCanLike(!canLikeReturn));
     }, [shouldUpdateLikes]);
 
@@ -48,8 +46,8 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
             <Card.Header>
                 <h3>{"" + post.title}</h3>
                 <Card.Subtitle id="cardSubtitle"><Link to={`profile/${post.profile.id}`}>{"" + post.profile.first_name} {"" + post.profile.last_name}</Link></Card.Subtitle>
-                <Card.Text>{"" + post.date}</Card.Text>
-                <Button data-testid="reverbButton" id="reverbButton" onClick={() => util.likePostFunc()} variant="warning"
+                <Card.Text>{"" + post.date + " ID " + post.id}</Card.Text>
+                <Button data-testid="reverbButton" id="reverbButton" onClick={() => likePostFunc()} variant="warning"
                     style={{ float: 'right', marginTop: "-5rem" }} disabled={!canLike}>{likes}<img id="reverbIcon" src={ReverbIcon} alt="Click to Reverb!"/></Button>
             </Card.Header>
             <Card.Body id="postBody">

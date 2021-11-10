@@ -31,16 +31,16 @@ describe('logged in navbar', () => {
 });
 describe('logged in navbar', () => {
 
-  it('should show home', () => {
-    const { getByText } = render(
-      <Provider store={store}>
-        <BrowserRouter>
-          <Navbar loggedIn={"a"} />
-        </BrowserRouter>
-      </Provider>
-    );
-    expect(getByText("Home")).toBeInTheDocument();
-  })
+  // it('should show home', () => {
+  //   const { getByTestId } = render(
+  //     <Provider store={store}>
+  //       <BrowserRouter>
+  //         <Navbar loggedIn={"a"} />
+  //       </BrowserRouter>
+  //     </Provider>
+  //   );
+  //   expect(getByTestId("logolink")).toBeInTheDocument();
+  // })
   it('should show profile', () => {
     const { getByText } = render(
       <Provider store={store}>

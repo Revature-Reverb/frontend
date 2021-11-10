@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { store } from '../app/store';
-import Post, { util } from './Post';
+import Post from './Post';
 import { BrowserRouter } from 'react-router-dom';
 import { PostModel } from '../models/postModel';
 import { Profile } from '../models/profileModel';
@@ -52,15 +52,16 @@ describe('Post testing', () => {
     );
 
     expect(getByText("Shreks Swamp")).toBeInTheDocument();
+    expect(getByText("Donkey!")).toBeInTheDocument();
 
     const button = getByTestId("submitButton");
     fireEvent.click(button);
     expect(dummyFunc).toBeCalled();
 
-    const button2 = getByTestId("reverbButton");
-    const reverbFunc = jest.spyOn(util, "likePostFunc");
-    fireEvent.click(button2);
-    expect(reverbFunc).toBeCalled();
+    // const button2 = getByTestId("reverbButton");
+    // const reverbFunc = jest.spyOn(util, "likePostFunc");
+    // fireEvent.click(button2);
+    // expect(reverbFunc).toBeCalled();
   })
 
 

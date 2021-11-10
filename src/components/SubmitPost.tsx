@@ -4,7 +4,7 @@ import swal from 'sweetalert';
 
 function SubmitPost(props: any) {
 
-    function closeSubmit(event: React.MouseEvent<HTMLButtonElement>) {
+    const closeSubmit = () => {
         if (props.post.title != "" && props.post.postText != "") {
             props.onHide();
             props.dispatchPost();
@@ -63,7 +63,7 @@ function SubmitPost(props: any) {
             </Modal.Body>
             <Modal.Footer>
                 {/* Submit Button */}
-                <Button data-testid="submitPostButton" id="submitPostBtn" type="button" onClick={closeSubmit}>Post to Reverb</Button>
+                <Button data-testid="submitPostButton" id="submitPostBtn" type="button" onClick={() => closeSubmit()}>Post to Reverb</Button>
             </Modal.Footer>
         </Modal>
     );

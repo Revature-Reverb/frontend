@@ -18,6 +18,7 @@ describe('The Register page', () => {
       </Provider>
     );
     expect(getByText("Email")).toBeInTheDocument();
+    expect(getByText("Password")).toBeInTheDocument();
 
     const registerFunc = jest.spyOn(util, 'registerAccount');
 

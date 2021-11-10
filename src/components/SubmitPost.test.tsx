@@ -55,44 +55,44 @@ describe('SubmitPost testing', () => {
     expect(dummyFunc).toBeCalled();
   })
 
-  it("should give alert if you try to submit an empty post", () => {
-    const initialPost: PostModel = {
-      id: 0,
-      title: "",
-      postText: "",
-      imageURL: "",
-      date: "",
-      profile: {
-        id: 0,
-        first_name: "",
-        last_name: "",
-        birthday: "",
-        hobby: "",
-        location: "",
-        profile_img: "",
-        header_img: "",
-        about_me: ""
-      },
-      comments: []
-    }
-    const alertMock = jest.spyOn(window,'alert').mockImplementation(); 
-    let submitPostComponent = (<><SubmitPost
-      setPost={() => { } }
-      post={initialPost}
-      dispatchPost={() => {}}
-      show={true}
-      onHide={() => { } } /><SubmitPost /></>);
-    const { getByTestId } = render(
-      <Provider store={store}>
-          <BrowserRouter>
-            {submitPostComponent}
-          </BrowserRouter>
-      </Provider>
-    );
+  // it("should give alert if you try to submit an empty post", () => {
+  //   const initialPost: PostModel = {
+  //     id: 0,
+  //     title: "",
+  //     postText: "",
+  //     imageURL: "",
+  //     date: "",
+  //     profile: {
+  //       id: 0,
+  //       first_name: "",
+  //       last_name: "",
+  //       birthday: "",
+  //       hobby: "",
+  //       location: "",
+  //       profile_img: "",
+  //       header_img: "",
+  //       about_me: ""
+  //     },
+  //     comments: []
+  //   }
+  //   const alertMock = jest.spyOn(window,'alert').mockImplementation(); 
+  //   let submitPostComponent = (<><SubmitPost
+  //     setPost={() => { } }
+  //     post={initialPost}
+  //     dispatchPost={() => {}}
+  //     show={true}
+  //     onHide={() => { } } /><SubmitPost /></>);
+  //   const { getByTestId } = render(
+  //     <Provider store={store}>
+  //         <BrowserRouter>
+  //           {submitPostComponent}
+  //         </BrowserRouter>
+  //     </Provider>
+  //   );
 
-    const button = getByTestId("submitPostButton");
-    fireEvent.click(button);
-    expect(alertMock).toBeCalled();
-  })
+  //   const button = getByTestId("submitPostButton");
+  //   fireEvent.click(button);
+  //   expect(alertMock).toBeCalled();
+  // })
 
 });

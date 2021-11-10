@@ -15,7 +15,7 @@ describe('Feed testing', () => {
           </BrowserRouter>
       </Provider>
     );
-    expect(getByText("Create Post")).toBeInTheDocument();
+    expect(getByText("+ Create Post")).toBeInTheDocument();
   })
 
   it('should call post and refresh when buttons are pushed', () => {
