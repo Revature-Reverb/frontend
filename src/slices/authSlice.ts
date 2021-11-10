@@ -48,7 +48,7 @@ export const authSlice = createSlice( {
             } )
             .addCase( setTokenAsync.rejected, ( state, action ) =>
             {
-                console.log( action.error );
+                // console.log( action.error );
             } )
     }
 

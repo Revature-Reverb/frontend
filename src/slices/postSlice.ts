@@ -47,13 +47,13 @@ const postSlice = createSlice({
             return action.payload;
         })
         .addCase(postPostAsync.fulfilled, (state, action) => {
-            state.push(action.payload);
+            // state.push(action.payload);
         })
         .addCase(getPostsAsync.rejected, (state, action) => {
-            console.log(action.error);
+            // console.log(action.error);
         })
         .addCase(postPostAsync.rejected, (state, action) => {
-            console.log(action.error);
+            // console.log(action.error);
         })
     }
 });
