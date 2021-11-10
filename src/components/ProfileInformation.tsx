@@ -6,16 +6,16 @@ import { Grid } from "@material-ui/core";
 import { getProfileAsync, getProfileByIdAsync, selectProfile } from "../slices/profileSlice";
 import { checkProfileOwnership } from "../remote/reverb-api/profile.api";
 import Image from 'react-bootstrap/Image'
-import { Params } from "react-router";
 
 
 export default function ProfileInformation(props: any) {
+    const [doneLoading, setDoneLoading] = React.useState(false);
     const profile = useSelector(selectProfile);
     const dispatch = useDispatch();
     const history = useHistory();
     const { id } = useParams();
-    const [showEditButton, setShowEditButton] = useState(false);
-    const [doneLoading, setDoneLoading] = useState(false);
+    const [showEditButton, setShowEditButton] = React.useState(false);
+    
     useEffect(() => {
         setDoneLoading(false);
         if(id === undefined) {
@@ -62,6 +62,7 @@ export default function ProfileInformation(props: any) {
             </Card.Body>
         </Card>
         {showEditButton ? <Button id="EditProfileButton" onClick={goToEditProfile}>Edit Profile</Button> : <></>}
-        </Grid>) : (<Image id="LoadingImg" src = {"https://app.revature.com/assets/images/ajax-loader-logo.0cd555cc.gif"} fluid/>)
+        </Grid>) : (<Image id="LoadingImg" src = {"https://app.revature.com/assets/images/ajax-loader-logo.0cd555cc.gif"} 
+        style={{height:'192px', width: '300px'}} fluid data-testid="gif"/>)
     )
 }

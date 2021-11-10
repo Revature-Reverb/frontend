@@ -43,7 +43,7 @@ function SubmitComment(props: any) {
             </Modal.Body>
             <Modal.Footer>
                 {/* Submit Button */}
-                <Button id="submitCommentBtn" type="button" onClick={closeSubmit}>Leave Comment</Button>
+                <Button data-testid="submitCommentButton" id="submitCommentBtn" type="button" onClick={closeSubmit}>Leave Comment</Button>
             </Modal.Footer>
         </Modal>
     );

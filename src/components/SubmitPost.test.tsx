@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { store } from '../app/store';
 import SubmitPost from './SubmitPost';
@@ -12,37 +12,87 @@ describe('SubmitPost testing', () => {
 
   it('should show Post to Reverb', ()=>{
 
-    const aProfile:Profile = {
+    const initialPost: PostModel = {
       id: 0,
-      first_name: '',
-      last_name: '',
-      profile_img: '',
-      header_img: '',
-      about_me: '',
-      birthday: '',
-      hobby: '',
-      location: ''
-  }
-
-  const aPost: PostModel = {
-      id: 0,
-      title: '',
-      postText: '',
-      imageURL: '',
-      date: '',
-      profile: aProfile,
+      title: "title",
+      postText: "text",
+      imageURL: "",
+      date: "",
+      profile: {
+        id: 0,
+        first_name: "",
+        last_name: "",
+        birthday: "",
+        hobby: "",
+        location: "",
+        profile_img: "",
+        header_img: "",
+        about_me: ""
+      },
       comments: []
-  }
-    const { getByText } = render(
+    }
+
+    const dummyFunc = jest.fn();
+
+    let submitPostComponent = (<><SubmitPost
+      setPost={() => { } }
+      post={initialPost}
+      dispatchPost={dummyFunc}
+      show={true}
+      onHide={() => { } } /><SubmitPost /></>);
+
+    const { getByText, getByTestId } = render(
       <Provider store={store}>
           <BrowserRouter>
-          <App></App>
-            <SubmitPost aPost="abc"/>
-            <SubmitPost/>
+            {submitPostComponent}
           </BrowserRouter>
       </Provider>
     );
-    expect(getByText("Reverb")).toBeInTheDocument();
+    expect(getByText("New Post")).toBeInTheDocument();
+
+    const button = getByTestId("submitPostButton");
+    fireEvent.click(button);
+    expect(dummyFunc).toBeCalled();
   })
+
+  // it("should give alert if you try to submit an empty post", () => {
+  //   const initialPost: PostModel = {
+  //     id: 0,
+  //     title: "",
+  //     postText: "",
+  //     imageURL: "",
+  //     date: "",
+  //     profile: {
+  //       id: 0,
+  //       first_name: "",
+  //       last_name: "",
+  //       birthday: "",
+  //       hobby: "",
+  //       location: "",
+  //       profile_img: "",
+  //       header_img: "",
+  //       about_me: ""
+  //     },
+  //     comments: []
+  //   }
+  //   const alertMock = jest.spyOn(window,'alert').mockImplementation(); 
+  //   let submitPostComponent = (<><SubmitPost
+  //     setPost={() => { } }
+  //     post={initialPost}
+  //     dispatchPost={() => {}}
+  //     show={true}
+  //     onHide={() => { } } /><SubmitPost /></>);
+  //   const { getByTestId } = render(
+  //     <Provider store={store}>
+  //         <BrowserRouter>
+  //           {submitPostComponent}
+  //         </BrowserRouter>
+  //     </Provider>
+  //   );
+
+  //   const button = getByTestId("submitPostButton");
+  //   fireEvent.click(button);
+  //   expect(alertMock).toBeCalled();
+  // })
 
 });

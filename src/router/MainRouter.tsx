@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import CreatePost from "../pages/CreatePost";
 import Feed from "../pages/Feed";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
@@ -30,9 +29,6 @@ const MainRouter:React.FC<MainRouterProps> = ({loggedIn}:{loggedIn:string}) => {
     toReturn =
       <div>
         <Switch>
-          <Route path="/create_post">
-            <CreatePost />
-          </Route>
           <Route path="/profile/:id">
             <ProfilePage beep={false}/>
           </Route>
@@ -57,9 +53,6 @@ const MainRouter:React.FC<MainRouterProps> = ({loggedIn}:{loggedIn:string}) => {
         <Switch>
           <Route path="/register">
             <Register />
-          </Route>
-          <Route path="/create_post">
-            <CreatePost />
           </Route>
           <Route path="/login">
             <Login />

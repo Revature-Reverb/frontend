@@ -2,10 +2,10 @@ import React from "react";
 import {Button, Col, Form, Modal, Row} from "react-bootstrap";
 import swal from 'sweetalert';
 
-function SubmitPost(props:any){
+function SubmitPost(props: any) {
 
-    function closeSubmit(event: React.MouseEvent<HTMLButtonElement>){
-        if(props.post.title!="" && props.post.postText!="") {
+    const closeSubmit = () => {
+        if (props.post.title != "" && props.post.postText != "") {
             props.onHide();
             props.dispatchPost();
         } else {
@@ -13,14 +13,14 @@ function SubmitPost(props:any){
         }
     }
 
-    return(
+    return (
         <Modal
             {...props}
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
             id="createPostModal"
-            >
+        >
             <Modal.Header closeButton >
                 <Modal.Title>
                     New Post
@@ -32,8 +32,8 @@ function SubmitPost(props:any){
                     <Form.Group as={Row} className="mb-3">
                         <Col sm={11}>
                             <Form.Control
-                                placeholder="Image URL"
-                                onChange={(event)=> props.setPost({...props.post, imageURL: event.target.value})} />
+                                placeholder="image URL"
+                                onChange={(event) => props.setPost({ ...props.post, imageURL: event.target.value })} />
                         </Col>
                     </Form.Group>
 
@@ -42,8 +42,8 @@ function SubmitPost(props:any){
                         <Col sm={11}>
                             <Form.Control
                                 placeholder="Post Title"
-                                style={{height: "25px"}}
-                                onChange={(event)=> props.setPost({...props.post, title: event.target.value})}
+                                style={{ height: "25px" }}
+                                onChange={(event) => props.setPost({ ...props.post, title: event.target.value })}
                             />
                         </Col>
                     </Form.Group>
@@ -53,9 +53,9 @@ function SubmitPost(props:any){
                         <Col sm={12}>
                             <Form.Control
                                 as="textarea"
-                                placeholder="Post"  
-                                style={{height: "100px"}}
-                                onChange={(event)=> props.setPost({...props.post, postText: event.target.value})}
+                                placeholder="Post"
+                                style={{ height: "100px" }}
+                                onChange={(event) => props.setPost({ ...props.post, postText: event.target.value })}
                             />
                         </Col>
                     </Form.Group>
@@ -63,7 +63,7 @@ function SubmitPost(props:any){
             </Modal.Body>
             <Modal.Footer>
                 {/* Submit Button */}
-                <Button id="submitPostBtn" type="button" onClick={closeSubmit}>Post to Reverb</Button>
+                <Button data-testid="submitPostButton" id="submitPostBtn" type="button" onClick={() => closeSubmit()}>Post to Reverb</Button>
             </Modal.Footer>
         </Modal>
     );

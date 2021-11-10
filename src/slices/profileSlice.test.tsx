@@ -14,8 +14,6 @@ describe( 'The ProfileSlice', () =>
         const { getByText } = render(
         <Provider store={ store } >
             <BrowserRouter>
-                getProfileAsync();
-                updateProfileAsync();
                 <App/>
             </BrowserRouter>
         </Provider>
