@@ -7,6 +7,8 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 
+export let util = {registerAccount: (event: any) => {}};
+
 export default function Register() {
 
   const history = useHistory();
@@ -28,7 +30,7 @@ export default function Register() {
   const passwordRef = useRef<HTMLInputElement>(null);
 
   // Registering account to firebase, currently only checking if email input is in email format and password is longer than 6 characters.
-  function registerAccount(event: any) {
+  util.registerAccount = (event: any) => {
     event.preventDefault();
 
     if (emailRef.current !== null && passwordRef.current !== null) {
@@ -67,7 +69,7 @@ export default function Register() {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" ref={passwordRef} required />
                   </Form.Group>
-                  <Button className="w-100 mt-2" type="submit" onClick={registerAccount}>Sign Up</Button>
+                  <Button data-testid="submitButton" className="w-100 mt-2" type="submit" onClick={(event) => util.registerAccount(event)}>Sign Up</Button>
                 </Form>
               </Card.Body>
             </Card>

@@ -1,8 +1,8 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { store } from '../app/store';
-import Login from './Login';
+import Login, { util } from './Login';
 import { BrowserRouter } from 'react-router-dom';
 
 describe('login test', () => {
@@ -26,6 +26,21 @@ describe('login test', () => {
     </Provider>
     );
     expect(getByText("Password")).toBeInTheDocument();
+    
+  })
+
+  it('should call the loginAccount function', () => {
+    const { getByTestId } = render(
+      <Provider store={store}>
+          <BrowserRouter>
+            <Login/>
+          </BrowserRouter>
+      </Provider>)
+    const loginFunc = jest.spyOn(util, 'loginAccount');
+
+    const button = getByTestId("submitButton");
+    fireEvent.click(button);
+    expect(loginFunc).toBeCalled();
   })
 
 });

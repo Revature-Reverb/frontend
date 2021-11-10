@@ -41,7 +41,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ loggedIn }: { loggedIn: s
 
 
                     {/* The Home button that is the logo.*/}
-                    <Nav.Link as={Link} to={"/"} className="justify-content-center" id="homeLink" eventKey="home">
+                    <Nav.Link data-testid="logolink" as={Link} to={"/"} className="justify-content-center" id="homeLink" eventKey="home">
                         <img
                             alt=""
                             src={Logo}
