@@ -1,14 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { PostModel } from '../models/postModel';
+import { Post } from '../models/post';
 import { createPost, getAllPosts } from "../remote/reverb-api/post.api";
 import { store } from "../app/store";
 
 
-export type PostState = PostModel[];
+export type PostState = Post[];
 
 const initialState: PostState = [];
 
-export const getPostsAsync = createAsyncThunk<PostModel[], object>(
+export const getPostsAsync = createAsyncThunk<Post[], object>(
     'post/get/async',
     async (nothing, thunkAPI) => {
         try {
@@ -19,9 +19,9 @@ export const getPostsAsync = createAsyncThunk<PostModel[], object>(
     }
 );
 
-export const postPostAsync = createAsyncThunk<PostModel, PostModel>(
+export const postPostAsync = createAsyncThunk<Post, Post>(
     'post/post/async',
-    async (neoPost: PostModel, thunkAPI) => {
+    async (neoPost: Post, thunkAPI) => {
         try {
             return await createPost(neoPost);
         } catch (error) {

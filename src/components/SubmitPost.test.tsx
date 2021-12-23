@@ -4,15 +4,15 @@ import { Provider } from 'react-redux';
 import { store } from '../app/store';
 import SubmitPost from './SubmitPost';
 import { BrowserRouter } from 'react-router-dom';
-import { PostModel } from '../models/postModel';
-import { Profile } from '../models/profileModel';
+import { Post } from '../models/post';
+import { Profile } from '../models/profile';
 import App from '../App';
 
 describe('SubmitPost testing', () => {
 
   it('should show Post to Reverb', async ()=>{
 
-    const initialPost: PostModel = {
+    const initialPost: Post = {
       id: 0,
       title: "title",
       postText: "text",

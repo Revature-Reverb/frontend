@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword } from "@firebase/auth";
 import swal from "sweetalert";
 import { auth } from "../../firebase";
-import { Token } from "../../models/tokenModel";
+import { Token } from "../../models/token";
 
 
 export const getToken = async (email: string, password: string): Promise<Token> => {

@@ -1,14 +1,14 @@
-import { PostModel } from "../../models/postModel";
+import { Post } from "../../models/post";
 import { reverbClientWithAuth } from './reverbClient'
 
-export const createPost = async (neoPost: PostModel): Promise<PostModel> => {
-  const {data: post} = await reverbClientWithAuth.post<PostModel>('/api/post/submit', neoPost);
+export const createPost = async (neoPost: Post): Promise<Post> => {
+  const {data: post} = await reverbClientWithAuth.post<Post>('/api/post/submit', neoPost);
 
   return post;
 }
 
-export const getAllPosts = async (): Promise<PostModel[]> => {
-  const {data: posts} = await reverbClientWithAuth.get<PostModel[]>('/api/post/get-all-posts');
+export const getAllPosts = async (): Promise<Post[]> => {
+  const {data: posts} = await reverbClientWithAuth.get<Post[]>('/api/post/get-all-posts');
 
   return posts;
 }

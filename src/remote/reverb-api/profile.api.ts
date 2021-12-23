@@ -1,4 +1,4 @@
-import { Profile } from "../../models/profileModel";
+import { Profile } from "../../models/profile";
 import { reverbClientWithAuth } from "./reverbClient"
 
 export const getProfile = async () => {

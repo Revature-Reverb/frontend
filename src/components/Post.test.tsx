@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { store } from '../app/store';
-import Post from './Post';
+import PostComponent from './Post';
 import { BrowserRouter } from 'react-router-dom';
-import { PostModel } from '../models/postModel';
-import { Profile } from '../models/profileModel';
+import { Post } from '../models/post';
+import { Profile } from '../models/profile';
 
 describe('Post testing', () => {
 
@@ -23,7 +23,7 @@ describe('Post testing', () => {
       location: ''
     }
 
-    const aPost: PostModel = {
+    const aPost: Post = {
       id: 0,
       title: 'Shreks Swamp',
       postText: '',
@@ -46,7 +46,7 @@ describe('Post testing', () => {
     const { getByText, getByTestId } = render(
       <Provider store={store}>
         <BrowserRouter>
-          <Post post={aPost} leaveComment={dummyFunc} shouldUpdateLikes={[]} />
+          <PostComponent post={aPost} leaveComment={dummyFunc} shouldUpdateLikes={[]} />
         </BrowserRouter>
       </Provider>
     );

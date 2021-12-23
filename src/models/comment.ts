@@ -1,4 +1,4 @@
-import { Profile } from "./profileModel";
+import { Profile } from "./profile";
 
 export interface Comment {
     commentId: number,

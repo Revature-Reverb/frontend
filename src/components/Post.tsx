@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, ListGroup, ListGroupItem } from "react-bootstrap";
-import { PostModel } from '../models/postModel'
+import { Post } from '../models/post'
 import { checkIfPostCanBeLiked, getNumLikes, likePost } from "../remote/reverb-api/likes.api";
 import { Link } from "react-router-dom";
 import ReverbIcon from "../assets/images/reverb_icon_final.png"
 
-const Post = ({ shouldUpdateLikes, post, leaveComment }: 
-    { shouldUpdateLikes: boolean[], post: PostModel, leaveComment: any }) => {
+const PostComponent = ({ shouldUpdateLikes, post, leaveComment }: 
+    { shouldUpdateLikes: boolean[], post: Post, leaveComment: any }) => {
 
     const initialLikes: number = 0;
     const [canLike, setCanLike] = React.useState(false);
@@ -73,4 +73,4 @@ const Post = ({ shouldUpdateLikes, post, leaveComment }:
     );
 }
 
-export default Post;
+export default PostComponent;

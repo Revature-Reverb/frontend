@@ -3,11 +3,11 @@ import { Button, Container, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import SubmitPost from '../components/SubmitPost'
 import { getPostsAsync, postPostAsync, selectPosts } from '../slices/postSlice'
-import Post from '../components/Post'
+import PostComponent from '../components/Post'
 import SubmitComment from '../components/SubmitComment';
 import { createComment } from '../remote/reverb-api/comment.api';
-import { initialPost } from '../models/postModel';
-import { initialComment } from '../models/commentModel';
+import { initialPost } from '../models/post';
+import { initialComment } from '../models/comment';
 import RefreshIcon from '../assets/images/refreshicon.svg'
 
 export let util = {
@@ -86,7 +86,7 @@ const Feed = () => {
             onHide={() => setModalShowComment(false)}
             postId={postId}
           />
-          {posts.map((post) => (<Post shouldUpdateLikes={shouldUpdateLikes}
+          {posts.map((post) => (<PostComponent shouldUpdateLikes={shouldUpdateLikes}
             post={post} leaveComment={util.leaveComment} key={post.id} />)).reverse()}
         </Col>
         

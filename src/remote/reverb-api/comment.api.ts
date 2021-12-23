@@ -1,4 +1,4 @@
-import { Comment } from "../../models/commentModel";
+import { Comment } from "../../models/comment";
 import { reverbClientWithAuth } from './reverbClient'
 
 export const createComment = async (postId: number, neoComment: Comment): Promise<Comment> => {

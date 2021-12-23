@@ -1,6 +1,6 @@
 /* eslint-disable no-empty-pattern */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { Profile } from "../models/profileModel";
+import { Profile } from "../models/profile";
 import { getProfile, getProfileById, updateProfile } from "../remote/reverb-api/profile.api";
 import { store } from "../app/store";
 

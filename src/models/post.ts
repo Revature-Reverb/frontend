@@ -1,7 +1,7 @@
-import { Profile } from "./profileModel";
-import { Comment } from "./commentModel";
+import { Profile } from "./profile";
+import { Comment } from "./comment";
 
-export interface PostModel {
+export interface Post {
     id: number,
     title: string,
     postText: string,
@@ -11,7 +11,7 @@ export interface PostModel {
     comments: Comment[]
 }
 
-export const initialPost: PostModel = {
+export const initialPost: Post = {
     id: 0,
     title: "",
     postText: "",

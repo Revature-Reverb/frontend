@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { Token } from "../models/tokenModel";
+import { Token } from "../models/token";
 import { getToken } from '../remote/reverb-api/token.api'
-import { Credentials } from "../models/credModel";
+import { Credentials } from "../models/credentials";
 
 export type TokenState = Token[];
 

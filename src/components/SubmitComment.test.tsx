@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { store } from '../app/store';
 import SubmitComment from './SubmitComment';
 import { BrowserRouter } from 'react-router-dom';
-import { Comment } from '../models/commentModel';
+import { Comment } from '../models/comment';
 
 describe('SubmitComment testing', () => {
 
